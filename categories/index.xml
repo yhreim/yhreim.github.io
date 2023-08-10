@@ -6,20 +6,20 @@
         <description>Recent content in Categories on 墨子的博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Tue, 11 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://mo.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>Test</title>
-        <link>https://mo.github.io/categories/test/</link>
-        <pubDate>Tue, 11 Jul 2023 00:00:00 +0000</pubDate>
+        <lastBuildDate>Wed, 09 Aug 2023 08:34:49 +0800</lastBuildDate><atom:link href="https://mo.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>物理</title>
+        <link>https://mo.github.io/categories/%E7%89%A9%E7%90%86/</link>
+        <pubDate>Wed, 09 Aug 2023 08:34:49 +0800</pubDate>
         
-        <guid>https://mo.github.io/categories/test/</guid>
-        <description>&lt;img src="https://mo.github.io/categories/test/hutomo-abrianto-l2jk-uxb1BY-unsplash.jpg" alt="Featured image of post Test" /&gt;</description>
+        <guid>https://mo.github.io/categories/%E7%89%A9%E7%90%86/</guid>
+        <description></description>
         </item>
         <item>
-        <title>测试</title>
-        <link>https://mo.github.io/categories/%E6%B5%8B%E8%AF%95/</link>
-        <pubDate>Tue, 11 Jul 2023 00:00:00 +0000</pubDate>
+        <title>航天</title>
+        <link>https://mo.github.io/categories/%E8%88%AA%E5%A4%A9/</link>
+        <pubDate>Sun, 06 Aug 2023 13:54:54 +0800</pubDate>
         
-        <guid>https://mo.github.io/categories/%E6%B5%8B%E8%AF%95/</guid>
+        <guid>https://mo.github.io/categories/%E8%88%AA%E5%A4%A9/</guid>
         <description></description>
         </item>
         <item>
@@ -37,6 +37,14 @@
         
         <guid>https://mo.github.io/categories/themes/</guid>
         <description></description>
+        </item>
+        <item>
+        <title>Test</title>
+        <link>https://mo.github.io/categories/test/</link>
+        <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
+        
+        <guid>https://mo.github.io/categories/test/</guid>
+        <description>&lt;img src="https://mo.github.io/categories/test/hutomo-abrianto-l2jk-uxb1BY-unsplash.jpg" alt="Featured image of post Test" /&gt;</description>
         </item>
         <item>
         <title>Test with whitespaces</title>
