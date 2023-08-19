@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://mo.github.io/</loc>
-    <lastmod>2023-08-09T08:34:49+08:00</lastmod>
+    <lastmod>2023-08-19T11:52:58+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -21,7 +21,7 @@
                 />
   </url><url>
     <loc>https://mo.github.io/categories/</loc>
-    <lastmod>2023-08-09T08:34:49+08:00</lastmod>
+    <lastmod>2023-08-19T11:52:58+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -39,7 +39,7 @@
                 />
   </url><url>
     <loc>https://mo.github.io/post/</loc>
-    <lastmod>2023-08-09T08:34:49+08:00</lastmod>
+    <lastmod>2023-08-19T11:52:58+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ar"
@@ -50,6 +50,12 @@
                 hreflang="zh-cn"
                 href="https://mo.github.io/post/"
                 />
+  </url><url>
+    <loc>https://mo.github.io/p/%E5%B1%B1%E6%A5%82%E6%A0%91%E7%AE%80%E8%B0%B1/</loc>
+    <lastmod>2023-08-19T11:52:58+08:00</lastmod>
+  </url><url>
+    <loc>https://mo.github.io/categories/%E6%98%A0%E6%9C%88%E9%9F%B3%E4%B9%90/</loc>
+    <lastmod>2023-08-19T11:52:58+08:00</lastmod>
   </url><url>
     <loc>https://mo.github.io/categories/%E7%89%A9%E7%90%86/</loc>
     <lastmod>2023-08-09T08:34:49+08:00</lastmod>
