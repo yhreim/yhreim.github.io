@@ -1,25 +1,28 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='所谓的虚功原理，核心就只有一句话，功是能量转换的量度，即用待求力做虚假的一小段功使能量转换，条件是功能守恒或总能量一阶导为零，以此列个能量守恒，没理解的话可以直接看例题。
-例题1 传统解法 虚功解法 条件：弹力绳静止时动能为零，弹性势能与重力势能自合达到最大，我们可以说总势能一阶导等0，满足虚功原理条件
-在此一小段位移中，弹力做的负功等于重力势能减少量 例题2 传统法 虚功解法 '>
-<title>虚功原理</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='物体的运动通常有6个自由度，以此可以列出三个受力平衡，三个力矩平衡的方程
+当受力在同一平面时，问题就更简单了
+只需正交分解两个方程，转动一个方程。
+分解力的方向垂直未知力 力矩平衡的支点为未知力的共点力 两个力的力矩可以通过共点力合成 '>
+<title>平衡</title>
 
-<link rel='canonical' href='https://mo.github.io/p/%E8%99%9A%E5%8A%9F%E5%8E%9F%E7%90%86/'>
+<link rel='canonical' href='https://mo.github.io/p/%E5%B9%B3%E8%A1%A1/'>
 
-<link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='虚功原理'>
-<meta property='og:description' content='所谓的虚功原理，核心就只有一句话，功是能量转换的量度，即用待求力做虚假的一小段功使能量转换，条件是功能守恒或总能量一阶导为零，以此列个能量守恒，没理解的话可以直接看例题。
-例题1 传统解法 虚功解法 条件：弹力绳静止时动能为零，弹性势能与重力势能自合达到最大，我们可以说总势能一阶导等0，满足虚功原理条件
-在此一小段位移中，弹力做的负功等于重力势能减少量 例题2 传统法 虚功解法 '>
-<meta property='og:url' content='https://mo.github.io/p/%E8%99%9A%E5%8A%9F%E5%8E%9F%E7%90%86/'>
+<link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='平衡'>
+<meta property='og:description' content='物体的运动通常有6个自由度，以此可以列出三个受力平衡，三个力矩平衡的方程
+当受力在同一平面时，问题就更简单了
+只需正交分解两个方程，转动一个方程。
+分解力的方向垂直未知力 力矩平衡的支点为未知力的共点力 两个力的力矩可以通过共点力合成 '>
+<meta property='og:url' content='https://mo.github.io/p/%E5%B9%B3%E8%A1%A1/'>
 <meta property='og:site_name' content='墨子的博客'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-08-09T08:34:49&#43;08:00'/><meta property='article:modified_time' content='2023-08-09T08:34:49&#43;08:00'/><meta property='og:image' content='https://mo.github.io/p/%E8%99%9A%E5%8A%9F%E5%8E%9F%E7%90%86/1691544311693.jpg' />
-<meta name="twitter:title" content="虚功原理">
-<meta name="twitter:description" content="所谓的虚功原理，核心就只有一句话，功是能量转换的量度，即用待求力做虚假的一小段功使能量转换，条件是功能守恒或总能量一阶导为零，以此列个能量守恒，没理解的话可以直接看例题。
-例题1 传统解法 虚功解法 条件：弹力绳静止时动能为零，弹性势能与重力势能自合达到最大，我们可以说总势能一阶导等0，满足虚功原理条件
-在此一小段位移中，弹力做的负功等于重力势能减少量 例题2 传统法 虚功解法 "><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://mo.github.io/p/%E8%99%9A%E5%8A%9F%E5%8E%9F%E7%90%86/1691544311693.jpg' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-08-19T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-08-19T00:00:00&#43;00:00'/><meta property='og:image' content='https://mo.github.io/p/%E5%B9%B3%E8%A1%A1/%E5%B9%B3%E8%A1%A1.jpg' />
+<meta name="twitter:title" content="平衡">
+<meta name="twitter:description" content="物体的运动通常有6个自由度，以此可以列出三个受力平衡，三个力矩平衡的方程
+当受力在同一平面时，问题就更简单了
+只需正交分解两个方程，转动一个方程。
+分解力的方向垂直未知力 力矩平衡的支点为未知力的共点力 两个力的力矩可以通过共点力合成 "><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://mo.github.io/p/%E5%B9%B3%E8%A1%A1/%E5%B9%B3%E8%A1%A1.jpg' />
     </head>
     <body class="
     article-page
@@ -294,26 +297,9 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#例题1">例题1</a>
-      <ol>
-        <li>
-          <ol>
-            <li><a href="#传统解法">传统解法</a></li>
-            <li><a href="#虚功解法">虚功解法</a></li>
-          </ol>
-        </li>
-      </ol>
-    </li>
-    <li><a href="#例题2">例题2</a>
-      <ol>
-        <li>
-          <ol>
-            <li><a href="#传统法">传统法</a></li>
-            <li><a href="#虚功解法-1">虚功解法</a></li>
-          </ol>
-        </li>
-      </ol>
-    </li>
+    <li><a href="#分解力的方向垂直未知力">分解力的方向垂直未知力</a></li>
+    <li><a href="#力矩平衡的支点为未知力的共点力">力矩平衡的支点为未知力的共点力</a></li>
+    <li><a href="#两个力的力矩可以通过共点力合成">两个力的力矩可以通过共点力合成</a></li>
   </ol>
 </nav>
         </div>
@@ -328,13 +314,13 @@
     <article class="has-image main-article">
     <header class="article-header">
         <div class="article-image">
-            <a href="/p/%E8%99%9A%E5%8A%9F%E5%8E%9F%E7%90%86/">
-                <img src="/p/%E8%99%9A%E5%8A%9F%E5%8E%9F%E7%90%86/1691544311693_hua337c3cc30d4747bad296e80c3b89ba8_1687843_800x0_resize_q75_box.jpg"
-                        srcset="/p/%E8%99%9A%E5%8A%9F%E5%8E%9F%E7%90%86/1691544311693_hua337c3cc30d4747bad296e80c3b89ba8_1687843_800x0_resize_q75_box.jpg 800w, /p/%E8%99%9A%E5%8A%9F%E5%8E%9F%E7%90%86/1691544311693_hua337c3cc30d4747bad296e80c3b89ba8_1687843_1600x0_resize_q75_box.jpg 1600w"
+            <a href="/p/%E5%B9%B3%E8%A1%A1/">
+                <img src="/p/%E5%B9%B3%E8%A1%A1/%E5%B9%B3%E8%A1%A1_hud14499f809f91167f0f1d72a2c68f478_31927_800x0_resize_q75_box.jpg"
+                        srcset="/p/%E5%B9%B3%E8%A1%A1/%E5%B9%B3%E8%A1%A1_hud14499f809f91167f0f1d72a2c68f478_31927_800x0_resize_q75_box.jpg 800w, /p/%E5%B9%B3%E8%A1%A1/%E5%B9%B3%E8%A1%A1_hud14499f809f91167f0f1d72a2c68f478_31927_1600x0_resize_q75_box.jpg 1600w"
                         width="800" 
-                        height="593" 
+                        height="555" 
                         loading="lazy"
-                        alt="Featured image of post 虚功原理" />
+                        alt="Featured image of post 平衡" />
                 
             </a>
         </div>
@@ -353,7 +339,7 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/%E8%99%9A%E5%8A%9F%E5%8E%9F%E7%90%86/">虚功原理</a>
+            <a href="/p/%E5%B9%B3%E8%A1%A1/">平衡</a>
         </h2>
     
         
@@ -375,7 +361,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Aug 09, 2023</time>
+                <time class="article-time--published">Aug 19, 2023</time>
             </div>
         
 
@@ -405,9 +391,12 @@
     <section class="article-content">
     
     
-    <p>所谓的虚功原理，核心就只有一句话，功是能量转换的量度，即用待求力做虚假的一小段功使能量转换，条件是功能守恒或总能量一阶导为零，以此列个能量守恒，没理解的话可以直接看例题。</p>
-<h2 id="例题1">例题1</h2>
-<p><img src="https://pic.imgdb.cn/item/64e03ece661c6c8e542e0f61.jpg"
+    <p>物体的运动通常有6个自由度，以此可以列出三个受力平衡，三个力矩平衡的方程<br>
+当受力在同一平面时，问题就更简单了<br>
+只需正交分解两个方程，转动一个方程。</p>
+<h2 id="分解力的方向垂直未知力">分解力的方向垂直未知力</h2>
+<h2 id="力矩平衡的支点为未知力的共点力">力矩平衡的支点为未知力的共点力</h2>
+<p><img src="https://pic.imgdb.cn/item/64e0ce34661c6c8e540645ab.jpg"
 	
 	
 	
@@ -415,59 +404,13 @@
 	
 	
 ></p>
-<h4 id="传统解法">传统解法</h4>
-<p><img src="https://pic.imgdb.cn/item/64e03ece661c6c8e542e0deb.jpg"
+<h2 id="两个力的力矩可以通过共点力合成">两个力的力矩可以通过共点力合成</h2>
+<p><img src="https://pic.imgdb.cn/item/64e0ce34661c6c8e54064696.jpg"
 	
 	
 	
 	loading="lazy"
 	
-	
-></p>
-<h4 id="虚功解法">虚功解法</h4>
-<p>条件：弹力绳静止时动能为零，弹性势能与重力势能自合达到最大，我们可以说总势能一阶导等0，满足虚功原理条件<br>
-在此一小段位移中，弹力做的负功等于重力势能减少量
-<img src="https://pic.imgdb.cn/item/64e03ece661c6c8e542e0eff.jpg"
-	
-	
-	
-	loading="lazy"
-	
-		alt="圆锥套绳"
-	
-	
-></p>
-<h2 id="例题2">例题2</h2>
-<p><img src="https://pic.imgdb.cn/item/64e03ece661c6c8e542e0f61.jpg"
-	
-	
-	
-	loading="lazy"
-	
-	
-></p>
-<h4 id="传统法">传统法</h4>
-<p><img src="https://pic.imgdb.cn/item/64e03ecf661c6c8e542e0fbf.jpg"
-	
-	
-	
-	loading="lazy"
-	
-	
-></p>
-<h4 id="虚功解法-1">虚功解法</h4>
-<p><img src="/p/%E8%99%9A%E5%8A%9F%E5%8E%9F%E7%90%86/1691544311693-1.jpg"
-	width="4208"
-	height="3120"
-	srcset="/p/%E8%99%9A%E5%8A%9F%E5%8E%9F%E7%90%86/1691544311693-1_hua337c3cc30d4747bad296e80c3b89ba8_1687843_480x0_resize_q75_box.jpg 480w, /p/%E8%99%9A%E5%8A%9F%E5%8E%9F%E7%90%86/1691544311693-1_hua337c3cc30d4747bad296e80c3b89ba8_1687843_1024x0_resize_q75_box.jpg 1024w"
-	loading="lazy"
-	
-		alt="链条"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="134"
-		data-flex-basis="323px"
 	
 ></p>
 
@@ -506,23 +449,23 @@
             
                 
 <article class="has-image">
-    <a href="/p/%E5%B9%B3%E8%A1%A1/">
+    <a href="/p/%E8%99%9A%E5%8A%9F%E5%8E%9F%E7%90%86/">
         
         
             <div class="article-image">
-                <img src="/p/%E5%B9%B3%E8%A1%A1/%E5%B9%B3%E8%A1%A1.83179a39fcbc28b357ee660d976695aa_hud14499f809f91167f0f1d72a2c68f478_31927_250x150_fill_q75_box_smart1.jpg" 
+                <img src="/p/%E8%99%9A%E5%8A%9F%E5%8E%9F%E7%90%86/1691544311693.c8b1068396852e2d8f756b6e8f0c1fce_hua337c3cc30d4747bad296e80c3b89ba8_1687843_250x150_fill_q75_box_smart1.jpg" 
                         width="250" 
                         height="150" 
                         loading="lazy"
-                        alt="Featured image of post 平衡"
+                        alt="Featured image of post 虚功原理"
                         
-                        data-hash="md5-gxeaOfy8KLNX7mYNl2aVqg==">
+                        data-hash="md5-yLEGg5aFLi2PdWtujwwfzg==">
                 
             </div>
         
 
         <div class="article-details">
-            <h2 class="article-title">平衡</h2>
+            <h2 class="article-title">虚功原理</h2>
         </div>
     </a>
 </article>

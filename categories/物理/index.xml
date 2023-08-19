@@ -6,7 +6,37 @@
         <description>Recent content in 物理 on 墨子的博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Wed, 09 Aug 2023 08:34:49 +0800</lastBuildDate><atom:link href="https://mo.github.io/categories/%E7%89%A9%E7%90%86/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 19 Aug 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://mo.github.io/categories/%E7%89%A9%E7%90%86/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>平衡</title>
+        <link>https://mo.github.io/p/%E5%B9%B3%E8%A1%A1/</link>
+        <pubDate>Sat, 19 Aug 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://mo.github.io/p/%E5%B9%B3%E8%A1%A1/</guid>
+        <description>&lt;img src="https://mo.github.io/p/%E5%B9%B3%E8%A1%A1/%E5%B9%B3%E8%A1%A1.jpg" alt="Featured image of post 平衡" /&gt;&lt;p&gt;物体的运动通常有6个自由度，以此可以列出三个受力平衡，三个力矩平衡的方程&lt;br&gt;
+当受力在同一平面时，问题就更简单了&lt;br&gt;
+只需正交分解两个方程，转动一个方程。&lt;/p&gt;
+&lt;h2 id=&#34;分解力的方向垂直未知力&#34;&gt;分解力的方向垂直未知力&lt;/h2&gt;
+&lt;h2 id=&#34;力矩平衡的支点为未知力的共点力&#34;&gt;力矩平衡的支点为未知力的共点力&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://pic.imgdb.cn/item/64e0ce34661c6c8e540645ab.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;两个力的力矩可以通过共点力合成&#34;&gt;两个力的力矩可以通过共点力合成&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://pic.imgdb.cn/item/64e0ce34661c6c8e54064696.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>虚功原理</title>
         <link>https://mo.github.io/p/%E8%99%9A%E5%8A%9F%E5%8E%9F%E7%90%86/</link>
         <pubDate>Wed, 09 Aug 2023 08:34:49 +0800</pubDate>
