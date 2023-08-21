@@ -20,24 +20,8 @@
                 href="https://mo.github.io/"
                 />
   </url><url>
-    <loc>https://mo.github.io/post/</loc>
-    <lastmod>2023-08-19T22:44:04+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ar"
-                href="https://mo.github.io/ar/post/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://mo.github.io/post/"
-                />
-  </url><url>
-    <loc>https://mo.github.io/p/%E6%95%A3%E5%BA%A6%E5%92%8C%E6%97%8B%E5%BA%A6/</loc>
-    <lastmod>2023-08-19T22:44:04+08:00</lastmod>
-  </url><url>
     <loc>https://mo.github.io/categories/</loc>
-    <lastmod>2023-08-19T11:52:58+08:00</lastmod>
+    <lastmod>2023-08-19T22:44:04+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -54,6 +38,25 @@
                 href="https://mo.github.io/categories/"
                 />
   </url><url>
+    <loc>https://mo.github.io/post/</loc>
+    <lastmod>2023-08-19T22:44:04+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ar"
+                href="https://mo.github.io/ar/post/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://mo.github.io/post/"
+                />
+  </url><url>
+    <loc>https://mo.github.io/p/%E6%A2%AF%E5%BA%A6%E6%95%A3%E5%BA%A6%E5%92%8C%E6%97%8B%E5%BA%A6/</loc>
+    <lastmod>2023-08-19T22:44:04+08:00</lastmod>
+  </url><url>
+    <loc>https://mo.github.io/categories/%E7%89%A9%E7%90%86/</loc>
+    <lastmod>2023-08-19T22:44:04+08:00</lastmod>
+  </url><url>
     <loc>https://mo.github.io/p/%E5%B1%B1%E6%A5%82%E6%A0%91%E7%AE%80%E8%B0%B1/</loc>
     <lastmod>2023-08-19T11:52:58+08:00</lastmod>
   </url><url>
@@ -61,9 +64,6 @@
     <lastmod>2023-08-19T11:52:58+08:00</lastmod>
   </url><url>
     <loc>https://mo.github.io/p/%E5%B9%B3%E8%A1%A1/</loc>
-    <lastmod>2023-08-19T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://mo.github.io/categories/%E7%89%A9%E7%90%86/</loc>
     <lastmod>2023-08-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://mo.github.io/p/%E8%99%9A%E5%8A%9F%E5%8E%9F%E7%90%86/</loc>

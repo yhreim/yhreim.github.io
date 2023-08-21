@@ -7,15 +7,43 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <lastBuildDate>Sat, 19 Aug 2023 22:44:04 +0800</lastBuildDate><atom:link href="https://mo.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>散度和旋度</title>
-        <link>https://mo.github.io/p/%E6%95%A3%E5%BA%A6%E5%92%8C%E6%97%8B%E5%BA%A6/</link>
+        <title>梯度散度和旋度</title>
+        <link>https://mo.github.io/p/%E6%A2%AF%E5%BA%A6%E6%95%A3%E5%BA%A6%E5%92%8C%E6%97%8B%E5%BA%A6/</link>
         <pubDate>Sat, 19 Aug 2023 22:44:04 +0800</pubDate>
         
-        <guid>https://mo.github.io/p/%E6%95%A3%E5%BA%A6%E5%92%8C%E6%97%8B%E5%BA%A6/</guid>
-        <description>&lt;h2 id=&#34;散度&#34;&gt;散度&lt;/h2&gt;
-&lt;p&gt;散度是单位体积，单位时间下，流过该体积的矢量通量的增加量，所以散度是一种标量，用来衡量“流体”的扩散程度。可以想象一个小立方体分别在xyz方向上通量增加量。&lt;/p&gt;
+        <guid>https://mo.github.io/p/%E6%A2%AF%E5%BA%A6%E6%95%A3%E5%BA%A6%E5%92%8C%E6%97%8B%E5%BA%A6/</guid>
+        <description>&lt;img src="https://mo.github.io/p/%E6%A2%AF%E5%BA%A6%E6%95%A3%E5%BA%A6%E5%92%8C%E6%97%8B%E5%BA%A6/%E4%B8%8B%E8%BD%BD.jpg" alt="Featured image of post 梯度散度和旋度" /&gt;&lt;h2 id=&#34;梯度&#34;&gt;梯度&lt;/h2&gt;
+&lt;p&gt;首先说明，梯度是一个向量，它表示函数在某个点处往哪个方向走，变化最快，即梯度等于方向导数的最大值。
+&lt;img src=&#34;https://pic.imgdb.cn/item/64e36bd3661c6c8e54c1224e.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;散度&#34;&gt;散度&lt;/h2&gt;
+&lt;p&gt;散度是单位体积，单位时间下，流过该体积的矢量通量的增加量，所以散度是一种标量，用来衡量“流体”的扩散程度。可以想象一个小立方体分别在xyz方向上通量增加量。
+&lt;img src=&#34;https://pic.imgdb.cn/item/64e36bd3661c6c8e54c1221e.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;br&gt;
+为了方便记忆，可以将散度类比于线性代数中的向量内积，两个向量的内积是一个标量，而散度的结果也是一个标量。&lt;/p&gt;
 &lt;h2 id=&#34;旋度&#34;&gt;旋度&lt;/h2&gt;
-&lt;p&gt;就x方向而言，可以想象为z方向水流随y的增加趋势（斜率）(逆时针)-y方向水流随z的增加趋势（顺时针）
+&lt;p&gt;就绕x轴旋转而言，可以想象为z方向水流随y的增加趋势（斜率）(逆时针)-y方向水流随z的增加趋势（顺时针）&lt;br&gt;
+&lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/video/BV19s41157Z4/?spm_id_from=333.337.search-card.all.click&amp;amp;vd_source=a4f6a902e9ff9aa278cdf84e8fefa84b&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;&lt;img src=&#34;https://pic.imgdb.cn/item/64e36946661c6c8e54b592ce.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/a&gt;(←←←←←点击图片观看视频)
 &lt;img src=&#34;https://pic.imgdb.cn/item/64e0d838661c6c8e542d43c8.png&#34;
 	
 	
@@ -32,6 +60,36 @@
 	
 	
 &gt;&lt;/p&gt;
+&lt;h2 id=&#34;标量场梯度的散度&#34;&gt;标量场梯度的散度&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://pic.imgdb.cn/item/64e36bd4661c6c8e54c1229b.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;标量场梯度的旋度&#34;&gt;标量场梯度的旋度&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://pic.imgdb.cn/item/64e36bd4661c6c8e54c122dd.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;br&gt;
+这告诉我们一件事情，保守场是有源无旋的！！！&lt;br&gt;
+梯度的旋度为0！！！&lt;/p&gt;
+&lt;h2 id=&#34;矢量场旋度的散度&#34;&gt;矢量场旋度的散度&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://pic.imgdb.cn/item/64e36bd3661c6c8e54c121f1.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;br&gt;
+综上，第5点和第6点可以总结为“梯无旋，旋无散”&lt;/p&gt;
 </description>
         </item>
         <item>
@@ -73,11 +131,15 @@
         <pubDate>Sat, 19 Aug 2023 00:00:00 +0000</pubDate>
         
         <guid>https://mo.github.io/p/%E5%B9%B3%E8%A1%A1/</guid>
-        <description>&lt;img src="https://mo.github.io/p/%E5%B9%B3%E8%A1%A1/%E5%B9%B3%E8%A1%A1.jpg" alt="Featured image of post 平衡" /&gt;&lt;p&gt;物体的运动通常有6个自由度，以此可以列出三个受力平衡，三个力矩平衡的方程&lt;br&gt;
+        <description>&lt;img src="https://mo.github.io/p/%E5%B9%B3%E8%A1%A1/%E5%B9%B3%E8%A1%A1.jpg" alt="Featured image of post 平衡" /&gt;&lt;p&gt;我们知道处于平衡状态的物体合外力=0，并且外力交于质心（或平行）&lt;br&gt;
+也就是&lt;/p&gt;
+&lt;h2 id=&#34;平衡--三力汇交&#34;&gt;平衡 →→→ 三力汇交&lt;/h2&gt;
+&lt;p&gt;物体的运动通常有6个自由度，以此可以列出三个受力平衡，三个力矩平衡的方程&lt;br&gt;
 当受力在同一平面时，问题就更简单了&lt;br&gt;
 只需正交分解两个方程，转动一个方程。&lt;/p&gt;
-&lt;h2 id=&#34;分解力的方向垂直未知力&#34;&gt;分解力的方向垂直未知力&lt;/h2&gt;
-&lt;h2 id=&#34;力矩平衡的支点为未知力的共点力&#34;&gt;力矩平衡的支点为未知力的共点力&lt;/h2&gt;
+&lt;h2 id=&#34;以下是三个计算技巧&#34;&gt;以下是三个计算技巧&lt;/h2&gt;
+&lt;h3 id=&#34;1将力的分解方向垂直未知力平动&#34;&gt;1将力的分解方向垂直未知力（平动）&lt;/h3&gt;
+&lt;h3 id=&#34;2将未知力的共点力作为力矩平衡的支点转动&#34;&gt;2将未知力的共点力作为力矩平衡的支点（转动）&lt;/h3&gt;
 &lt;p&gt;&lt;img src=&#34;https://pic.imgdb.cn/item/64e0ce34661c6c8e540645ab.jpg&#34;
 	
 	
@@ -86,7 +148,7 @@
 	
 	
 &gt;&lt;/p&gt;
-&lt;h2 id=&#34;两个力的力矩可以通过共点力合成&#34;&gt;两个力的力矩可以通过共点力合成&lt;/h2&gt;
+&lt;h3 id=&#34;3两个力的合成的作用点在汇交点&#34;&gt;3两个力的合成的作用点在汇交点&lt;/h3&gt;
 &lt;p&gt;&lt;img src=&#34;https://pic.imgdb.cn/item/64e0ce34661c6c8e54064696.jpg&#34;
 	
 	
