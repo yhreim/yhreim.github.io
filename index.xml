@@ -13,9 +13,18 @@
         
         <guid>https://mo.github.io/p/%E6%95%A3%E5%BA%A6%E5%92%8C%E6%97%8B%E5%BA%A6/</guid>
         <description>&lt;h2 id=&#34;散度&#34;&gt;散度&lt;/h2&gt;
-&lt;p&gt;散度是单位体积，单位时间下，流过该体积的矢量通量的增加量&lt;/p&gt;
+&lt;p&gt;散度是单位体积，单位时间下，流过该体积的矢量通量的增加量，所以散度是一种标量，用来衡量“流体”的扩散程度。可以想象一个小立方体分别在xyz方向上通量增加量。&lt;/p&gt;
 &lt;h2 id=&#34;旋度&#34;&gt;旋度&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://pic.imgdb.cn/item/64e0d838661c6c8e542d43c8.png&#34;
+&lt;p&gt;就x方向而言，可以想象为z方向水流随y的增加趋势（斜率）(逆时针)-y方向水流随z的增加趋势（顺时针）
+&lt;img src=&#34;https://pic.imgdb.cn/item/64e0d838661c6c8e542d43c8.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;
+&lt;img src=&#34;https://pic.imgdb.cn/item/64e2eb8f661c6c8e54f39c8b.jpg&#34;
 	
 	
 	
