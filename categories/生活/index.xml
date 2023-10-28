@@ -77,7 +77,10 @@
 &lt;p&gt;未来的某一刻，&lt;/p&gt;
 &lt;p&gt;当你回忆这段时光时，&lt;/p&gt;
 &lt;p&gt;没有给自己留下太多遗憾，&lt;/p&gt;
-&lt;p&gt;无愧于心，无负青春。&lt;/p&gt;
+&lt;p&gt;无愧于心，无负青春。&lt;br&gt;
+$$
+\varphi = 1+\frac{1} {1+\frac{1} {1+\frac{1} {1+\cdots} } }
+$$&lt;/p&gt;
 </description>
         </item>
         
