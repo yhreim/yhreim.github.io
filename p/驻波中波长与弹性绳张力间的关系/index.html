@@ -1,40 +1,51 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='梯度 首先说明，梯度是一个向量，它表示函数在某个点处往哪个方向走，变化最快，即梯度等于方向导数的最大值。 散度 散度是单位体积，单位时间下，流过该体积的矢量通量的增加量，所以散度是一种标量，用来衡量“流体”的扩散程度。可以想象一个小立方体分别在xyz方向上通量增加量。 为了方便记忆，可以将散度类比于线性代数中的向量内积，两个向量的内积是一个标量，而散度的结果也是一个标量。
-旋度 就绕x轴旋转而言，可以想象为z方向水流随y的增加趋势（斜率）(逆时针)-y方向水流随z的增加趋势（顺时针）
-(←←←←←点击图片观看视频) 标量场梯度的散度 标量场梯度的旋度 这告诉我们一件事情，保守场是有源无旋的！！！
-梯度的旋度为0！！！
-矢量场旋度的散度 综上，第5点和第6点可以总结为“梯无旋，旋无散”
-麦克斯韦方程组 旋度和散度都会了，让我们来理解麦克斯韦方程组吧！ 第一个式子是静电场的高斯定理
-第二个式子说明电场是由变化的磁场产生的
-第三个式子表明磁场是有旋无源场 第四个式子说明磁场是由电场激发的'>
-<title>梯度散度和旋度</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='实验：驻波中波长与张力 在我们实验课的驻波实验中，有一个实验是探究波长与绳拉力间的关系。不知道大家有没有想过两者间有什么关系？
+驻波原理 波的叠加原理：
+$$ y_1=sin(wt-\frac{x}{\lambda})$$ $$y_2=sin(wt&#43;\frac{x}{\lambda})$$ $$y=y_1&#43;y_2=sin(wt-\frac{x}{\lambda})&#43;sin(wt&#43;\frac{x}{\lambda})$$ $$=2sin(wt)cos(\frac{x}{\lambda})$$
+从表达式中我们可以发现，只有弦长为半波长的整数倍时，驻波才有可能产生。 $$\lambda=v/f$$ 从上述分析我们可以发现驻波的波长与波速成正比，与波源的频率成反比。
+实验 (实验过程（思路）)保持波源频率不变，弦长不变，随着绳子张力增大，波长也变长，当半波长的整数倍恰好等于弦长，测量形成驻波的波长。
+（陈列数据） 拉力 1.75 0.51 0.25 0.15 波长 1.38 68 45.3 34 （绘制散点图） （曲线拟合）当我们选择多项式拟合，选择次数2，我们发现实验数据完美拟合($R² = 1$)。
+波长与拉力成二次关系，这是为什么呢？
+弦振动问题 首先，假设一根绳子沿x轴放置，当它振动时，每一时刻t会在空中形成一个曲线形状($y=sin(-\frac{x}{\lambda}&#43;\phi)$，把这个形状&amp;quot;拍照&amp;quot;
+如果连续拍照，(相当于把时间看作一个维度)我们就会得到一个关于时间t变化的曲线&amp;quot;相册&amp;quot; $y=sin(wt-\frac{x}{\lambda})$ 在微小振动下，弦的张力可视为处处相等
+竖直方向受力平衡： $$Tsin\theta_1-Tsin\theta_2&#43;\rho g\cdot\mathrm{d}x=\rho \cdot\mathrm{d}x\frac{\partial^2 u}{\partial t^2}$$ 又因为：$sin\theta_1=tan\theta_1=(\frac{\partial u}{\partial x})_x$
+$$sin\theta_2=tan\theta_2=(\frac{\partial u}{\partial x})_{x&#43;\Delta x}$$
+化简得： $$T(\frac{\partial u}{\partial x})x-T(\frac{\partial u}{\partial x}){x&#43;\Delta x}-\rho g\cdot\mathrm{d}x=\rho\cdot\mathrm{d}x\frac{\partial^2 u}{\partial t^2}$$ 同时除$\rho\cdot dx$并移项： $$(T/\rho)\cdot\dfrac{(\frac{\partial u}{\partial x})x-(\frac{\partial u}{\partial x}){x&#43;\Delta x}}{dx}-\frac{\partial^2 u}{\partial t^2}=g$$ 仔细观察，可以发现： $$(T/\rho)\frac{\partial^2 u}{\partial x^2}-\frac{\partial^2 u}{\partial t^2}=g$$'>
+<title>驻波中波长与弹性绳张力间的关系</title>
 
-<link rel='canonical' href='https://mo.github.io/p/%E6%A2%AF%E5%BA%A6%E6%95%A3%E5%BA%A6%E5%92%8C%E6%97%8B%E5%BA%A6/'>
+<link rel='canonical' href='https://mo.github.io/p/%E9%A9%BB%E6%B3%A2%E4%B8%AD%E6%B3%A2%E9%95%BF%E4%B8%8E%E5%BC%B9%E6%80%A7%E7%BB%B3%E5%BC%A0%E5%8A%9B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB/'>
 
-<link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='梯度散度和旋度'>
-<meta property='og:description' content='梯度 首先说明，梯度是一个向量，它表示函数在某个点处往哪个方向走，变化最快，即梯度等于方向导数的最大值。 散度 散度是单位体积，单位时间下，流过该体积的矢量通量的增加量，所以散度是一种标量，用来衡量“流体”的扩散程度。可以想象一个小立方体分别在xyz方向上通量增加量。 为了方便记忆，可以将散度类比于线性代数中的向量内积，两个向量的内积是一个标量，而散度的结果也是一个标量。
-旋度 就绕x轴旋转而言，可以想象为z方向水流随y的增加趋势（斜率）(逆时针)-y方向水流随z的增加趋势（顺时针）
-(←←←←←点击图片观看视频) 标量场梯度的散度 标量场梯度的旋度 这告诉我们一件事情，保守场是有源无旋的！！！
-梯度的旋度为0！！！
-矢量场旋度的散度 综上，第5点和第6点可以总结为“梯无旋，旋无散”
-麦克斯韦方程组 旋度和散度都会了，让我们来理解麦克斯韦方程组吧！ 第一个式子是静电场的高斯定理
-第二个式子说明电场是由变化的磁场产生的
-第三个式子表明磁场是有旋无源场 第四个式子说明磁场是由电场激发的'>
-<meta property='og:url' content='https://mo.github.io/p/%E6%A2%AF%E5%BA%A6%E6%95%A3%E5%BA%A6%E5%92%8C%E6%97%8B%E5%BA%A6/'>
+<link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='驻波中波长与弹性绳张力间的关系'>
+<meta property='og:description' content='实验：驻波中波长与张力 在我们实验课的驻波实验中，有一个实验是探究波长与绳拉力间的关系。不知道大家有没有想过两者间有什么关系？
+驻波原理 波的叠加原理：
+$$ y_1=sin(wt-\frac{x}{\lambda})$$ $$y_2=sin(wt&#43;\frac{x}{\lambda})$$ $$y=y_1&#43;y_2=sin(wt-\frac{x}{\lambda})&#43;sin(wt&#43;\frac{x}{\lambda})$$ $$=2sin(wt)cos(\frac{x}{\lambda})$$
+从表达式中我们可以发现，只有弦长为半波长的整数倍时，驻波才有可能产生。 $$\lambda=v/f$$ 从上述分析我们可以发现驻波的波长与波速成正比，与波源的频率成反比。
+实验 (实验过程（思路）)保持波源频率不变，弦长不变，随着绳子张力增大，波长也变长，当半波长的整数倍恰好等于弦长，测量形成驻波的波长。
+（陈列数据） 拉力 1.75 0.51 0.25 0.15 波长 1.38 68 45.3 34 （绘制散点图） （曲线拟合）当我们选择多项式拟合，选择次数2，我们发现实验数据完美拟合($R² = 1$)。
+波长与拉力成二次关系，这是为什么呢？
+弦振动问题 首先，假设一根绳子沿x轴放置，当它振动时，每一时刻t会在空中形成一个曲线形状($y=sin(-\frac{x}{\lambda}&#43;\phi)$，把这个形状&amp;quot;拍照&amp;quot;
+如果连续拍照，(相当于把时间看作一个维度)我们就会得到一个关于时间t变化的曲线&amp;quot;相册&amp;quot; $y=sin(wt-\frac{x}{\lambda})$ 在微小振动下，弦的张力可视为处处相等
+竖直方向受力平衡： $$Tsin\theta_1-Tsin\theta_2&#43;\rho g\cdot\mathrm{d}x=\rho \cdot\mathrm{d}x\frac{\partial^2 u}{\partial t^2}$$ 又因为：$sin\theta_1=tan\theta_1=(\frac{\partial u}{\partial x})_x$
+$$sin\theta_2=tan\theta_2=(\frac{\partial u}{\partial x})_{x&#43;\Delta x}$$
+化简得： $$T(\frac{\partial u}{\partial x})x-T(\frac{\partial u}{\partial x}){x&#43;\Delta x}-\rho g\cdot\mathrm{d}x=\rho\cdot\mathrm{d}x\frac{\partial^2 u}{\partial t^2}$$ 同时除$\rho\cdot dx$并移项： $$(T/\rho)\cdot\dfrac{(\frac{\partial u}{\partial x})x-(\frac{\partial u}{\partial x}){x&#43;\Delta x}}{dx}-\frac{\partial^2 u}{\partial t^2}=g$$ 仔细观察，可以发现： $$(T/\rho)\frac{\partial^2 u}{\partial x^2}-\frac{\partial^2 u}{\partial t^2}=g$$'>
+<meta property='og:url' content='https://mo.github.io/p/%E9%A9%BB%E6%B3%A2%E4%B8%AD%E6%B3%A2%E9%95%BF%E4%B8%8E%E5%BC%B9%E6%80%A7%E7%BB%B3%E5%BC%A0%E5%8A%9B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB/'>
 <meta property='og:site_name' content='墨子的博客'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-08-19T22:44:04&#43;08:00'/><meta property='article:modified_time' content='2023-08-19T22:44:04&#43;08:00'/><meta property='og:image' content='https://mo.github.io/p/%E6%A2%AF%E5%BA%A6%E6%95%A3%E5%BA%A6%E5%92%8C%E6%97%8B%E5%BA%A6/%E4%B8%8B%E8%BD%BD.jpg' />
-<meta name="twitter:title" content="梯度散度和旋度">
-<meta name="twitter:description" content="梯度 首先说明，梯度是一个向量，它表示函数在某个点处往哪个方向走，变化最快，即梯度等于方向导数的最大值。 散度 散度是单位体积，单位时间下，流过该体积的矢量通量的增加量，所以散度是一种标量，用来衡量“流体”的扩散程度。可以想象一个小立方体分别在xyz方向上通量增加量。 为了方便记忆，可以将散度类比于线性代数中的向量内积，两个向量的内积是一个标量，而散度的结果也是一个标量。
-旋度 就绕x轴旋转而言，可以想象为z方向水流随y的增加趋势（斜率）(逆时针)-y方向水流随z的增加趋势（顺时针）
-(←←←←←点击图片观看视频) 标量场梯度的散度 标量场梯度的旋度 这告诉我们一件事情，保守场是有源无旋的！！！
-梯度的旋度为0！！！
-矢量场旋度的散度 综上，第5点和第6点可以总结为“梯无旋，旋无散”
-麦克斯韦方程组 旋度和散度都会了，让我们来理解麦克斯韦方程组吧！ 第一个式子是静电场的高斯定理
-第二个式子说明电场是由变化的磁场产生的
-第三个式子表明磁场是有旋无源场 第四个式子说明磁场是由电场激发的"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://mo.github.io/p/%E6%A2%AF%E5%BA%A6%E6%95%A3%E5%BA%A6%E5%92%8C%E6%97%8B%E5%BA%A6/%E4%B8%8B%E8%BD%BD.jpg' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' />
+<meta name="twitter:title" content="驻波中波长与弹性绳张力间的关系">
+<meta name="twitter:description" content="实验：驻波中波长与张力 在我们实验课的驻波实验中，有一个实验是探究波长与绳拉力间的关系。不知道大家有没有想过两者间有什么关系？
+驻波原理 波的叠加原理：
+$$ y_1=sin(wt-\frac{x}{\lambda})$$ $$y_2=sin(wt&#43;\frac{x}{\lambda})$$ $$y=y_1&#43;y_2=sin(wt-\frac{x}{\lambda})&#43;sin(wt&#43;\frac{x}{\lambda})$$ $$=2sin(wt)cos(\frac{x}{\lambda})$$
+从表达式中我们可以发现，只有弦长为半波长的整数倍时，驻波才有可能产生。 $$\lambda=v/f$$ 从上述分析我们可以发现驻波的波长与波速成正比，与波源的频率成反比。
+实验 (实验过程（思路）)保持波源频率不变，弦长不变，随着绳子张力增大，波长也变长，当半波长的整数倍恰好等于弦长，测量形成驻波的波长。
+（陈列数据） 拉力 1.75 0.51 0.25 0.15 波长 1.38 68 45.3 34 （绘制散点图） （曲线拟合）当我们选择多项式拟合，选择次数2，我们发现实验数据完美拟合($R² = 1$)。
+波长与拉力成二次关系，这是为什么呢？
+弦振动问题 首先，假设一根绳子沿x轴放置，当它振动时，每一时刻t会在空中形成一个曲线形状($y=sin(-\frac{x}{\lambda}&#43;\phi)$，把这个形状&amp;quot;拍照&amp;quot;
+如果连续拍照，(相当于把时间看作一个维度)我们就会得到一个关于时间t变化的曲线&amp;quot;相册&amp;quot; $y=sin(wt-\frac{x}{\lambda})$ 在微小振动下，弦的张力可视为处处相等
+竖直方向受力平衡： $$Tsin\theta_1-Tsin\theta_2&#43;\rho g\cdot\mathrm{d}x=\rho \cdot\mathrm{d}x\frac{\partial^2 u}{\partial t^2}$$ 又因为：$sin\theta_1=tan\theta_1=(\frac{\partial u}{\partial x})_x$
+$$sin\theta_2=tan\theta_2=(\frac{\partial u}{\partial x})_{x&#43;\Delta x}$$
+化简得： $$T(\frac{\partial u}{\partial x})x-T(\frac{\partial u}{\partial x}){x&#43;\Delta x}-\rho g\cdot\mathrm{d}x=\rho\cdot\mathrm{d}x\frac{\partial^2 u}{\partial t^2}$$ 同时除$\rho\cdot dx$并移项： $$(T/\rho)\cdot\dfrac{(\frac{\partial u}{\partial x})x-(\frac{\partial u}{\partial x}){x&#43;\Delta x}}{dx}-\frac{\partial^2 u}{\partial t^2}=g$$ 仔细观察，可以发现： $$(T/\rho)\frac{\partial^2 u}{\partial x^2}-\frac{\partial^2 u}{\partial t^2}=g$$">
     </head>
     <body class="
     article-page
@@ -309,13 +320,21 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#梯度">梯度</a></li>
-    <li><a href="#散度">散度</a></li>
-    <li><a href="#旋度">旋度</a></li>
-    <li><a href="#标量场梯度的散度">标量场梯度的散度</a></li>
-    <li><a href="#标量场梯度的旋度">标量场梯度的旋度</a></li>
-    <li><a href="#矢量场旋度的散度">矢量场旋度的散度</a></li>
-    <li><a href="#麦克斯韦方程组">麦克斯韦方程组</a></li>
+    <li><a href="#驻波原理">驻波原理</a></li>
+    <li><a href="#实验">实验</a>
+      <ol>
+        <li><a href="#陈列数据">（陈列数据）</a></li>
+        <li><a href="#绘制散点图">（绘制散点图）</a></li>
+      </ol>
+    </li>
+  </ol>
+
+  <ol>
+    <li>
+      <ol>
+        <li><a href="#在ggb上画出实际和理论曲线">在ggb上画出实际和理论曲线</a></li>
+      </ol>
+    </li>
   </ol>
 </nav>
         </div>
@@ -327,20 +346,8 @@
 
 
             <main class="main full-width">
-    <article class="has-image main-article">
+    <article class="main-article">
     <header class="article-header">
-        <div class="article-image">
-            <a href="/p/%E6%A2%AF%E5%BA%A6%E6%95%A3%E5%BA%A6%E5%92%8C%E6%97%8B%E5%BA%A6/">
-                <img src="/p/%E6%A2%AF%E5%BA%A6%E6%95%A3%E5%BA%A6%E5%92%8C%E6%97%8B%E5%BA%A6/%E4%B8%8B%E8%BD%BD_hu0c413e7fb6b6594481218b50c206a576_31680_800x0_resize_q75_box.jpg"
-                        srcset="/p/%E6%A2%AF%E5%BA%A6%E6%95%A3%E5%BA%A6%E5%92%8C%E6%97%8B%E5%BA%A6/%E4%B8%8B%E8%BD%BD_hu0c413e7fb6b6594481218b50c206a576_31680_800x0_resize_q75_box.jpg 800w, /p/%E6%A2%AF%E5%BA%A6%E6%95%A3%E5%BA%A6%E5%92%8C%E6%97%8B%E5%BA%A6/%E4%B8%8B%E8%BD%BD_hu0c413e7fb6b6594481218b50c206a576_31680_1600x0_resize_q75_box.jpg 1600w"
-                        width="800" 
-                        height="488" 
-                        loading="lazy"
-                        alt="Featured image of post 梯度散度和旋度" />
-                
-            </a>
-        </div>
-    
 
     <div class="article-details">
     
@@ -355,7 +362,7 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/%E6%A2%AF%E5%BA%A6%E6%95%A3%E5%BA%A6%E5%92%8C%E6%97%8B%E5%BA%A6/">梯度散度和旋度</a>
+            <a href="/p/%E9%A9%BB%E6%B3%A2%E4%B8%AD%E6%B3%A2%E9%95%BF%E4%B8%8E%E5%BC%B9%E6%80%A7%E7%BB%B3%E5%BC%A0%E5%8A%9B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB/">驻波中波长与弹性绳张力间的关系</a>
         </h2>
     
         
@@ -366,19 +373,6 @@
     
     
     <footer class="article-time">
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
-  <circle cx="18" cy="18" r="4" />
-  <path d="M15 3v4" />
-  <path d="M7 3v4" />
-  <path d="M3 11h16" />
-  <path d="M18 16.496v1.504l1 1" />
-</svg>
-                <time class="article-time--published">Aug 19, 2023</time>
-            </div>
         
 
         
@@ -407,9 +401,21 @@
     <section class="article-content">
     
     
-    <h2 id="梯度">梯度</h2>
-<p>首先说明，梯度是一个向量，它表示函数在某个点处往哪个方向走，变化最快，即梯度等于方向导数的最大值。
-<img src="https://pic.imgdb.cn/item/64e36bd3661c6c8e54c1224e.png"
+    <h1 id="实验驻波中波长与张力">实验：驻波中波长与张力</h1>
+<hr>
+<p>在我们实验课的驻波实验中，有一个实验是探究波长与绳拉力间的关系。不知道大家有没有想过两者间有什么关系？</p>
+<h2 id="驻波原理">驻波原理</h2>
+<p>波的叠加原理：<br>
+$$ y_1=sin(wt-\frac{x}{\lambda})$$
+$$y_2=sin(wt+\frac{x}{\lambda})$$
+$$y=y_1+y_2=sin(wt-\frac{x}{\lambda})+sin(wt+\frac{x}{\lambda})$$
+$$=2sin(wt)cos(\frac{x}{\lambda})$$</p>
+<p>从表达式中我们可以发现，只有弦长为半波长的整数倍时，驻波才有可能产生。
+$$\lambda=v/f$$
+从上述分析我们可以发现驻波的波长与波速成正比，与波源的频率成反比。</p>
+<hr>
+<h2 id="实验">实验</h2>
+<p>(实验过程（思路）)保持波源频率不变，弦长不变，随着绳子张力增大，波长也变长，当半波长的整数倍恰好等于弦长，测量形成驻波的波长。<img src="https://ts1.cn.mm.bing.net/th/id/R-C.db4a249e241a2b3b692deeb8daf083c3?rik=PgY%2b2GScMDKjhA&amp;riu=http%3a%2f%2fp8.qhimg.com%2ft01c3a4b991dc5046b4.jpg&amp;ehk=OzQveGUDgvSPtcsyODwoczG3C33Ea%2bOhybyuUNg5Nww%3d&amp;risl=&amp;pid=ImgRaw&amp;r=0"
 	
 	
 	
@@ -417,9 +423,30 @@
 	
 	
 ></p>
-<h2 id="散度">散度</h2>
-<p>散度是单位体积，单位时间下，流过该体积的矢量通量的增加量，所以散度是一种标量，用来衡量“流体”的扩散程度。可以想象一个小立方体分别在xyz方向上通量增加量。
-<img src="https://pic.imgdb.cn/item/64e36bd3661c6c8e54c1221e.png"
+<h3 id="陈列数据">（陈列数据）</h3>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>拉力</th>
+<th>1.75</th>
+<th>0.51</th>
+<th>0.25</th>
+<th>0.15</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>波长</td>
+<td>1.38</td>
+<td>68</td>
+<td>45.3</td>
+<td>34</td>
+</tr>
+</tbody>
+</table></div>
+<hr>
+<h3 id="绘制散点图">（绘制散点图）</h3>
+<p><img src="https://pic.imgdb.cn/item/65425423c458853aefda98c9.png"
 	
 	
 	
@@ -427,19 +454,22 @@
 	
 	
 ><br>
-为了方便记忆，可以将散度类比于线性代数中的向量内积，两个向量的内积是一个标量，而散度的结果也是一个标量。</p>
-<h2 id="旋度">旋度</h2>
-<p>就绕x轴旋转而言，可以想象为z方向水流随y的增加趋势（斜率）(逆时针)-y方向水流随z的增加趋势（顺时针）<br>
-<a class="link" href="https://www.bilibili.com/video/BV19s41157Z4/?spm_id_from=333.337.search-card.all.click&amp;vd_source=a4f6a902e9ff9aa278cdf84e8fefa84b"  target="_blank" rel="noopener"
-    ><img src="https://pic.imgdb.cn/item/64e36946661c6c8e54b592ce.png"
+（曲线拟合）当我们选择多项式拟合，选择次数2，我们发现实验数据完美拟合($R² = 1$)。<br>
+波长与拉力成二次关系，这是为什么呢？</p>
+<hr>
+<h1 id="弦振动问题">弦振动问题</h1>
+<p>首先，假设一根绳子沿x轴放置，当它振动时，每一时刻t会在空中形成一个曲线形状($y=sin(-\frac{x}{\lambda}+\phi)$，把这个形状&quot;拍照&quot;<br>
+如果连续拍照，(相当于把时间看作一个维度)我们就会得到一个关于时间t变化的曲线&quot;相册&quot; $y=sin(wt-\frac{x}{\lambda})$
+<img src="https://ts1.cn.mm.bing.net/th/id/R-C.203e10e2c7230902f4ee3cf88a9779d8?rik=CIYUX39%2bbm0r2w&amp;riu=http%3a%2f%2fwww.nyq.cn%2fuploadfile%2fwuli%2fJxsj%2f200646221750853.gif&amp;ehk=8PbAR5%2beSjeAjAIcFjqYJ6GvfMg9lHR1qAWxwP4gyhw%3d&amp;risl=&amp;pid=ImgRaw&amp;r=0"
 	
 	
 	
 	loading="lazy"
 	
 	
-></a>(←←←←←点击图片观看视频)
-<img src="https://pic.imgdb.cn/item/64e0d838661c6c8e542d43c8.png"
+></p>
+<hr>
+<p><img src="https://pic.imgdb.cn/item/654259d0c458853aefebed4e.png"
 	
 	
 	
@@ -447,47 +477,32 @@
 	
 	
 >
-<img src="https://pic.imgdb.cn/item/64e2eb8f661c6c8e54f39c8b.jpg"
-	
-	
-	
-	loading="lazy"
-	
-	
-></p>
-<h2 id="标量场梯度的散度">标量场梯度的散度</h2>
-<p><img src="https://pic.imgdb.cn/item/64e36bd4661c6c8e54c1229b.png"
-	
-	
-	
-	loading="lazy"
-	
-	
-></p>
-<h2 id="标量场梯度的旋度">标量场梯度的旋度</h2>
-<p><img src="https://pic.imgdb.cn/item/64e36bd4661c6c8e54c122dd.png"
-	
-	
-	
-	loading="lazy"
-	
-	
-><br>
-这告诉我们一件事情，保守场是有源无旋的！！！<br>
-梯度的旋度为0！！！</p>
-<h2 id="矢量场旋度的散度">矢量场旋度的散度</h2>
-<p><img src="https://pic.imgdb.cn/item/64e36bd3661c6c8e54c121f1.png"
-	
-	
-	
-	loading="lazy"
-	
-	
-><br>
-综上，第5点和第6点可以总结为“梯无旋，旋无散”</p>
-<h2 id="麦克斯韦方程组">麦克斯韦方程组</h2>
-<p>旋度和散度都会了，让我们来理解麦克斯韦方程组吧！
-<img src="https://p1.ssl.qhimg.com/t01e712e7094ee7c38e.jpg"
+在微小振动下，弦的张力可视为处处相等<br>
+竖直方向受力平衡：
+$$Tsin\theta_1-Tsin\theta_2+\rho g\cdot\mathrm{d}x=\rho \cdot\mathrm{d}x\frac{\partial^2 u}{\partial t^2}$$
+又因为：$sin\theta_1=tan\theta_1=(\frac{\partial u}{\partial x})_x$</p>
+<hr>
+<p>$$sin\theta_2=tan\theta_2=(\frac{\partial u}{\partial x})_{x+\Delta x}$$<br>
+化简得：
+$$T(\frac{\partial u}{\partial x})<em>x-T(\frac{\partial u}{\partial x})</em>{x+\Delta x}-\rho g\cdot\mathrm{d}x=\rho\cdot\mathrm{d}x\frac{\partial^2 u}{\partial t^2}$$
+同时除$\rho\cdot dx$并移项：
+$$(T/\rho)\cdot\dfrac{(\frac{\partial u}{\partial x})<em>x-(\frac{\partial u}{\partial x})</em>{x+\Delta x}}{dx}-\frac{\partial^2 u}{\partial t^2}=g$$
+仔细观察，可以发现：
+$$(T/\rho)\frac{\partial^2 u}{\partial x^2}-\frac{\partial^2 u}{\partial t^2}=g$$</p>
+<hr>
+<p>略去重力：
+$$(T/\rho)\frac{\partial^2 u}{\partial x^2}-\frac{\partial^2 u}{\partial t^2}=0$$
+带入波的方程$u=Asin(ωt-2πx/λ)$得：
+$$A\omega^2sin(ωt-2πx/λ)=(T/\rho)\cdot A(\frac{2\pi}{\lambda})^2sin(ωt-2πx/λ$$
+消掉！！！
+$$T/\rho=(\omega\cdot \frac{\lambda}{2\pi})^2=v^2$$
+故弹性绳中波速：
+$$v=\sqrt{T/\rho}$$
+事情就对上号了</p>
+<hr>
+<h1 id="理论解释实验">理论解释实验</h1>
+<p>回到刚刚的拟合曲线上
+<img src="https://pic.imgdb.cn/item/65425423c458853aefda98c9.png"
 	
 	
 	
@@ -495,10 +510,44 @@
 	
 	
 >
-第一个式子是静电场的高斯定理<br>
-第二个式子说明电场是由变化的磁场产生的<br>
-第三个式子表明磁场是有旋无源场
-第四个式子说明磁场是由电场激发的</p>
+拟合方程：
+$$T = 0.7498\lambda^2 + 0.2942\lambda - 0.0369$$</p>
+<hr>
+<p>我们知道T是自变量，$\lambda$是应变量，改写原方程:
+$$\lambda=\frac{-0.29+\sqrt{3T-0.02345}}{1.5}（1）$$
+由：$v=\sqrt{T/\rho}$
+可得：$\lambda=\frac{\sqrt T}{f\cdot\rho}（2）$
+因此尽量把（1）往（2）变形:<br>
+其中$\sqrt{3T-0.02345}=\sqrt{3T}(1-0.02345/3T)^{1/2}$<br>
+由于 $T \in[0.2,1.7]$,则 $0.02345/3T$算小量
+原式可变为
+$$\lambda=\frac{\sqrt{3T}}{1.5}-(0.19+0.002/T)$$</p>
+<hr>
+<h3 id="在ggb上画出实际和理论曲线">在ggb上画出实际和理论曲线</h3>
+<p><img src="https://pic.imgdb.cn/item/65427680c458853aef667831.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<hr>
+<p>修正一下：
+<img src="https://pic.imgdb.cn/item/65427684c458853aef6685b6.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<hr>
+<p>我们发现在理论曲线$\frac{\sqrt{3T}}{1.5}$减去0.2后两条曲线完美重合，为什么呢？<br>
+x=0的点波速v小于0，这又是为什么？<br>
+可能的解释：当拉力太小时，重力不可忽略不计，原来的关系是不成立的。</p>
+<hr>
+<h1 id="thank-you">Thank You!</h1>
 
 </section>
 
@@ -522,6 +571,30 @@
 
 
     
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
 </article>
 
     
@@ -532,6 +605,30 @@
     <h2 class="section-title">相关文章</h2>
     <div class="related-content">
         <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/%E6%A2%AF%E5%BA%A6%E6%95%A3%E5%BA%A6%E5%92%8C%E6%97%8B%E5%BA%A6/">
+        
+        
+            <div class="article-image">
+                <img src="/p/%E6%A2%AF%E5%BA%A6%E6%95%A3%E5%BA%A6%E5%92%8C%E6%97%8B%E5%BA%A6/%E4%B8%8B%E8%BD%BD.6f71d240eeca13f49964f7e66d535b01_hu0c413e7fb6b6594481218b50c206a576_31680_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 梯度散度和旋度"
+                        
+                        data-hash="md5-b3HSQO7KE/SZZPfmbVNbAQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">梯度散度和旋度</h2>
+        </div>
+    </a>
+</article>
+
             
                 
 <article class="has-image">
@@ -576,19 +673,6 @@
 
         <div class="article-details">
             <h2 class="article-title">虚功原理</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="">
-    <a href="/p/%E9%A9%BB%E6%B3%A2%E4%B8%AD%E6%B3%A2%E9%95%BF%E4%B8%8E%E5%BC%B9%E6%80%A7%E7%BB%B3%E5%BC%A0%E5%8A%9B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">驻波中波长与弹性绳张力间的关系</h2>
         </div>
     </a>
 </article>
