@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en"><head><title>驻波中波长与弹性绳张力间的关系 - 墨子的博客</title><meta charset="utf-8">
+    <meta name="author" content="墨子">
+    <meta name="Robots" content="All">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="windows-Target" content="_top">
+
+    <link rel="shortcut icon" type="image/x-icon" href="../../logo.svg" />
+    <link rel="alt" type="application/rss+xml" href=../../index.xml title="墨子的博客" />
+    <link rel="stylesheet" href=../../_index.css>
+</head><body><div class="LBody" id="start">
+        <aside class="LSide"><header class="header">
+    <div class="logo-wrap">
+        <a class="avatar" href="../../">
+            <div class="mask"></div>
+            <div class="bg" style="background-image:url(/img/rainbow64@3x.webp)"></div>
+            <img class="avatar" src="../../avatar.jpg" onerror="this.classList.add('error');this.src='../../img/unknow.svg';">
+        </a>
+        <a class="title" href="../../">
+            <div class="main" ff="title">墨子</div>
+            <div class="sub normal cap">雾里挑灯看剑</div>
+            <div class="sub hover cap">一个物理、数学计算机爱好者</div>
+        </a>
+    </div>
+    <nav class="menu dis-select"><a class="nav-item active" href="../../">Home</a><a class="nav-item " href="../../page/about/">About</a><a class="nav-item " href="../../page/archives/">档案文件</a><a class="nav-item " href="../../page/links/">Links</a><a class="nav-item active" href="../../">博客</a><a class="nav-item " href="../../docs/">文档</a><a class="nav-item " href="../../search/">搜索</a><a class="nav-item " href="../../about/">关于</a></nav>
+</header><div class="widgets"><div class="widget search"><widget class="widget-wrapper search">
+    <div class="widget-body">
+        <div class="search-wrapper" id="search">
+            <div class="search-form">
+                <input type="text" class="search-input" id="search-input" placeholder="Search" AUTOCOMPLETE="off" >
+                <svg t="1670596976048" class="icon search-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2676" width="200" height="200"><path d="M938.2 832.6L723.8 618.1c-2.5-2.5-5.3-4.4-7.9-6.4 36.2-55.6 57.3-121.8 57.3-193.1C773.3 222.8 614.6 64 418.7 64S64 222.8 64 418.6c0 195.9 158.8 354.6 354.6 354.6 71.3 0 137.5-21.2 193.2-57.4 2 2.7 3.9 5.4 6.3 7.8L832.5 938c14.6 14.6 33.7 21.9 52.8 21.9 19.1 0 38.2-7.3 52.8-21.8 29.2-29.1 29.2-76.4 0.1-105.5M418.7 661.3C284.9 661.3 176 552.4 176 418.6 176 284.9 284.9 176 418.7 176c133.8 0 242.6 108.9 242.6 242.7 0 133.7-108.9 242.6-242.6 242.6" p-id="2677"></path></svg>
+            </div>
+        </div>
+    </div>
+    <script>
+        var searchInput = document.getElementById("search-input");
+        searchInput.addEventListener('keydown', (event) => {
+            var inputValue = encodeURIComponent(searchInput.value.trim());
+            if (inputValue && event.keyCode == 13) {
+                window.open(`${window.location.protocol}//${window.location.host}/search?key=${inputValue}`);
+            }
+        });
+    </script>
+</widget></div><div class="widget toc"><widgets class="widget-wrapper toc">
+    <div class="widget-header cap dis-select">
+        <a class="name" href="#">驻波中波长与弹性绳张力间的关系</a>
+    </div>
+    <div class="widget-body fs14">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#驻波原理">驻波原理</a></li>
+    <li><a href="#实验">实验</a>
+      <ul>
+        <li><a href="#陈列数据">（陈列数据）</a></li>
+        <li><a href="#绘制散点图">（绘制散点图）</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#在ggb上画出实际和理论曲线">在ggb上画出实际和理论曲线</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</widgets></div></div>
+<footer class="footer dis-select">
+    <div class="social-wrap"><a class="social" href="https://gohugo.io/" target="_blank">
+            <img src="../../social/hugo.png">
+        </a><a class="social" href="https://github.com/yhreim" target="_blank">
+            <img src="../../social/github.svg">
+        </a><a class="social" href="https://space.bilibili.com/" target="_blank">
+            <img src="../../social/bilibili.ico">
+        </a></div>
+</footer></aside>
+        <main class="LMain"><header class="header mobile-only">
+  <div class="logo-wrap">
+      <a class="avatar" href="../../">
+          <div class="mask"></div>
+          <div class="bg" style="background-image:url(/img/rainbow64@3x.webp)"></div>
+          <img class="avatar" src="../../avatar.jpg" onerror="this.classList.add('error');this.src='../../img/unknow.svg';">
+      </a>
+      <a class="title" href="../../">
+          <div class="main" ff="title">墨子</div>
+          <div class="sub normal cap">雾里挑灯看剑</div>
+          <div class="sub hover cap">一个物理、数学计算机爱好者</div>
+      </a>
+  </div>
+</header><div class="bread-nav fs14">
+  <div class="breadcrumb"><a class="cap item" href="../../categories/%e7%89%a9%e7%90%86">物理</a>
+      <span class="sep"> </span></div>
+  <span class="post-meta">发布于 2023-11-2</span>
+</div>
+
+<article class="md-text content post">
+  <h1 class="article-title">驻波中波长与弹性绳张力间的关系</h1><h1 id="#实验驻波中波长与张力">
+    实验：驻波中波长与张力
+    <a class="anchor" name="实验驻波中波长与张力" href="#%e5%ae%9e%e9%aa%8c%e9%a9%bb%e6%b3%a2%e4%b8%ad%e6%b3%a2%e9%95%bf%e4%b8%8e%e5%bc%a0%e5%8a%9b">#</a>
+</h1><hr>
+<p>在我们实验课的驻波实验中，有一个实验是探究波长与绳拉力间的关系。不知道大家有没有想过两者间有什么关系？</p>
+<h2 id="#驻波原理">
+    驻波原理
+    <a class="anchor" name="驻波原理" href="#%e9%a9%bb%e6%b3%a2%e5%8e%9f%e7%90%86">#</a>
+</h2><p>波的叠加原理：<br>
+$$ y_1=sin(wt-\frac{x}{\lambda})$$
+$$y_2=sin(wt+\frac{x}{\lambda})$$
+$$y=y_1+y_2=sin(wt-\frac{x}{\lambda})+sin(wt+\frac{x}{\lambda})$$
+$$=2sin(wt)cos(\frac{x}{\lambda})$$</p>
+<p>从表达式中我们可以发现，只有弦长为半波长的整数倍时，驻波才有可能产生。
+$$\lambda=v/f$$
+从上述分析我们可以发现驻波的波长与波速成正比，与波源的频率成反比。</p>
+<hr>
+<h2 id="#实验">
+    实验
+    <a class="anchor" name="实验" href="#%e5%ae%9e%e9%aa%8c">#</a>
+</h2><p>(实验过程（思路）)保持波源频率不变，弦长不变，随着绳子张力增大，波长也变长，当半波长的整数倍恰好等于弦长，测量形成驻波的波长。<img class="md_img" data-fancybox="gallery" src="https://ts1.cn.mm.bing.net/th/id/R-C.db4a249e241a2b3b692deeb8daf083c3?rik=PgY%2b2GScMDKjhA&amp;riu=http%3a%2f%2fp8.qhimg.com%2ft01c3a4b991dc5046b4.jpg&amp;ehk=OzQveGUDgvSPtcsyODwoczG3C33Ea%2bOhybyuUNg5Nww%3d&amp;risl=&amp;pid=ImgRaw&amp;r=0" alt=""></p>
+<h3 id="#陈列数据">
+    （陈列数据）
+    <a class="anchor" name="陈列数据" href="#%e9%99%88%e5%88%97%e6%95%b0%e6%8d%ae">#</a>
+</h3><table>
+<thead>
+<tr>
+<th>拉力</th>
+<th>1.75</th>
+<th>0.51</th>
+<th>0.25</th>
+<th>0.15</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>波长</td>
+<td>1.38</td>
+<td>68</td>
+<td>45.3</td>
+<td>34</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="#绘制散点图">
+    （绘制散点图）
+    <a class="anchor" name="绘制散点图" href="#%e7%bb%98%e5%88%b6%e6%95%a3%e7%82%b9%e5%9b%be">#</a>
+</h3><p><img class="md_img" data-fancybox="gallery" src="https://pic.imgdb.cn/item/65425423c458853aefda98c9.png" alt=""><br>
+（曲线拟合）当我们选择多项式拟合，选择次数2，我们发现实验数据完美拟合($R² = 1$)。<br>
+波长与拉力成二次关系，这是为什么呢？</p>
+<hr>
+<h1 id="#弦振动问题">
+    弦振动问题
+    <a class="anchor" name="弦振动问题" href="#%e5%bc%a6%e6%8c%af%e5%8a%a8%e9%97%ae%e9%a2%98">#</a>
+</h1><p>首先，假设一根绳子沿x轴放置，当它振动时，每一时刻t会在空中形成一个曲线形状($y=sin(-\frac{x}{\lambda}+\phi)$，把这个形状&quot;拍照&quot;<br>
+如果连续拍照，(相当于把时间看作一个维度)我们就会得到一个关于时间t变化的曲线&quot;相册&quot; $y=sin(wt-\frac{x}{\lambda})$
+<img class="md_img" data-fancybox="gallery" src="https://ts1.cn.mm.bing.net/th/id/R-C.203e10e2c7230902f4ee3cf88a9779d8?rik=CIYUX39%2bbm0r2w&amp;riu=http%3a%2f%2fwww.nyq.cn%2fuploadfile%2fwuli%2fJxsj%2f200646221750853.gif&amp;ehk=8PbAR5%2beSjeAjAIcFjqYJ6GvfMg9lHR1qAWxwP4gyhw%3d&amp;risl=&amp;pid=ImgRaw&amp;r=0" alt=""></p>
+<hr>
+<p><img class="md_img" data-fancybox="gallery" src="https://pic.imgdb.cn/item/654259d0c458853aefebed4e.png" alt="">
+在微小振动下，弦的张力可视为处处相等<br>
+竖直方向受力平衡：
+$$Tsin\theta_1-Tsin\theta_2+\rho g\cdot\mathrm{d}x=\rho \cdot\mathrm{d}x\frac{\partial^2 u}{\partial t^2}$$
+又因为：$sin\theta_1=tan\theta_1=(\frac{\partial u}{\partial x})_x$</p>
+<hr>
+<p>$$sin\theta_2=tan\theta_2=(\frac{\partial u}{\partial x})_{x+\Delta x}$$<br>
+化简得：
+$$
+T(\frac{\partial u}{\partial x})_x-T(\frac{\partial u}{\partial x})_{x+\Delta x}-\rho g\cdot\mathrm{d}x=\rho\cdot\mathrm{d}x\frac{\partial^2 u}{\partial t^2}
+$$
+同时除$\rho\cdot dx$并移项：
+$$(T/\rho)\cdot\frac{(\frac{\partial u}{\partial x})_x-(\frac{\partial u}{\partial x})_{x+\Delta x}}{dx}-\frac{\partial^2 u}{\partial t^2}=g$$
+仔细观察，可以发现：
+$$(T/\rho)\frac{\partial^2 u}{\partial x^2}-\frac{\partial^2 u}{\partial t^2}=g$$</p>
+<hr>
+<p>略去重力：
+$$(T/\rho)\frac{\partial^2 u}{\partial x^2}-\frac{\partial^2 u}{\partial t^2}=0$$
+带入波的方程$u=Asin(ωt-2πx/λ)$得：
+$$A\omega^2sin(ωt-2πx/λ)=(T/\rho)\cdot A(\frac{2\pi}{\lambda})^2sin(ωt-2πx/λ$$
+消掉！！！
+$$T/\rho=(\omega\cdot \frac{\lambda}{2\pi})^2=v^2$$
+故弹性绳中波速：
+$$v=\sqrt{T/\rho}$$
+事情就对上号了</p>
+<hr>
+<h1 id="#理论解释实验">
+    理论解释实验
+    <a class="anchor" name="理论解释实验" href="#%e7%90%86%e8%ae%ba%e8%a7%a3%e9%87%8a%e5%ae%9e%e9%aa%8c">#</a>
+</h1><p>回到刚刚的拟合曲线上
+<img class="md_img" data-fancybox="gallery" src="https://pic.imgdb.cn/item/65425423c458853aefda98c9.png" alt="">
+拟合方程：
+$$T = 0.7498\lambda^2 + 0.2942\lambda - 0.0369$$</p>
+<hr>
+<p>我们知道T是自变量，$\lambda$是应变量，改写原方程:
+$$\lambda=\frac{-0.29+\sqrt{3T-0.02345}}{1.5}（1）$$
+由：$v=\sqrt{T/\rho}$
+可得：$\lambda=\frac{\sqrt T}{f\cdot\rho}（2）$
+因此尽量把（1）往（2）变形:<br>
+其中$\sqrt{3T-0.02345}=\sqrt{3T}(1-0.02345/3T)^{1/2}$<br>
+由于 $T \in[0.2,1.7]$,则 $0.02345/3T$算小量
+原式可变为
+$$\lambda=\frac{\sqrt{3T}}{1.5}-(0.19+0.002/T)$$</p>
+<hr>
+<h3 id="#在ggb上画出实际和理论曲线">
+    在ggb上画出实际和理论曲线
+    <a class="anchor" name="在ggb上画出实际和理论曲线" href="#%e5%9c%a8ggb%e4%b8%8a%e7%94%bb%e5%87%ba%e5%ae%9e%e9%99%85%e5%92%8c%e7%90%86%e8%ae%ba%e6%9b%b2%e7%ba%bf">#</a>
+</h3><p><img class="md_img" data-fancybox="gallery" src="https://pic.imgdb.cn/item/65427680c458853aef667831.png" alt=""></p>
+<hr>
+<p>修正一下：
+<img class="md_img" data-fancybox="gallery" src="https://pic.imgdb.cn/item/65427684c458853aef6685b6.png" alt=""></p>
+<hr>
+<p>我们发现在理论曲线$\frac{\sqrt{3T}}{1.5}$减去0.2后两条曲线完美重合，为什么呢？<br>
+x=0的点波速v小于0，这又是为什么？<br>
+可能的解释：当拉力太小时，重力不可忽略不计，原来的关系是不成立的。</p>
+<hr>
+<h1 id="#thank-you">
+    Thank You!
+    <a class="anchor" name="thank-you" href="#thank-you">#</a>
+</h1></article><div class="float-panel mobile-only blur" style="display:none">
+  <button type="button" class="sidebar-toggle" onclick="float_panel_click()">
+    <svg class="icon" style="width:1em;height:1em;vertical-align:middle;fill:currentColor;overflow:hidden" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301">
+      <path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path>
+      <path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path>
+    </svg>
+  </button>
+  <script>
+    float_panel_click = () => {
+      document.getElementById("start").classList.toggle("mobile");
+      document.getElementsByClassName("sidebar-toggle")[0].classList.toggle("mobile");
+    }
+  </script>
+</div></main>
+    </div>
+</body><script src="../../scripts/table-of-contents.js"></script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js" defer></script>
+<script src="../../scripts/mathjax.js"></script>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en"><head><title>Hugo和markdown学习笔记 - 墨子的博客</title><meta charset="utf-8">
+    <meta name="author" content="墨子">
+    <meta name="Robots" content="All">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="windows-Target" content="_top">
+
+    <link rel="shortcut icon" type="image/x-icon" href="../../logo.svg" />
+    <link rel="alt" type="application/rss+xml" href=../../index.xml title="墨子的博客" />
+    <link rel="stylesheet" href=../../_index.css>
+</head><body><div class="LBody" id="start">
+        <aside class="LSide"><header class="header">
+    <div class="logo-wrap">
+        <a class="avatar" href="../../">
+            <div class="mask"></div>
+            <div class="bg" style="background-image:url(/img/rainbow64@3x.webp)"></div>
+            <img class="avatar" src="../../avatar.jpg" onerror="this.classList.add('error');this.src='../../img/unknow.svg';">
+        </a>
+        <a class="title" href="../../">
+            <div class="main" ff="title">墨子</div>
+            <div class="sub normal cap">雾里挑灯看剑</div>
+            <div class="sub hover cap">一个物理、数学计算机爱好者</div>
+        </a>
+    </div>
+    <nav class="menu dis-select"><a class="nav-item active" href="../../">Home</a><a class="nav-item " href="../../page/about/">About</a><a class="nav-item " href="../../page/archives/">档案文件</a><a class="nav-item " href="../../page/links/">Links</a><a class="nav-item active" href="../../">博客</a><a class="nav-item " href="../../docs/">文档</a><a class="nav-item " href="../../search/">搜索</a><a class="nav-item " href="../../about/">关于</a></nav>
+</header><div class="widgets"><div class="widget search"><widget class="widget-wrapper search">
+    <div class="widget-body">
+        <div class="search-wrapper" id="search">
+            <div class="search-form">
+                <input type="text" class="search-input" id="search-input" placeholder="Search" AUTOCOMPLETE="off" >
+                <svg t="1670596976048" class="icon search-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2676" width="200" height="200"><path d="M938.2 832.6L723.8 618.1c-2.5-2.5-5.3-4.4-7.9-6.4 36.2-55.6 57.3-121.8 57.3-193.1C773.3 222.8 614.6 64 418.7 64S64 222.8 64 418.6c0 195.9 158.8 354.6 354.6 354.6 71.3 0 137.5-21.2 193.2-57.4 2 2.7 3.9 5.4 6.3 7.8L832.5 938c14.6 14.6 33.7 21.9 52.8 21.9 19.1 0 38.2-7.3 52.8-21.8 29.2-29.1 29.2-76.4 0.1-105.5M418.7 661.3C284.9 661.3 176 552.4 176 418.6 176 284.9 284.9 176 418.7 176c133.8 0 242.6 108.9 242.6 242.7 0 133.7-108.9 242.6-242.6 242.6" p-id="2677"></path></svg>
+            </div>
+        </div>
+    </div>
+    <script>
+        var searchInput = document.getElementById("search-input");
+        searchInput.addEventListener('keydown', (event) => {
+            var inputValue = encodeURIComponent(searchInput.value.trim());
+            if (inputValue && event.keyCode == 13) {
+                window.open(`${window.location.protocol}//${window.location.host}/search?key=${inputValue}`);
+            }
+        });
+    </script>
+</widget></div><div class="widget toc"><widgets class="widget-wrapper toc">
+    <div class="widget-header cap dis-select">
+        <a class="name" href="#">Hugo和markdown学习笔记</a>
+    </div>
+    <div class="widget-body fs14">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#如何添加数学公式">如何添加数学公式</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#换行空格空行">换行，空格，空行</a></li>
+    <li><a href="#引用代码">引用代码</a></li>
+  </ul>
+</nav>
+    </div>
+</widgets></div></div>
+<footer class="footer dis-select">
+    <div class="social-wrap"><a class="social" href="https://gohugo.io/" target="_blank">
+            <img src="../../social/hugo.png">
+        </a><a class="social" href="https://github.com/yhreim" target="_blank">
+            <img src="../../social/github.svg">
+        </a><a class="social" href="https://space.bilibili.com/" target="_blank">
+            <img src="../../social/bilibili.ico">
+        </a></div>
+</footer></aside>
+        <main class="LMain"><header class="header mobile-only">
+  <div class="logo-wrap">
+      <a class="avatar" href="../../">
+          <div class="mask"></div>
+          <div class="bg" style="background-image:url(/img/rainbow64@3x.webp)"></div>
+          <img class="avatar" src="../../avatar.jpg" onerror="this.classList.add('error');this.src='../../img/unknow.svg';">
+      </a>
+      <a class="title" href="../../">
+          <div class="main" ff="title">墨子</div>
+          <div class="sub normal cap">雾里挑灯看剑</div>
+          <div class="sub hover cap">一个物理、数学计算机爱好者</div>
+      </a>
+  </div>
+</header><div class="bread-nav fs14">
+  <div class="breadcrumb"></div>
+  <span class="post-meta">发布于 2023-9-18</span>
+</div>
+
+<article class="md-text content post">
+  <h1 class="article-title">Hugo和markdown学习笔记</h1><h2 id="#如何添加数学公式">
+    如何添加数学公式
+    <a class="anchor" name="如何添加数学公式" href="#%e5%a6%82%e4%bd%95%e6%b7%bb%e5%8a%a0%e6%95%b0%e5%ad%a6%e5%85%ac%e5%bc%8f">#</a>
+</h2><p>在markdown页首加入</p>
+<pre tabindex="0"><code>math: true</code></pre><h4 id="#分号">
+    分号
+    <a class="anchor" name="分号" href="#%e5%88%86%e5%8f%b7">#</a>
+</h4><p>$\dfrac{1} {1+\cdots}$</p>
+<pre tabindex="0"><code>$\dfrac{1} {1+\cdots}$</code></pre><h4 id="#括号">
+    括号
+    <a class="anchor" name="括号" href="#%e6%8b%ac%e5%8f%b7">#</a>
+</h4><p>括号可以直接用(..)输入，但是需要注意的是，有时候括号内的内容高度较大，需要改用\left(..\right)<br>
+大括号
+$$
+y= \begin{cases}
+-x,\quad &amp;x\leq 0 \
+x,\quad &amp;x&gt;0
+\end{cases}
+$$</p>
+<h4 id="#常用">
+    常用
+    <a class="anchor" name="常用" href="#%e5%b8%b8%e7%94%a8">#</a>
+</h4><p>$ \mp$<code>\mp</code><br>
+$\ge$<code>\ge</code> $\le$<code>\le</code><br>
+$\subset$ <code>\subset</code><br>
++ - <br>
+$\times {\div} $<code>\times {\div}</code><br>
+$\sqrt{a}$
+$\sin$</p>
+<h4 id="#微分">
+    微分
+    <a class="anchor" name="微分" href="#%e5%be%ae%e5%88%86">#</a>
+</h4><p>$\mathrm{d}t$ <code>\mathrm{d}t</code><br>
+$\nabla\psi$  <code>\nabla\psi</code><br>
+$$
+\dfrac{\partial^2}{\partial x_1\partial x_2}y
+$$<br>
+<code>\dfrac{\partial^2}{\partial x_1\partial x_2}</code><br>
+$\dot{x}$  <code>\dot{x}</code><br>
+$\lim_{x \to 0}$  <code>\lim_{x \to 0}</code><br>
+$\int$    <code>\int</code> <br>
+$\int_{a}^{b}$  <code>\int_{a}^{b}</code>  <br>
+$$
+\frac{\left{\begin{matrix}
+x=a + r\text{cos}\theta \<br>
+y=b + r\text{sin}\theta
+\end{matrix}\right. \partial^2}{\partial x_1\partial x_2}y
+$$</p>
+<h2 id="#换行空格空行">
+    换行，空格，空行
+    <a class="anchor" name="换行空格空行" href="#%e6%8d%a2%e8%a1%8c%e7%a9%ba%e6%a0%bc%e7%a9%ba%e8%a1%8c">#</a>
+</h2><p>使用<code>&amp;nbsp;</code>即可添加空格 <br>
+使用Tab+Enter换行<br>
+在段末使用<code>&lt;br/&gt;</code>，空一行可实现空行,例如：</p>
+<pre tabindex="0"><code>1&lt;br/&gt;
+
+2</code></pre><h2 id="#引用代码">
+    引用代码
+    <a class="anchor" name="引用代码" href="#%e5%bc%95%e7%94%a8%e4%bb%a3%e7%a0%81">#</a>
+</h2><p>在一般的段落文字中，可以使用反引号 ` 来标记或插入代码区段。</p>
+<pre tabindex="0"><code>&amp;nbsp;</code></pre><p>如果想单独成行，就得连用三个反引号`这样</p>
+<pre tabindex="0"><code>```python
+print(&#34;hello world&#34;)
+```python</code></pre><p>(我首尾加的python不能加，我是为了让引用符号体现出来)</p>
+</article><div class="float-panel mobile-only blur" style="display:none">
+  <button type="button" class="sidebar-toggle" onclick="float_panel_click()">
+    <svg class="icon" style="width:1em;height:1em;vertical-align:middle;fill:currentColor;overflow:hidden" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301">
+      <path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path>
+      <path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path>
+    </svg>
+  </button>
+  <script>
+    float_panel_click = () => {
+      document.getElementById("start").classList.toggle("mobile");
+      document.getElementsByClassName("sidebar-toggle")[0].classList.toggle("mobile");
+    }
+  </script>
+</div></main>
+    </div>
+</body><script src="../../scripts/table-of-contents.js"></script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js" defer></script>
+<script src="../../scripts/mathjax.js"></script>
+</html>

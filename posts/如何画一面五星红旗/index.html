@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en"><head><title>墨子的博客</title><meta charset="utf-8">
+    <meta name="author" content="墨子">
+    <meta name="Robots" content="All">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="windows-Target" content="_top">
+
+    <link rel="shortcut icon" type="image/x-icon" href="../../logo.svg" />
+    <link rel="alt" type="application/rss+xml" href=../../index.xml title="墨子的博客" />
+    <link rel="stylesheet" href=../../_index.css>
+</head><body><div class="LBody" id="start">
+        <aside class="LSide"><header class="header">
+    <div class="logo-wrap">
+        <a class="avatar" href="../../">
+            <div class="mask"></div>
+            <div class="bg" style="background-image:url(/img/rainbow64@3x.webp)"></div>
+            <img class="avatar" src="../../avatar.jpg" onerror="this.classList.add('error');this.src='../../img/unknow.svg';">
+        </a>
+        <a class="title" href="../../">
+            <div class="main" ff="title">墨子</div>
+            <div class="sub normal cap">雾里挑灯看剑</div>
+            <div class="sub hover cap">一个物理、数学计算机爱好者</div>
+        </a>
+    </div>
+    <nav class="menu dis-select"><a class="nav-item active" href="../../">Home</a><a class="nav-item " href="../../page/about/">About</a><a class="nav-item " href="../../page/archives/">档案文件</a><a class="nav-item " href="../../page/links/">Links</a><a class="nav-item active" href="../../">博客</a><a class="nav-item " href="../../docs/">文档</a><a class="nav-item " href="../../search/">搜索</a><a class="nav-item " href="../../about/">关于</a></nav>
+</header><div class="widgets"><div class="widget search"><widget class="widget-wrapper search">
+    <div class="widget-body">
+        <div class="search-wrapper" id="search">
+            <div class="search-form">
+                <input type="text" class="search-input" id="search-input" placeholder="Search" AUTOCOMPLETE="off" >
+                <svg t="1670596976048" class="icon search-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2676" width="200" height="200"><path d="M938.2 832.6L723.8 618.1c-2.5-2.5-5.3-4.4-7.9-6.4 36.2-55.6 57.3-121.8 57.3-193.1C773.3 222.8 614.6 64 418.7 64S64 222.8 64 418.6c0 195.9 158.8 354.6 354.6 354.6 71.3 0 137.5-21.2 193.2-57.4 2 2.7 3.9 5.4 6.3 7.8L832.5 938c14.6 14.6 33.7 21.9 52.8 21.9 19.1 0 38.2-7.3 52.8-21.8 29.2-29.1 29.2-76.4 0.1-105.5M418.7 661.3C284.9 661.3 176 552.4 176 418.6 176 284.9 284.9 176 418.7 176c133.8 0 242.6 108.9 242.6 242.7 0 133.7-108.9 242.6-242.6 242.6" p-id="2677"></path></svg>
+            </div>
+        </div>
+    </div>
+    <script>
+        var searchInput = document.getElementById("search-input");
+        searchInput.addEventListener('keydown', (event) => {
+            var inputValue = encodeURIComponent(searchInput.value.trim());
+            if (inputValue && event.keyCode == 13) {
+                window.open(`${window.location.protocol}//${window.location.host}/search?key=${inputValue}`);
+            }
+        });
+    </script>
+</widget></div><div class="widget toc"><widgets class="widget-wrapper toc">
+    <div class="widget-header cap dis-select">
+        <a class="name" href="#"></a>
+    </div>
+    <div class="widget-body fs14">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#想画国旗的缘由">想画国旗的缘由</a>
+      <ul>
+        <li><a href="#turtle的空间坐标体系">turtle的空间坐标体系：</a></li>
+        <li><a href="#turtle的移动">turtle的移动</a></li>
+      </ul>
+    </li>
+    <li><a href="#如何画一个五角星">如何画一个五角星</a></li>
+    <li><a href="#定义一个五角星函数">定义一个五角星函数</a></li>
+    <li><a href="#低级错误">低级错误</a></li>
+    <li><a href="#大功告成">大功告成</a></li>
+    <li><a href="#代码展示">代码展示</a></li>
+  </ul>
+</nav>
+    </div>
+</widgets></div></div>
+<footer class="footer dis-select">
+    <div class="social-wrap"><a class="social" href="https://gohugo.io/" target="_blank">
+            <img src="../../social/hugo.png">
+        </a><a class="social" href="https://github.com/yhreim" target="_blank">
+            <img src="../../social/github.svg">
+        </a><a class="social" href="https://space.bilibili.com/" target="_blank">
+            <img src="../../social/bilibili.ico">
+        </a></div>
+</footer></aside>
+        <main class="LMain"><header class="header mobile-only">
+  <div class="logo-wrap">
+      <a class="avatar" href="../../">
+          <div class="mask"></div>
+          <div class="bg" style="background-image:url(/img/rainbow64@3x.webp)"></div>
+          <img class="avatar" src="../../avatar.jpg" onerror="this.classList.add('error');this.src='../../img/unknow.svg';">
+      </a>
+      <a class="title" href="../../">
+          <div class="main" ff="title">墨子</div>
+          <div class="sub normal cap">雾里挑灯看剑</div>
+          <div class="sub hover cap">一个物理、数学计算机爱好者</div>
+      </a>
+  </div>
+</header><div class="bread-nav fs14">
+  <div class="breadcrumb"></div>
+  <span class="post-meta">发布于 0001-1-1</span>
+</div>
+
+<article class="md-text content post">
+  <h1 class="article-title"></h1><h1 id="#如何画一面五星红旗">
+    如何画一面五星红旗
+    <a class="anchor" name="如何画一面五星红旗" href="#%e5%a6%82%e4%bd%95%e7%94%bb%e4%b8%80%e9%9d%a2%e4%ba%94%e6%98%9f%e7%ba%a2%e6%97%97">#</a>
+</h1><h2 id="#想画国旗的缘由">
+    想画国旗的缘由
+    <a class="anchor" name="想画国旗的缘由" href="#%e6%83%b3%e7%94%bb%e5%9b%bd%e6%97%97%e7%9a%84%e7%bc%98%e7%94%b1">#</a>
+</h2><p>最近看到很多视频绘制五星红旗，但用我的话说，像五星红旗这种严格定义的东西，用cad这种执行复杂操作的画图软件就有点大材小用啦，再直白点就是不够简洁，不够优雅，今天我就来用python小乌龟给大家画一个标准国旗。</p>
+<hr>
+<h3 id="#turtle的空间坐标体系">
+    turtle的空间坐标体系：
+    <a class="anchor" name="turtle的空间坐标体系" href="#turtle%e7%9a%84%e7%a9%ba%e9%97%b4%e5%9d%90%e6%a0%87%e4%bd%93%e7%b3%bb">#</a>
+</h3><p><img class="md_img" data-fancybox="gallery" src="https://pic3.zhimg.com/v2-2b812b02081cc9f9ba022e109463f096_r.jpg" alt=""></p>
+<hr>
+<h3 id="#turtle的移动">
+    turtle的移动
+    <a class="anchor" name="turtle的移动" href="#turtle%e7%9a%84%e7%a7%bb%e5%8a%a8">#</a>
+</h3><ul>
+<li>
+<p>turtle.goto(x,y)</p>
+</li>
+<li>
+<p>turtle.forward()</p>
+</li>
+<li>
+<p>turtle.right()</p>
+</li>
+<li>
+<p>turtle.left()</p>
+</li>
+<li>
+<p>turtle.penup():表示抬起画笔，海龟在飞行；可以简写成turtle.pu()</p>
+</li>
+<li>
+<p>turtle.pendown():表示画笔落下，海龟在爬行；可以简写成turtle.pd()</p>
+</li>
+</ul>
+<hr>
+<h2 id="#如何画一个五角星">
+    如何画一个五角星
+    <a class="anchor" name="如何画一个五角星" href="#%e5%a6%82%e4%bd%95%e7%94%bb%e4%b8%80%e4%b8%aa%e4%ba%94%e8%a7%92%e6%98%9f">#</a>
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">t</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">t</span><span class="o">.</span><span class="n">right</span><span class="p">(</span><span class="mi">144</span><span class="p">)</span></span></span></code></pre></div><hr>
+<p>我的想法很简单<br>
+但真正了解了标准制图发现并不简单
+<img class="md_img" data-fancybox="gallery" src="https://questionimg.3d66.com/answers/question/20210823/656a15623ef0d6fad3eb636375b4678d.gif" alt=""></p>
+<hr>
+<p><img class="md_img" data-fancybox="gallery" src="https://pics6.baidu.com/feed/f9198618367adab46b9ec7cdc2e108158601e4b5.png@f_auto?token=5f9c8810be3204774ce57b1f9f737ce4" alt="bg"></p>
+<hr>
+<blockquote>
+<p>甲、为便于确定五星之位置，先将旗面对<strong>分为四个</strong>相等的长方形，将左上方之长方形上下划为十等分，左右划为十五等分。<br>
+乙、大五角星的<strong>中心点</strong>，在该长方形上五下五、左五右十之处。其画法为:以此点为圆心，以三等分为<strong>半径</strong>作一圆。在此圆周上，定出五个等距离的点，其一点须位于圆之正上方。然后将此五点中各相隔的两点相联，使各成一直线。此五直线所构成之外轮廓线，即为所需之大五角星。五角星之一个角尖正向上方。<br>
+丙、四颗小五角星的中心点，第一点在该长方形上二下八、左十右五之处，第二点在上四下六、左十二右三之处，第三点在上七下三、左十二右三之处，第四点在上九下一、左十右五之处。其画法为:以以上四点为圆心，各以一等分为半径，分别作四个圆。在每个圆上各定出五个等距离的点，其中均须各有一点位于大五角星中心点与以上四个圆心的各联结线上。然后用构成大五角星的同样方法，构成小五角星。此四颗小五角星均各有一个<strong>角尖正对</strong>大五角星的中心点。<br>
+&mdash;&mdash;&mdash;-（1949年9月28日中国人民政治协商会议第一届全体会议主席团公布）</p>
+</blockquote>
+<hr>
+<h2 id="#定义一个五角星函数">
+    定义一个五角星函数
+    <a class="anchor" name="定义一个五角星函数" href="#%e5%ae%9a%e4%b9%89%e4%b8%80%e4%b8%aa%e4%ba%94%e8%a7%92%e6%98%9f%e5%87%bd%e6%95%b0">#</a>
+</h2><pre tabindex="0"><code>def star5(x,y,r)</code></pre><p>三个参数：</p>
+<ul>
+<li>坐标</li>
+<li>坐标</li>
+<li>半径</li>
+</ul>
+<hr>
+<h2 id="#低级错误">
+    低级错误
+    <a class="anchor" name="低级错误" href="#%e4%bd%8e%e7%ba%a7%e9%94%99%e8%af%af">#</a>
+</h2><pre tabindex="0"><code>def star5(x,y,r,a)</code></pre><ul>
+<li>角度</li>
+</ul>
+<hr>
+<h2 id="#大功告成">
+    大功告成
+    <a class="anchor" name="大功告成" href="#%e5%a4%a7%e5%8a%9f%e5%91%8a%e6%88%90">#</a>
+</h2><hr>
+<h2 id="#代码展示">
+    代码展示
+    <a class="anchor" name="代码展示" href="#%e4%bb%a3%e7%a0%81%e5%b1%95%e7%a4%ba">#</a>
+</h2><pre tabindex="0"><code>import turtle as t
+t.setup(990,690)
+t.bgcolor(&#39;red&#39;)
+t.color(&#39;yellow&#39;)
+def star5(x,y,r,a):
+    t.penup()
+    t.goto(x,y)
+    t.pendown()
+    t.begin_fill()
+    t.left(a)
+    for i in range(1,6):
+        t.forward(r)
+        t.left(72)
+        t.forward(r)
+        t.right(144)
+    t.end_fill()
+    t.right(a)
+    t.penup()
+star5(-386,178,65,0)
+star5(-176,225,22,48.9638)
+star5(-120,176,22,26.13)
+star5(-119,98,22,2.0546)
+star5(-173,49,22,-20.66)</code></pre><p><a class="md-link" href="https://wood.codemao.cn/"  >编程猫在线海龟画图<img class="icon" src="../../img/link.svg" /></a>(源代码和网址链接我已放在评论区)</p>
+</article><div class="float-panel mobile-only blur" style="display:none">
+  <button type="button" class="sidebar-toggle" onclick="float_panel_click()">
+    <svg class="icon" style="width:1em;height:1em;vertical-align:middle;fill:currentColor;overflow:hidden" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301">
+      <path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path>
+      <path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path>
+    </svg>
+  </button>
+  <script>
+    float_panel_click = () => {
+      document.getElementById("start").classList.toggle("mobile");
+      document.getElementsByClassName("sidebar-toggle")[0].classList.toggle("mobile");
+    }
+  </script>
+</div></main>
+    </div>
+</body><script src="../../scripts/table-of-contents.js"></script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js" defer></script>
+<script src="../../scripts/mathjax.js"></script>
+</html>
