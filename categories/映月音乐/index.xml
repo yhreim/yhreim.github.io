@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>映月（音乐） on 墨子的博客</title>
+    <link>/categories/%E6%98%A0%E6%9C%88%E9%9F%B3%E4%B9%90/</link>
+    <description>Recent content in 映月（音乐） on 墨子的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 19 Aug 2023 11:52:58 +0800</lastBuildDate><atom:link href="/categories/%E6%98%A0%E6%9C%88%E9%9F%B3%E4%B9%90/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>山楂树简谱</title>
+      <link>/post/%E5%B1%B1%E6%A5%82%E6%A0%91%E7%AE%80%E8%B0%B1/</link>
+      <pubDate>Sat, 19 Aug 2023 11:52:58 +0800</pubDate>
+      
+      <guid>/post/%E5%B1%B1%E6%A5%82%E6%A0%91%E7%AE%80%E8%B0%B1/</guid>
+      <description>自己用葫芦丝跟着调子谱出来的 </description>
+    </item>
+    
+    <item>
+      <title>山楂树简谱</title>
+      <link>/posts/%E5%B1%B1%E6%A5%82%E6%A0%91%E7%AE%80%E8%B0%B1/</link>
+      <pubDate>Sat, 19 Aug 2023 11:52:58 +0800</pubDate>
+      
+      <guid>/posts/%E5%B1%B1%E6%A5%82%E6%A0%91%E7%AE%80%E8%B0%B1/</guid>
+      <description>自己用葫芦丝跟着调子谱出来的 </description>
+    </item>
+    
+  </channel>
+</rss>

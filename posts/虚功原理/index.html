@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en"><head><title>虚功原理 - 墨子的博客</title><meta charset="utf-8">
+    <meta name="author" content="墨子">
+    <meta name="Robots" content="All">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="windows-Target" content="_top">
+
+    <link rel="shortcut icon" type="image/x-icon" href="../../logo.svg" />
+    <link rel="alt" type="application/rss+xml" href=../../index.xml title="墨子的博客" />
+    <link rel="stylesheet" href=../../_index.css>
+</head><body><div class="LBody" id="start">
+        <aside class="LSide"><header class="header">
+    <div class="logo-wrap">
+        <a class="avatar" href="../../">
+            <div class="mask"></div>
+            <div class="bg" style="background-image:url(/img/rainbow64@3x.webp)"></div>
+            <img class="avatar" src="../../avatar.jpg" onerror="this.classList.add('error');this.src='../../img/unknow.svg';">
+        </a>
+        <a class="title" href="../../">
+            <div class="main" ff="title">墨子</div>
+            <div class="sub normal cap">雾里挑灯看剑</div>
+            <div class="sub hover cap">一个物理、数学计算机爱好者</div>
+        </a>
+    </div>
+    <nav class="menu dis-select"><a class="nav-item active" href="../../">Home</a><a class="nav-item " href="../../page/about/">About</a><a class="nav-item " href="../../page/archives/">档案文件</a><a class="nav-item " href="../../page/links/">Links</a><a class="nav-item active" href="../../">博客</a><a class="nav-item " href="../../docs/">文档</a><a class="nav-item " href="../../search/">搜索</a><a class="nav-item " href="../../about/">关于</a></nav>
+</header><div class="widgets"><div class="widget search"><widget class="widget-wrapper search">
+    <div class="widget-body">
+        <div class="search-wrapper" id="search">
+            <div class="search-form">
+                <input type="text" class="search-input" id="search-input" placeholder="Search" AUTOCOMPLETE="off" >
+                <svg t="1670596976048" class="icon search-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2676" width="200" height="200"><path d="M938.2 832.6L723.8 618.1c-2.5-2.5-5.3-4.4-7.9-6.4 36.2-55.6 57.3-121.8 57.3-193.1C773.3 222.8 614.6 64 418.7 64S64 222.8 64 418.6c0 195.9 158.8 354.6 354.6 354.6 71.3 0 137.5-21.2 193.2-57.4 2 2.7 3.9 5.4 6.3 7.8L832.5 938c14.6 14.6 33.7 21.9 52.8 21.9 19.1 0 38.2-7.3 52.8-21.8 29.2-29.1 29.2-76.4 0.1-105.5M418.7 661.3C284.9 661.3 176 552.4 176 418.6 176 284.9 284.9 176 418.7 176c133.8 0 242.6 108.9 242.6 242.7 0 133.7-108.9 242.6-242.6 242.6" p-id="2677"></path></svg>
+            </div>
+        </div>
+    </div>
+    <script>
+        var searchInput = document.getElementById("search-input");
+        searchInput.addEventListener('keydown', (event) => {
+            var inputValue = encodeURIComponent(searchInput.value.trim());
+            if (inputValue && event.keyCode == 13) {
+                window.open(`${window.location.protocol}//${window.location.host}/search?key=${inputValue}`);
+            }
+        });
+    </script>
+</widget></div><div class="widget toc"><widgets class="widget-wrapper toc">
+    <div class="widget-header cap dis-select">
+        <a class="name" href="#">虚功原理</a>
+    </div>
+    <div class="widget-body fs14">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#例题1">例题1</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#例题2">例题2</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</widgets></div></div>
+<footer class="footer dis-select">
+    <div class="social-wrap"><a class="social" href="https://gohugo.io/" target="_blank">
+            <img src="../../social/hugo.png">
+        </a><a class="social" href="https://github.com/yhreim" target="_blank">
+            <img src="../../social/github.svg">
+        </a><a class="social" href="https://space.bilibili.com/" target="_blank">
+            <img src="../../social/bilibili.ico">
+        </a></div>
+</footer></aside>
+        <main class="LMain"><header class="header mobile-only">
+  <div class="logo-wrap">
+      <a class="avatar" href="../../">
+          <div class="mask"></div>
+          <div class="bg" style="background-image:url(/img/rainbow64@3x.webp)"></div>
+          <img class="avatar" src="../../avatar.jpg" onerror="this.classList.add('error');this.src='../../img/unknow.svg';">
+      </a>
+      <a class="title" href="../../">
+          <div class="main" ff="title">墨子</div>
+          <div class="sub normal cap">雾里挑灯看剑</div>
+          <div class="sub hover cap">一个物理、数学计算机爱好者</div>
+      </a>
+  </div>
+</header><div class="bread-nav fs14">
+  <div class="breadcrumb"><a class="cap item" href="../../categories/%e7%89%a9%e7%90%86">物理</a>
+      <span class="sep"> </span></div>
+  <span class="post-meta">发布于 2023-8-9</span>
+</div>
+
+<article class="md-text content post">
+  <h1 class="article-title">虚功原理</h1><p>所谓的虚功原理，核心就只有一句话，功是能量转换的量度，即用待求力做虚假的一小段功使能量转换，条件是功能守恒或总能量一阶导为零，以此列个能量守恒，没理解的话可以直接看例题。</p>
+<h2 id="#例题1">
+    例题1
+    <a class="anchor" name="例题1" href="#%e4%be%8b%e9%a2%981">#</a>
+</h2><p><img class="md_img" data-fancybox="gallery" src="https://pic.imgdb.cn/item/64e03ece661c6c8e542e0f61.jpg" alt=""></p>
+<h4 id="#传统解法">
+    传统解法
+    <a class="anchor" name="传统解法" href="#%e4%bc%a0%e7%bb%9f%e8%a7%a3%e6%b3%95">#</a>
+</h4><p><img class="md_img" data-fancybox="gallery" src="https://pic.imgdb.cn/item/64e03ece661c6c8e542e0deb.jpg" alt=""></p>
+<h4 id="#虚功解法">
+    虚功解法
+    <a class="anchor" name="虚功解法" href="#%e8%99%9a%e5%8a%9f%e8%a7%a3%e6%b3%95">#</a>
+</h4><p>条件：弹力绳静止时动能为零，弹性势能与重力势能自合达到最大，我们可以说总势能一阶导等0，满足虚功原理条件<br>
+在此一小段位移中，弹力做的负功等于重力势能减少量
+<img class="md_img" data-fancybox="gallery" src="https://pic.imgdb.cn/item/64e03ece661c6c8e542e0eff.jpg" alt="圆锥套绳"></p>
+<h2 id="#例题2">
+    例题2
+    <a class="anchor" name="例题2" href="#%e4%be%8b%e9%a2%982">#</a>
+</h2><p><img class="md_img" data-fancybox="gallery" src="https://pic.imgdb.cn/item/64e03ece661c6c8e542e0f61.jpg" alt=""></p>
+<h4 id="#传统法">
+    传统法
+    <a class="anchor" name="传统法" href="#%e4%bc%a0%e7%bb%9f%e6%b3%95">#</a>
+</h4><p><img class="md_img" data-fancybox="gallery" src="https://pic.imgdb.cn/item/64e03ecf661c6c8e542e0fbf.jpg" alt=""></p>
+<h4 id="#虚功解法-1">
+    虚功解法
+    <a class="anchor" name="虚功解法-1" href="#%e8%99%9a%e5%8a%9f%e8%a7%a3%e6%b3%95-1">#</a>
+</h4><p><img class="md_img" data-fancybox="gallery" src="1691544311693-1.jpg" alt="链条"></p>
+</article><div class="float-panel mobile-only blur" style="display:none">
+  <button type="button" class="sidebar-toggle" onclick="float_panel_click()">
+    <svg class="icon" style="width:1em;height:1em;vertical-align:middle;fill:currentColor;overflow:hidden" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301">
+      <path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path>
+      <path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path>
+    </svg>
+  </button>
+  <script>
+    float_panel_click = () => {
+      document.getElementById("start").classList.toggle("mobile");
+      document.getElementsByClassName("sidebar-toggle")[0].classList.toggle("mobile");
+    }
+  </script>
+</div></main>
+    </div>
+</body><script src="../../scripts/table-of-contents.js"></script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js" defer></script>
+<script src="../../scripts/mathjax.js"></script>
+</html>

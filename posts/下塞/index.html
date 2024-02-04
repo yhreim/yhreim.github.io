@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en"><head><title>台球加上下塞运算 - 墨子的博客</title><meta charset="utf-8">
+    <meta name="author" content="墨子">
+    <meta name="Robots" content="All">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="windows-Target" content="_top">
+
+    <link rel="shortcut icon" type="image/x-icon" href="../../logo.svg" />
+    <link rel="alt" type="application/rss+xml" href=../../index.xml title="墨子的博客" />
+    <link rel="stylesheet" href=../../_index.css>
+</head><body><div class="LBody" id="start">
+        <aside class="LSide"><header class="header">
+    <div class="logo-wrap">
+        <a class="avatar" href="../../">
+            <div class="mask"></div>
+            <div class="bg" style="background-image:url(/img/rainbow64@3x.webp)"></div>
+            <img class="avatar" src="../../avatar.jpg" onerror="this.classList.add('error');this.src='../../img/unknow.svg';">
+        </a>
+        <a class="title" href="../../">
+            <div class="main" ff="title">墨子</div>
+            <div class="sub normal cap">雾里挑灯看剑</div>
+            <div class="sub hover cap">一个物理、数学计算机爱好者</div>
+        </a>
+    </div>
+    <nav class="menu dis-select"><a class="nav-item active" href="../../">Home</a><a class="nav-item " href="../../page/about/">About</a><a class="nav-item " href="../../page/archives/">档案文件</a><a class="nav-item " href="../../page/links/">Links</a><a class="nav-item active" href="../../">博客</a><a class="nav-item " href="../../docs/">文档</a><a class="nav-item " href="../../search/">搜索</a><a class="nav-item " href="../../about/">关于</a></nav>
+</header><div class="widgets"><div class="widget search"><widget class="widget-wrapper search">
+    <div class="widget-body">
+        <div class="search-wrapper" id="search">
+            <div class="search-form">
+                <input type="text" class="search-input" id="search-input" placeholder="Search" AUTOCOMPLETE="off" >
+                <svg t="1670596976048" class="icon search-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2676" width="200" height="200"><path d="M938.2 832.6L723.8 618.1c-2.5-2.5-5.3-4.4-7.9-6.4 36.2-55.6 57.3-121.8 57.3-193.1C773.3 222.8 614.6 64 418.7 64S64 222.8 64 418.6c0 195.9 158.8 354.6 354.6 354.6 71.3 0 137.5-21.2 193.2-57.4 2 2.7 3.9 5.4 6.3 7.8L832.5 938c14.6 14.6 33.7 21.9 52.8 21.9 19.1 0 38.2-7.3 52.8-21.8 29.2-29.1 29.2-76.4 0.1-105.5M418.7 661.3C284.9 661.3 176 552.4 176 418.6 176 284.9 284.9 176 418.7 176c133.8 0 242.6 108.9 242.6 242.7 0 133.7-108.9 242.6-242.6 242.6" p-id="2677"></path></svg>
+            </div>
+        </div>
+    </div>
+    <script>
+        var searchInput = document.getElementById("search-input");
+        searchInput.addEventListener('keydown', (event) => {
+            var inputValue = encodeURIComponent(searchInput.value.trim());
+            if (inputValue && event.keyCode == 13) {
+                window.open(`${window.location.protocol}//${window.location.host}/search?key=${inputValue}`);
+            }
+        });
+    </script>
+</widget></div><div class="widget toc"><widgets class="widget-wrapper toc">
+    <div class="widget-header cap dis-select">
+        <a class="name" href="#">台球加上下塞运算</a>
+    </div>
+    <div class="widget-body fs14">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#11-在高h的地方给球一个冲量p">1.1 在高$h$的地方给球一个冲量$p$</a></li>
+    <li><a href="#22-台球发生滚动">2.2 台球发生滚动</a>
+      <ul>
+        <li><a href="#台球的纯滚动末态分为三种情况">台球的纯滚动末态分为三种情况</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#1-hfrac75r摩擦力向前">1. $h&gt;\frac{7}{5}R$(摩擦力向前)</a></li>
+    <li><a href="#2-hfrac75r摩擦力向后">2. $h&lt;\frac{7}{5}R$(摩擦力向后)</a></li>
+    <li><a href="#3-hfrac75r小球一开始达到向前纯滚">3. $h=\frac{7}{5}R$(小球一开始达到向前纯滚)</a></li>
+    <li><a href="#matlab解微分方程">matlab解微分方程</a></li>
+  </ul>
+</nav>
+    </div>
+</widgets></div></div>
+<footer class="footer dis-select">
+    <div class="social-wrap"><a class="social" href="https://gohugo.io/" target="_blank">
+            <img src="../../social/hugo.png">
+        </a><a class="social" href="https://github.com/yhreim" target="_blank">
+            <img src="../../social/github.svg">
+        </a><a class="social" href="https://space.bilibili.com/" target="_blank">
+            <img src="../../social/bilibili.ico">
+        </a></div>
+</footer></aside>
+        <main class="LMain"><header class="header mobile-only">
+  <div class="logo-wrap">
+      <a class="avatar" href="../../">
+          <div class="mask"></div>
+          <div class="bg" style="background-image:url(/img/rainbow64@3x.webp)"></div>
+          <img class="avatar" src="../../avatar.jpg" onerror="this.classList.add('error');this.src='../../img/unknow.svg';">
+      </a>
+      <a class="title" href="../../">
+          <div class="main" ff="title">墨子</div>
+          <div class="sub normal cap">雾里挑灯看剑</div>
+          <div class="sub hover cap">一个物理、数学计算机爱好者</div>
+      </a>
+  </div>
+</header><div class="bread-nav fs14">
+  <div class="breadcrumb"><a class="cap item" href="../../categories/%e7%89%a9%e7%90%86">物理</a>
+      <span class="sep"> </span></div>
+  <span class="post-meta">发布于 2023-12-15</span>
+</div>
+
+<article class="md-text content post">
+  <h1 class="article-title">台球加上下塞运算</h1><p><img class="md_img" data-fancybox="gallery" src="https://pic4.zhimg.com/80/v2-7a6c704ea82ef132e33be232318fd530.jpg" alt="Image"></p>
+<h1 id="#台球的上下塞有什么区别">
+    台球的上下塞有什么区别
+    <a class="anchor" name="台球的上下塞有什么区别" href="#%e5%8f%b0%e7%90%83%e7%9a%84%e4%b8%8a%e4%b8%8b%e5%a1%9e%e6%9c%89%e4%bb%80%e4%b9%88%e5%8c%ba%e5%88%ab">#</a>
+</h1><h1 id="#1-这是台球下塞的计算">
+    1. 这是台球下塞的计算
+    <a class="anchor" name="1-这是台球下塞的计算" href="#1-%e8%bf%99%e6%98%af%e5%8f%b0%e7%90%83%e4%b8%8b%e5%a1%9e%e7%9a%84%e8%ae%a1%e7%ae%97">#</a>
+</h1><h2 id="#11-在高h的地方给球一个冲量p">
+    1.1 在高$h$的地方给球一个冲量$p$
+    <a class="anchor" name="11-在高h的地方给球一个冲量p" href="#11-%e5%9c%a8%e9%ab%98h%e7%9a%84%e5%9c%b0%e6%96%b9%e7%bb%99%e7%90%83%e4%b8%80%e4%b8%aa%e5%86%b2%e9%87%8fp">#</a>
+</h2><p>速度:
+$$v_0=\frac{p}{m}$$
+角速度:
+$$\omega_0 =\frac{pR\cdot sin\theta}{I}$$
+$$sin\theta=\frac{R-h}{R}$$</p>
+<h2 id="#22-台球发生滚动">
+    2.2 台球发生滚动
+    <a class="anchor" name="22-台球发生滚动" href="#22-%e5%8f%b0%e7%90%83%e5%8f%91%e7%94%9f%e6%bb%9a%e5%8a%a8">#</a>
+</h2><p>速度：
+$$v=v_0-(f/m)\cdot t$$
+角速度：
+$$w=w_0-\frac{fR}{I}\cdot t$$
+纯滚：
+$$v=-\omega\cdot R$$
+(有负号是因为初始旋转方向与速度方向相反)<br>
+联立上述所有式子可解得:
+$$v=\frac{5p}{7m}(1-sin\theta)$$</p>
+<h3 id="#台球的纯滚动末态分为三种情况">
+    台球的纯滚动末态分为三种情况
+    <a class="anchor" name="台球的纯滚动末态分为三种情况" href="#%e5%8f%b0%e7%90%83%e7%9a%84%e7%ba%af%e6%bb%9a%e5%8a%a8%e6%9c%ab%e6%80%81%e5%88%86%e4%b8%ba%e4%b8%89%e7%a7%8d%e6%83%85%e5%86%b5">#</a>
+</h3><pre><code>1. 向前纯滚
+2. 静止不动
+3. 向后纯滚     
+</code></pre>
+<p>其中临界情况为静止不动（$v=0$）<br>
+临界情况解得：
+$$h=0$$
+当$h=0$时，为上述第二种情况：静止不动<br>
+当$h&gt;0$时，为上述第一种情况：向前滚动<br>
+$h&lt;0$不成立，故不存在第三种情况</p>
+<h1 id="#2-加上塞">
+    2. 加上塞
+    <a class="anchor" name="2-加上塞" href="#2-%e5%8a%a0%e4%b8%8a%e5%a1%9e">#</a>
+</h1><p>即令($h&gt;R$)<br>
+此时：
+$$\sin\theta=\frac{h-R}{R}&gt;0$$
+速度:
+$$v_0=\frac{p}{m}$$
+角速度:
+$$\omega_0 =\frac{pR\cdot sin\theta}{I}$$
+根据摩擦力向前向后可分为：</p>
+<ol>
+<li>向前( $v&lt;wr$ )</li>
+<li>向后( $v&gt;wr$ )</li>
+</ol>
+<p>临界情况：$v=wr$<br>
+解得：
+$$sin\theta=\frac{2}{5}, h=\frac{7}{5}R$$</p>
+<h2 id="#1-hfrac75r摩擦力向前">
+    1. $h&gt;\frac{7}{5}R$(摩擦力向前)
+    <a class="anchor" name="1-hfrac75r摩擦力向前" href="#1-hfrac75r%e6%91%a9%e6%93%a6%e5%8a%9b%e5%90%91%e5%89%8d">#</a>
+</h2><p>速度：
+$$v=v_0+(f/m)\cdot t$$
+角速度：
+$$w=w_0-\frac{fR}{I}\cdot t$$
+$$v=wR$$
+解得
+$$t=(\frac{5}{2}sin\theta-1)\frac{p}{m\cdot \frac{7f}{2m}}$$
+小球达到向前纯滚
+$$v=\frac{5}{7}(sin\theta+1)\frac{p}{m}$$</p>
+<h2 id="#2-hfrac75r摩擦力向后">
+    2. $h&lt;\frac{7}{5}R$(摩擦力向后)
+    <a class="anchor" name="2-hfrac75r摩擦力向后" href="#2-hfrac75r%e6%91%a9%e6%93%a6%e5%8a%9b%e5%90%91%e5%90%8e">#</a>
+</h2><p>速度：
+$$v=v_0-(f/m)\cdot t$$
+角速度：
+$$w=w_0+\frac{fR}{I}\cdot t$$
+$$v=wR$$
+解得
+$$t=(1-\frac{5}{2}sin\theta)\frac{p}{m\cdot \frac{7f}{2m}}$$
+小球达到向前纯滚
+$$v=\frac{5}{7}(sin\theta+1)\frac{p}{m}$$</p>
+<h2 id="#3-hfrac75r小球一开始达到向前纯滚">
+    3. $h=\frac{7}{5}R$(小球一开始达到向前纯滚)
+    <a class="anchor" name="3-hfrac75r小球一开始达到向前纯滚" href="#3-hfrac75r%e5%b0%8f%e7%90%83%e4%b8%80%e5%bc%80%e5%a7%8b%e8%be%be%e5%88%b0%e5%90%91%e5%89%8d%e7%ba%af%e6%bb%9a">#</a>
+</h2><h2 id="#matlab解微分方程">
+    matlab解微分方程
+    <a class="anchor" name="matlab解微分方程" href="#matlab%e8%a7%a3%e5%be%ae%e5%88%86%e6%96%b9%e7%a8%8b">#</a>
+</h2><ol>
+<li>求解析解
+<ul>
+<li>使用函数s=dsolve(eqn,cond)<br>
+(其中rqn为方程，cond为条件（例如y(0)==b;Dy(0)==0)） )</li>
+<li>例1<br>
+eqn: x&rsquo;&rsquo;==-k/m x;
+comd: [x(0)==0,x&rsquo;==v]</li>
+</ul>
+</li>
+</ol>
+<pre tabindex="0"><code>      syms y(t) k v;
+&gt;&gt; eqn=diff(y,t,2)==-k*y;
+&gt;&gt; cond=[y(0)==0,Dy(0)==v];
+&gt;&gt; s=dsolve(eqn,cond)
+ 
+s =
+ 
+(v*exp(-(-k)^(1/2)*t)*(exp(2*(-k)^(1/2)*t) - 1))/(2*(-k)^(1/2))
+ 
+&gt;&gt; slatex=latex(s)
+
+slatex =
+
+    &#39;\frac{v\,{\mathrm{e}}^{-\sqrt{-k}\,t}\,\left({\mathrm{e}}^{2\,\sqrt{-k}\,t}-1\right)}{2\,\sqrt{-k}}&#39;</code></pre><p>得到结果：
+$$\frac{v,{\mathrm{e}}^{-\sqrt{-k},t},\left({\mathrm{e}}^{2,\sqrt{-k},t}-1\right)}{2,\sqrt{-k}}$$
+代入k&gt;0的事实：
+$$v\sqrt{\frac{m}{v}}sin(\sqrt{\frac{v}{m}}t)$$
+2.</p>
+<pre tabindex="0"><code>&gt;&gt; clear
+&gt;&gt; syms vx(t) vy(t) wx(t) wy(t)
+&gt;&gt; eqn1=diff(vx,t)==-2.5*(vx-0.0286*wy)/((vx-0.0286*wy)^2+(vy+0.0286*wx)^2)^(1/2);
+&gt;&gt; eqn2=diff(vy,t)==-2.5*(vy+0.0286*wx)/((vx-0.0286*wy)^2+(vy+0.0286*wx)^2)^(1/2);
+&gt;&gt; eqn3=diff(wx,t)==-218.4*(vy+0.0286*wx)/((vx-0.0286*wy)^2+(vy+0.0286*wx)^2)^(1/2);
+&gt;&gt; eqn4=diff(wy,t)==-218.4*(vx-0.0286*wy)/((vx-0.0286*wy)^2+(vy+0.0286*wx)^2)^(1/2);
+&gt;&gt; eqn=[eqn1,eqn2,eqn3,eqn4];
+&gt;&gt; cond1=[vx(0)==-0.1305];
+&gt;&gt; cond2=[vy(0)==-0.18631];
+&gt;&gt; cond3=[wx(0)==-44.822];
+&gt;&gt; cond4=[wy(0)==48.2745];
+&gt;&gt; cond=[cond1,cond2,cond3,cond4];
+&gt;&gt; [vxs(t),vys(t),wxs(t),wys(t)]=dsolve(eqn,cond)</code></pre></article><div class="float-panel mobile-only blur" style="display:none">
+  <button type="button" class="sidebar-toggle" onclick="float_panel_click()">
+    <svg class="icon" style="width:1em;height:1em;vertical-align:middle;fill:currentColor;overflow:hidden" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301">
+      <path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path>
+      <path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path>
+    </svg>
+  </button>
+  <script>
+    float_panel_click = () => {
+      document.getElementById("start").classList.toggle("mobile");
+      document.getElementsByClassName("sidebar-toggle")[0].classList.toggle("mobile");
+    }
+  </script>
+</div></main>
+    </div>
+</body><script src="../../scripts/table-of-contents.js"></script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js" defer></script>
+<script src="../../scripts/mathjax.js"></script>
+</html>

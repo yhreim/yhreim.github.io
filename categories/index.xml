@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on 墨子的博客</title>
+    <link>/categories/</link>
+    <description>Recent content in Categories on 墨子的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 26 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>物理</title>
+      <link>/categories/%E7%89%A9%E7%90%86/</link>
+      <pubDate>Tue, 26 Dec 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/%E7%89%A9%E7%90%86/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>生活</title>
+      <link>/categories/%E7%94%9F%E6%B4%BB/</link>
+      <pubDate>Thu, 07 Sep 2023 22:35:41 +0800</pubDate>
+      
+      <guid>/categories/%E7%94%9F%E6%B4%BB/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>映月（音乐）</title>
+      <link>/categories/%E6%98%A0%E6%9C%88%E9%9F%B3%E4%B9%90/</link>
+      <pubDate>Sat, 19 Aug 2023 11:52:58 +0800</pubDate>
+      
+      <guid>/categories/%E6%98%A0%E6%9C%88%E9%9F%B3%E4%B9%90/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>航天</title>
+      <link>/categories/%E8%88%AA%E5%A4%A9/</link>
+      <pubDate>Sun, 06 Aug 2023 13:54:54 +0800</pubDate>
+      
+      <guid>/categories/%E8%88%AA%E5%A4%A9/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>建站</title>
+      <link>/categories/%E5%BB%BA%E7%AB%99/</link>
+      <pubDate>Sun, 12 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/%E5%BB%BA%E7%AB%99/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>syntax</title>
+      <link>/categories/syntax/</link>
+      <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/syntax/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>themes</title>
+      <link>/categories/themes/</link>
+      <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/themes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>تجربة</title>
+      <link>/categories/%D8%AA%D8%AC%D8%B1%D8%A8%D8%A9/</link>
+      <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/%D8%AA%D8%AC%D8%B1%D8%A8%D8%A9/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>تجربة مع فراغات</title>
+      <link>/categories/%D8%AA%D8%AC%D8%B1%D8%A8%D8%A9-%D9%85%D8%B9-%D9%81%D8%B1%D8%A7%D8%BA%D8%A7%D8%AA/</link>
+      <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/%D8%AA%D8%AC%D8%B1%D8%A8%D8%A9-%D9%85%D8%B9-%D9%81%D8%B1%D8%A7%D8%BA%D8%A7%D8%AA/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Test</title>
+      <link>/categories/test/</link>
+      <pubDate>Tue, 05 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/test/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

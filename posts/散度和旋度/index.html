@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en"><head><title>梯度散度和旋度 - 墨子的博客</title><meta charset="utf-8">
+    <meta name="author" content="墨子">
+    <meta name="Robots" content="All">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="windows-Target" content="_top">
+
+    <link rel="shortcut icon" type="image/x-icon" href="../../logo.svg" />
+    <link rel="alt" type="application/rss+xml" href=../../index.xml title="墨子的博客" />
+    <link rel="stylesheet" href=../../_index.css>
+</head><body><div class="LBody" id="start">
+        <aside class="LSide"><header class="header">
+    <div class="logo-wrap">
+        <a class="avatar" href="../../">
+            <div class="mask"></div>
+            <div class="bg" style="background-image:url(/img/rainbow64@3x.webp)"></div>
+            <img class="avatar" src="../../avatar.jpg" onerror="this.classList.add('error');this.src='../../img/unknow.svg';">
+        </a>
+        <a class="title" href="../../">
+            <div class="main" ff="title">墨子</div>
+            <div class="sub normal cap">雾里挑灯看剑</div>
+            <div class="sub hover cap">一个物理、数学计算机爱好者</div>
+        </a>
+    </div>
+    <nav class="menu dis-select"><a class="nav-item active" href="../../">Home</a><a class="nav-item " href="../../page/about/">About</a><a class="nav-item " href="../../page/archives/">档案文件</a><a class="nav-item " href="../../page/links/">Links</a><a class="nav-item active" href="../../">博客</a><a class="nav-item " href="../../docs/">文档</a><a class="nav-item " href="../../search/">搜索</a><a class="nav-item " href="../../about/">关于</a></nav>
+</header><div class="widgets"><div class="widget search"><widget class="widget-wrapper search">
+    <div class="widget-body">
+        <div class="search-wrapper" id="search">
+            <div class="search-form">
+                <input type="text" class="search-input" id="search-input" placeholder="Search" AUTOCOMPLETE="off" >
+                <svg t="1670596976048" class="icon search-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2676" width="200" height="200"><path d="M938.2 832.6L723.8 618.1c-2.5-2.5-5.3-4.4-7.9-6.4 36.2-55.6 57.3-121.8 57.3-193.1C773.3 222.8 614.6 64 418.7 64S64 222.8 64 418.6c0 195.9 158.8 354.6 354.6 354.6 71.3 0 137.5-21.2 193.2-57.4 2 2.7 3.9 5.4 6.3 7.8L832.5 938c14.6 14.6 33.7 21.9 52.8 21.9 19.1 0 38.2-7.3 52.8-21.8 29.2-29.1 29.2-76.4 0.1-105.5M418.7 661.3C284.9 661.3 176 552.4 176 418.6 176 284.9 284.9 176 418.7 176c133.8 0 242.6 108.9 242.6 242.7 0 133.7-108.9 242.6-242.6 242.6" p-id="2677"></path></svg>
+            </div>
+        </div>
+    </div>
+    <script>
+        var searchInput = document.getElementById("search-input");
+        searchInput.addEventListener('keydown', (event) => {
+            var inputValue = encodeURIComponent(searchInput.value.trim());
+            if (inputValue && event.keyCode == 13) {
+                window.open(`${window.location.protocol}//${window.location.host}/search?key=${inputValue}`);
+            }
+        });
+    </script>
+</widget></div><div class="widget toc"><widgets class="widget-wrapper toc">
+    <div class="widget-header cap dis-select">
+        <a class="name" href="#">梯度散度和旋度</a>
+    </div>
+    <div class="widget-body fs14">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#梯度">梯度</a></li>
+    <li><a href="#散度">散度</a></li>
+    <li><a href="#旋度">旋度</a></li>
+    <li><a href="#标量场梯度的散度">标量场梯度的散度</a></li>
+    <li><a href="#标量场梯度的旋度">标量场梯度的旋度</a></li>
+    <li><a href="#矢量场旋度的散度">矢量场旋度的散度</a></li>
+    <li><a href="#麦克斯韦方程组">麦克斯韦方程组</a></li>
+  </ul>
+</nav>
+    </div>
+</widgets></div></div>
+<footer class="footer dis-select">
+    <div class="social-wrap"><a class="social" href="https://gohugo.io/" target="_blank">
+            <img src="../../social/hugo.png">
+        </a><a class="social" href="https://github.com/yhreim" target="_blank">
+            <img src="../../social/github.svg">
+        </a><a class="social" href="https://space.bilibili.com/" target="_blank">
+            <img src="../../social/bilibili.ico">
+        </a></div>
+</footer></aside>
+        <main class="LMain"><header class="header mobile-only">
+  <div class="logo-wrap">
+      <a class="avatar" href="../../">
+          <div class="mask"></div>
+          <div class="bg" style="background-image:url(/img/rainbow64@3x.webp)"></div>
+          <img class="avatar" src="../../avatar.jpg" onerror="this.classList.add('error');this.src='../../img/unknow.svg';">
+      </a>
+      <a class="title" href="../../">
+          <div class="main" ff="title">墨子</div>
+          <div class="sub normal cap">雾里挑灯看剑</div>
+          <div class="sub hover cap">一个物理、数学计算机爱好者</div>
+      </a>
+  </div>
+</header><div class="bread-nav fs14">
+  <div class="breadcrumb"><a class="cap item" href="../../categories/%e7%89%a9%e7%90%86">物理</a>
+      <span class="sep"> </span></div>
+  <span class="post-meta">发布于 2023-8-19</span>
+</div>
+
+<article class="md-text content post">
+  <h1 class="article-title">梯度散度和旋度</h1><h2 id="#梯度">
+    梯度
+    <a class="anchor" name="梯度" href="#%e6%a2%af%e5%ba%a6">#</a>
+</h2><p>首先说明，梯度是一个向量，它表示函数在某个点处往哪个方向走，变化最快，即梯度等于方向导数的最大值。
+<img class="md_img" data-fancybox="gallery" src="https://pic.imgdb.cn/item/64e36bd3661c6c8e54c1224e.png" alt=""></p>
+<h2 id="#散度">
+    散度
+    <a class="anchor" name="散度" href="#%e6%95%a3%e5%ba%a6">#</a>
+</h2><p>散度是单位体积，单位时间下，流过该体积的矢量通量的增加量，所以散度是一种标量，用来衡量“流体”的扩散程度。可以想象一个小立方体分别在xyz方向上通量增加量。
+<img class="md_img" data-fancybox="gallery" src="https://pic.imgdb.cn/item/64e36bd3661c6c8e54c1221e.png" alt=""><br>
+为了方便记忆，可以将散度类比于线性代数中的向量内积，两个向量的内积是一个标量，而散度的结果也是一个标量。</p>
+<h2 id="#旋度">
+    旋度
+    <a class="anchor" name="旋度" href="#%e6%97%8b%e5%ba%a6">#</a>
+</h2><p>就绕x轴旋转而言，可以想象为z方向水流随y的增加趋势（斜率）(逆时针)-y方向水流随z的增加趋势（顺时针）<br>
+<a class="md-link" href="https://www.bilibili.com/video/BV19s41157Z4/?spm_id_from=333.337.search-card.all.click&amp;vd_source=a4f6a902e9ff9aa278cdf84e8fefa84b"  ><img class="md_img" data-fancybox="gallery" src="https://pic.imgdb.cn/item/64e36946661c6c8e54b592ce.png" alt=""><img class="icon" src="../../img/link.svg" /></a>(←←←←←点击图片观看视频)
+<img class="md_img" data-fancybox="gallery" src="https://pic.imgdb.cn/item/64e0d838661c6c8e542d43c8.png" alt="">
+<img class="md_img" data-fancybox="gallery" src="https://pic.imgdb.cn/item/64e2eb8f661c6c8e54f39c8b.jpg" alt=""></p>
+<h2 id="#标量场梯度的散度">
+    标量场梯度的散度
+    <a class="anchor" name="标量场梯度的散度" href="#%e6%a0%87%e9%87%8f%e5%9c%ba%e6%a2%af%e5%ba%a6%e7%9a%84%e6%95%a3%e5%ba%a6">#</a>
+</h2><p><img class="md_img" data-fancybox="gallery" src="https://pic.imgdb.cn/item/64e36bd4661c6c8e54c1229b.png" alt=""></p>
+<h2 id="#标量场梯度的旋度">
+    标量场梯度的旋度
+    <a class="anchor" name="标量场梯度的旋度" href="#%e6%a0%87%e9%87%8f%e5%9c%ba%e6%a2%af%e5%ba%a6%e7%9a%84%e6%97%8b%e5%ba%a6">#</a>
+</h2><p><img class="md_img" data-fancybox="gallery" src="https://pic.imgdb.cn/item/64e36bd4661c6c8e54c122dd.png" alt=""><br>
+这告诉我们一件事情，保守场是有源无旋的！！！<br>
+梯度的旋度为0！！！</p>
+<h2 id="#矢量场旋度的散度">
+    矢量场旋度的散度
+    <a class="anchor" name="矢量场旋度的散度" href="#%e7%9f%a2%e9%87%8f%e5%9c%ba%e6%97%8b%e5%ba%a6%e7%9a%84%e6%95%a3%e5%ba%a6">#</a>
+</h2><p><img class="md_img" data-fancybox="gallery" src="https://pic.imgdb.cn/item/64e36bd3661c6c8e54c121f1.png" alt=""><br>
+综上，第5点和第6点可以总结为“梯无旋，旋无散”</p>
+<h2 id="#麦克斯韦方程组">
+    麦克斯韦方程组
+    <a class="anchor" name="麦克斯韦方程组" href="#%e9%ba%a6%e5%85%8b%e6%96%af%e9%9f%a6%e6%96%b9%e7%a8%8b%e7%bb%84">#</a>
+</h2><p>旋度和散度都会了，让我们来理解麦克斯韦方程组吧！
+<img class="md_img" data-fancybox="gallery" src="https://p1.ssl.qhimg.com/t01e712e7094ee7c38e.jpg" alt="">
+第一个式子是静电场的高斯定理<br>
+第二个式子说明电场是由变化的磁场产生的<br>
+第三个式子表明磁场是有旋无源场
+第四个式子说明磁场是由电场激发的</p>
+</article><div class="float-panel mobile-only blur" style="display:none">
+  <button type="button" class="sidebar-toggle" onclick="float_panel_click()">
+    <svg class="icon" style="width:1em;height:1em;vertical-align:middle;fill:currentColor;overflow:hidden" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301">
+      <path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path>
+      <path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path>
+    </svg>
+  </button>
+  <script>
+    float_panel_click = () => {
+      document.getElementById("start").classList.toggle("mobile");
+      document.getElementsByClassName("sidebar-toggle")[0].classList.toggle("mobile");
+    }
+  </script>
+</div></main>
+    </div>
+</body><script src="../../scripts/table-of-contents.js"></script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js" defer></script>
+<script src="../../scripts/mathjax.js"></script>
+</html>

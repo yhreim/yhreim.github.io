@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>物理 on 墨子的博客</title>
+    <link>/categories/%E7%89%A9%E7%90%86/</link>
+    <description>Recent content in 物理 on 墨子的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 26 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="/categories/%E7%89%A9%E7%90%86/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>台球扎杆分析</title>
+      <link>/posts/%E5%8F%B0%E7%90%83%E6%89%8E%E6%9D%86/</link>
+      <pubDate>Tue, 26 Dec 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/%E5%8F%B0%E7%90%83%E6%89%8E%E6%9D%86/</guid>
+      <description>!!! note markdown text JAK !!! note Custom Title markdown text
+扎杆问题 # 什么是扎杆?请看下面一段视频！ ???+ bug ???+ bug ???+ bug Nested bugs.
+扎杆实际上就是从斜上方击球，使球获得一个比较大的水平角速度，使球在台球桌上轨迹为弧线的现象。因为握杆击球的动作形式扎球，故曰：扎杆 建立球坐标 # 下面先普及一下球坐标的一点知识 图1：平面坐标系
+假设P（x，y，z）为空间内一点，则点P也可用这样三个有次序的数(r，θ，φ)来确定
+其中r为原点O与点P间的距离； θ为有向线段OP与z轴正向的夹角； φ为点P在xOy面上的投影与x轴的夹角 这样的三个数r，θ，φ叫做点P的球面坐标，
+显然，这里r，θ，φ的变化范围为r∈[0,+∞)，θ∈[0, π]， φ∈[0,2π]
+$$ x=rsinθcosφ$$ $$y=rsinθsinφ$$ $$z=rcosθ $$
+我们假设接触点为： $$R=(R,45°,45°)$$ 碰撞带来的冲量为： $$p=-(p,10°,55°)$$ 带入球坐标公式： $$R=(R/2,R/2,\sqrt{2}R/2)$$
+$$p=(-psin(10)cos(55),-psin(10)sin(55),-pcos(55°))$$ 由杆的质量约为550g,出手速度约为0.2m/s动量p约为0.11kgm/s
+通过分析碰撞&amp;ndash;计算初始值 # 动能定理： $$p=mv$$ 转动定理： $$M=R\times F$$ $$M=I\beta$$ $$w==\beta t=\frac{M}{I} t=\frac{R\times p}{I} $$
+解得$w_0$的初始值： $$w=\frac{1}{I} \begin{vmatrix} i&amp;amp; j &amp;amp;k \ 0&amp;amp; 0 &amp;amp; -R\ -psin(10)cos(55)&amp;amp;-psin(10)sin(55)&amp;amp;-pcos(55°) \end{vmatrix} $$ $$=(-44.</description>
+    </item>
+    
+    <item>
+      <title>台球加上下塞运算</title>
+      <link>/posts/%E4%B8%8B%E5%A1%9E/</link>
+      <pubDate>Fri, 15 Dec 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/%E4%B8%8B%E5%A1%9E/</guid>
+      <description>台球的上下塞有什么区别 # 1. 这是台球下塞的计算 # 1.1 在高$h$的地方给球一个冲量$p$ # 速度: $$v_0=\frac{p}{m}$$ 角速度: $$\omega_0 =\frac{pR\cdot sin\theta}{I}$$ $$sin\theta=\frac{R-h}{R}$$
+2.2 台球发生滚动 # 速度： $$v=v_0-(f/m)\cdot t$$ 角速度： $$w=w_0-\frac{fR}{I}\cdot t$$ 纯滚： $$v=-\omega\cdot R$$ (有负号是因为初始旋转方向与速度方向相反)
+联立上述所有式子可解得: $$v=\frac{5p}{7m}(1-sin\theta)$$
+台球的纯滚动末态分为三种情况 # 1. 向前纯滚2. 静止不动3. 向后纯滚 其中临界情况为静止不动（$v=0$）
+临界情况解得： $$h=0$$ 当$h=0$时，为上述第二种情况：静止不动
+当$h&amp;gt;0$时，为上述第一种情况：向前滚动
+$h&amp;lt;0$不成立，故不存在第三种情况
+2. 加上塞 # 即令($h&amp;gt;R$)
+此时： $$\sin\theta=\frac{h-R}{R}&amp;gt;0$$ 速度: $$v_0=\frac{p}{m}$$ 角速度: $$\omega_0 =\frac{pR\cdot sin\theta}{I}$$ 根据摩擦力向前向后可分为：
+向前( $v&amp;lt;wr$ ) 向后( $v&amp;gt;wr$ ) 临界情况：$v=wr$
+解得： $$sin\theta=\frac{2}{5}, h=\frac{7}{5}R$$
+1. $h&amp;gt;\frac{7}{5}R$(摩擦力向前) # 速度： $$v=v_0+(f/m)\cdot t$$ 角速度： $$w=w_0-\frac{fR}{I}\cdot t$$ $$v=wR$$ 解得 $$t=(\frac{5}{2}sin\theta-1)\frac{p}{m\cdot \frac{7f}{2m}}$$ 小球达到向前纯滚 $$v=\frac{5}{7}(sin\theta+1)\frac{p}{m}$$</description>
+    </item>
+    
+    <item>
+      <title>温室效应的成因及能源结构的分析</title>
+      <link>/posts/%E7%A2%B3%E4%B8%AD%E5%92%8C/</link>
+      <pubDate>Thu, 23 Nov 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/%E7%A2%B3%E4%B8%AD%E5%92%8C/</guid>
+      <description>温室效应的成因及能源结构的分析 # 摘要：本报告对温室效应成因进行解释，突出二氧化碳在其中的关键作用。强调了改善能源结构的紧迫性，并分析了中国的能源现状，特别关注了可再生能源的成本和可控性问题，以及技术创新的重要性。
+关键词：分子振动与转动理论、可再生能源成本与可控性
+报告人：莫哥、徐哥
+中学物理告诉我们，大气由大约78%的氮气、21%的氧气、0.9%的氩气和0.1%的其他气体组成。二氧化碳等造成全球气温升高的“温室气体”便是这0.1%的其他气体。看似微不足道，正是这些气体为地球上丰富多彩的生命创造了宜居条件，包括适宜且稳定的温度和湿度，但温室效应的失衡便导致了全球变暖问题。
+1. 那么为何二氧化碳能够发挥像棉被一样的“保温作用”呢？ # 1.1 物质的辐射波谱与物质自身温度相关。 # 对于太阳这样的超高温星体（～6000度），辐射中有大量的可见光和紫外光。 对于像地球这样平均温度只有15度的星体，绝大部分辐射都位于红外波段。 1.2 气体吸收辐射的能力取决于分子极性 # 吸收辐射能量，即电磁波能量，需要气体分子能够和电磁波发生反应。吸收电磁波需要能够产生正负极性的气体分子，二氧化碳、水蒸气、甲烷、氮氧化物等气体恰恰具备这种能力；氧气、氮气这类对称型分子则基本无法产生正负极性，因此无法与电磁波发生反应，吸收能量。 这使得地球反射的长波辐射（红外线）大部分被温室气体吸收，就像裹在地球上厚厚的被子 1.2.1二氧化碳分子的振动和转动： # 二氧化碳（CO2）分子是一个线性分子，由一个碳原子和两个氧原子组成。这个分子的分子振动和转动能级与其结构和质量有关。
+1.2.1.1 分子振动： # 谐振子模型：
+对于简谐振动（Harmonic Oscillator），振动能级之间的能量差（ΔE) 与振动频率（ν) 之间的关系： $$ ΔE = h\cdotν $$ 其中，h 是普朗克常数。 振动量子数：
+振动量子数（v) 表示振动的能级，取整数值。 对称伸缩振动（Symmetric Stretch）：
+两个氧原子相向运动，与碳原子的距离同时增加或减小。 这是主要的振动模式，对应于主要的红外吸收带。 非对称伸缩振动（Asymmetric Stretch）：
+两个氧原子朝着或远离彼此，导致氧-碳-氧键角变化。 这个振动模式也参与了红外吸收。 弯曲振动（Bending Vibration）：
+指两个氧原子围绕碳原子的弯曲运动。 这个模式的振动能级通常比伸缩振动的能级高。 1.2.1.2 分子转动： # 刚性转动：
+刚性转动的能量与转动量子数（J) 之间的关系： $$ E_J = J(J+1) \cdot\frac {ℏ²} {2I} $$ 其中，I 是分子的转动惯量，ℏ 是约化普朗克常数。 非刚性转动：</description>
+    </item>
+    
+    <item>
+      <title>驻波中波长与弹性绳张力间的关系</title>
+      <link>/posts/%E9%A9%BB%E6%B3%A2%E4%B8%AD%E6%B3%A2%E9%95%BF%E4%B8%8E%E5%BC%B9%E6%80%A7%E7%BB%B3%E5%BC%A0%E5%8A%9B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB/</link>
+      <pubDate>Thu, 02 Nov 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/%E9%A9%BB%E6%B3%A2%E4%B8%AD%E6%B3%A2%E9%95%BF%E4%B8%8E%E5%BC%B9%E6%80%A7%E7%BB%B3%E5%BC%A0%E5%8A%9B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB/</guid>
+      <description>实验：驻波中波长与张力 # 在我们实验课的驻波实验中，有一个实验是探究波长与绳拉力间的关系。不知道大家有没有想过两者间有什么关系？
+驻波原理 # 波的叠加原理：
+$$ y_1=sin(wt-\frac{x}{\lambda})$$ $$y_2=sin(wt+\frac{x}{\lambda})$$ $$y=y_1+y_2=sin(wt-\frac{x}{\lambda})+sin(wt+\frac{x}{\lambda})$$ $$=2sin(wt)cos(\frac{x}{\lambda})$$
+从表达式中我们可以发现，只有弦长为半波长的整数倍时，驻波才有可能产生。 $$\lambda=v/f$$ 从上述分析我们可以发现驻波的波长与波速成正比，与波源的频率成反比。
+实验 # (实验过程（思路）)保持波源频率不变，弦长不变，随着绳子张力增大，波长也变长，当半波长的整数倍恰好等于弦长，测量形成驻波的波长。
+（陈列数据） # 拉力 1.75 0.51 0.25 0.15 波长 1.38 68 45.3 34 （绘制散点图） # （曲线拟合）当我们选择多项式拟合，选择次数2，我们发现实验数据完美拟合($R² = 1$)。
+波长与拉力成二次关系，这是为什么呢？
+弦振动问题 # 首先，假设一根绳子沿x轴放置，当它振动时，每一时刻t会在空中形成一个曲线形状($y=sin(-\frac{x}{\lambda}+\phi)$，把这个形状&amp;quot;拍照&amp;quot;
+如果连续拍照，(相当于把时间看作一个维度)我们就会得到一个关于时间t变化的曲线&amp;quot;相册&amp;quot; $y=sin(wt-\frac{x}{\lambda})$ 在微小振动下，弦的张力可视为处处相等
+竖直方向受力平衡： $$Tsin\theta_1-Tsin\theta_2+\rho g\cdot\mathrm{d}x=\rho \cdot\mathrm{d}x\frac{\partial^2 u}{\partial t^2}$$ 又因为：$sin\theta_1=tan\theta_1=(\frac{\partial u}{\partial x})_x$
+$$sin\theta_2=tan\theta_2=(\frac{\partial u}{\partial x})_{x+\Delta x}$$
+化简得： $$ T(\frac{\partial u}{\partial x})_x-T(\frac{\partial u}{\partial x})_{x+\Delta x}-\rho g\cdot\mathrm{d}x=\rho\cdot\mathrm{d}x\frac{\partial^2 u}{\partial t^2} $$ 同时除$\rho\cdot dx$并移项： $$(T/\rho)\cdot\frac{(\frac{\partial u}{\partial x})_x-(\frac{\partial u}{\partial x})_{x+\Delta x}}{dx}-\frac{\partial^2 u}{\partial t^2}=g$$ 仔细观察，可以发现： $$(T/\rho)\frac{\partial^2 u}{\partial x^2}-\frac{\partial^2 u}{\partial t^2}=g$$</description>
+    </item>
+    
+    <item>
+      <title>梯度散度和旋度</title>
+      <link>/post/%E6%95%A3%E5%BA%A6%E5%92%8C%E6%97%8B%E5%BA%A6/</link>
+      <pubDate>Sat, 19 Aug 2023 22:44:04 +0800</pubDate>
+      
+      <guid>/post/%E6%95%A3%E5%BA%A6%E5%92%8C%E6%97%8B%E5%BA%A6/</guid>
+      <description>梯度 # 首先说明，梯度是一个向量，它表示函数在某个点处往哪个方向走，变化最快，即梯度等于方向导数的最大值。 散度 # 散度是单位体积，单位时间下，流过该体积的矢量通量的增加量，所以散度是一种标量，用来衡量“流体”的扩散程度。可以想象一个小立方体分别在xyz方向上通量增加量。 为了方便记忆，可以将散度类比于线性代数中的向量内积，两个向量的内积是一个标量，而散度的结果也是一个标量。
+旋度 # 就绕x轴旋转而言，可以想象为z方向水流随y的增加趋势（斜率）(逆时针)-y方向水流随z的增加趋势（顺时针）
+(←←←←←点击图片观看视频) 标量场梯度的散度 # 标量场梯度的旋度 # 这告诉我们一件事情，保守场是有源无旋的！！！
+梯度的旋度为0！！！
+矢量场旋度的散度 # 综上，第5点和第6点可以总结为“梯无旋，旋无散”
+麦克斯韦方程组 # 旋度和散度都会了，让我们来理解麦克斯韦方程组吧！ 第一个式子是静电场的高斯定理
+第二个式子说明电场是由变化的磁场产生的
+第三个式子表明磁场是有旋无源场 第四个式子说明磁场是由电场激发的</description>
+    </item>
+    
+    <item>
+      <title>梯度散度和旋度</title>
+      <link>/posts/%E6%95%A3%E5%BA%A6%E5%92%8C%E6%97%8B%E5%BA%A6/</link>
+      <pubDate>Sat, 19 Aug 2023 22:44:04 +0800</pubDate>
+      
+      <guid>/posts/%E6%95%A3%E5%BA%A6%E5%92%8C%E6%97%8B%E5%BA%A6/</guid>
+      <description>梯度 # 首先说明，梯度是一个向量，它表示函数在某个点处往哪个方向走，变化最快，即梯度等于方向导数的最大值。 散度 # 散度是单位体积，单位时间下，流过该体积的矢量通量的增加量，所以散度是一种标量，用来衡量“流体”的扩散程度。可以想象一个小立方体分别在xyz方向上通量增加量。 为了方便记忆，可以将散度类比于线性代数中的向量内积，两个向量的内积是一个标量，而散度的结果也是一个标量。
+旋度 # 就绕x轴旋转而言，可以想象为z方向水流随y的增加趋势（斜率）(逆时针)-y方向水流随z的增加趋势（顺时针）
+(←←←←←点击图片观看视频) 标量场梯度的散度 # 标量场梯度的旋度 # 这告诉我们一件事情，保守场是有源无旋的！！！
+梯度的旋度为0！！！
+矢量场旋度的散度 # 综上，第5点和第6点可以总结为“梯无旋，旋无散”
+麦克斯韦方程组 # 旋度和散度都会了，让我们来理解麦克斯韦方程组吧！ 第一个式子是静电场的高斯定理
+第二个式子说明电场是由变化的磁场产生的
+第三个式子表明磁场是有旋无源场 第四个式子说明磁场是由电场激发的</description>
+    </item>
+    
+    <item>
+      <title>平衡</title>
+      <link>/post/%E4%BB%80%E4%B9%88%E6%98%AF%E5%B9%B3%E8%A1%A1/</link>
+      <pubDate>Sat, 19 Aug 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/post/%E4%BB%80%E4%B9%88%E6%98%AF%E5%B9%B3%E8%A1%A1/</guid>
+      <description>我们知道处于平衡状态的物体合外力=0，并且外力交于质心（或平行）
+也就是
+平衡 →→→ 三力汇交 # 物体的运动通常有6个自由度，以此可以列出三个受力平衡，三个力矩平衡的方程
+当受力在同一平面时，问题就更简单了
+只需正交分解两个方程，转动一个方程。
+以下是三个计算技巧 # 1将力的分解方向垂直未知力（平动） # 2将未知力的共点力作为力矩平衡的支点（转动） # 3两个力的合成的作用点在汇交点 # </description>
+    </item>
+    
+    <item>
+      <title>平衡</title>
+      <link>/posts/%E4%BB%80%E4%B9%88%E6%98%AF%E5%B9%B3%E8%A1%A1/</link>
+      <pubDate>Sat, 19 Aug 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/%E4%BB%80%E4%B9%88%E6%98%AF%E5%B9%B3%E8%A1%A1/</guid>
+      <description>我们知道处于平衡状态的物体合外力=0，并且外力交于质心（或平行）
+也就是
+平衡 →→→ 三力汇交 # 物体的运动通常有6个自由度，以此可以列出三个受力平衡，三个力矩平衡的方程
+当受力在同一平面时，问题就更简单了
+只需正交分解两个方程，转动一个方程。
+以下是三个计算技巧 # 1将力的分解方向垂直未知力（平动） # 2将未知力的共点力作为力矩平衡的支点（转动） # 3两个力的合成的作用点在汇交点 # </description>
+    </item>
+    
+    <item>
+      <title>虚功原理</title>
+      <link>/post/%E8%99%9A%E5%8A%9F%E5%8E%9F%E7%90%86/</link>
+      <pubDate>Wed, 09 Aug 2023 08:34:49 +0800</pubDate>
+      
+      <guid>/post/%E8%99%9A%E5%8A%9F%E5%8E%9F%E7%90%86/</guid>
+      <description>所谓的虚功原理，核心就只有一句话，功是能量转换的量度，即用待求力做虚假的一小段功使能量转换，条件是功能守恒或总能量一阶导为零，以此列个能量守恒，没理解的话可以直接看例题。
+例题1 # 传统解法 # 虚功解法 # 条件：弹力绳静止时动能为零，弹性势能与重力势能自合达到最大，我们可以说总势能一阶导等0，满足虚功原理条件
+在此一小段位移中，弹力做的负功等于重力势能减少量 例题2 # 传统法 # 虚功解法 # </description>
+    </item>
+    
+    <item>
+      <title>虚功原理</title>
+      <link>/posts/%E8%99%9A%E5%8A%9F%E5%8E%9F%E7%90%86/</link>
+      <pubDate>Wed, 09 Aug 2023 08:34:49 +0800</pubDate>
+      
+      <guid>/posts/%E8%99%9A%E5%8A%9F%E5%8E%9F%E7%90%86/</guid>
+      <description>所谓的虚功原理，核心就只有一句话，功是能量转换的量度，即用待求力做虚假的一小段功使能量转换，条件是功能守恒或总能量一阶导为零，以此列个能量守恒，没理解的话可以直接看例题。
+例题1 # 传统解法 # 虚功解法 # 条件：弹力绳静止时动能为零，弹性势能与重力势能自合达到最大，我们可以说总势能一阶导等0，满足虚功原理条件
+在此一小段位移中，弹力做的负功等于重力势能减少量 例题2 # 传统法 # 虚功解法 # </description>
+    </item>
+    
+    <item>
+      <title>驻波中波长与弹性绳张力间的关系</title>
+      <link>/post/%E9%A9%BB%E6%B3%A2%E4%B8%AD%E6%B3%A2%E9%95%BF%E4%B8%8E%E5%BC%B9%E6%80%A7%E7%BB%B3%E5%BC%A0%E5%8A%9B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/post/%E9%A9%BB%E6%B3%A2%E4%B8%AD%E6%B3%A2%E9%95%BF%E4%B8%8E%E5%BC%B9%E6%80%A7%E7%BB%B3%E5%BC%A0%E5%8A%9B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB/</guid>
+      <description>实验：驻波中波长与张力 # 在我们实验课的驻波实验中，有一个实验是探究波长与绳拉力间的关系。不知道大家有没有想过两者间有什么关系？
+驻波原理 # 波的叠加原理：
+$$ y_1=sin(wt-\frac{x}{\lambda})$$ $$y_2=sin(wt+\frac{x}{\lambda})$$ $$y=y_1+y_2=sin(wt-\frac{x}{\lambda})+sin(wt+\frac{x}{\lambda})$$ $$=2sin(wt)cos(\frac{x}{\lambda})$$
+从表达式中我们可以发现，只有弦长为半波长的整数倍时，驻波才有可能产生。 $$\lambda=v/f$$ 从上述分析我们可以发现驻波的波长与波速成正比，与波源的频率成反比。
+实验 # (实验过程（思路）)保持波源频率不变，弦长不变，随着绳子张力增大，波长也变长，当半波长的整数倍恰好等于弦长，测量形成驻波的波长。
+（陈列数据） # 拉力 1.75 0.51 0.25 0.15 波长 1.38 68 45.3 34 （绘制散点图） # （曲线拟合）当我们选择多项式拟合，选择次数2，我们发现实验数据完美拟合($R² = 1$)。
+波长与拉力成二次关系，这是为什么呢？
+弦振动问题 # 首先，假设一根绳子沿x轴放置，当它振动时，每一时刻t会在空中形成一个曲线形状($y=sin(-\frac{x}{\lambda}+\phi)$，把这个形状&amp;quot;拍照&amp;quot;
+如果连续拍照，(相当于把时间看作一个维度)我们就会得到一个关于时间t变化的曲线&amp;quot;相册&amp;quot; $y=sin(wt-\frac{x}{\lambda})$ 在微小振动下，弦的张力可视为处处相等
+竖直方向受力平衡： $$Tsin\theta_1-Tsin\theta_2+\rho g\cdot\mathrm{d}x=\rho \cdot\mathrm{d}x\frac{\partial^2 u}{\partial t^2}$$ 又因为：$sin\theta_1=tan\theta_1=(\frac{\partial u}{\partial x})_x$
+$$sin\theta_2=tan\theta_2=(\frac{\partial u}{\partial x})_{x+\Delta x}$$
+化简得： $$ T(\frac{\partial u}{\partial x})x-T(\frac{\partial u}{\partial x}){x+\Delta x}-\rho g\cdot\mathrm{d}x=\rho\cdot\mathrm{d}x\frac{\partial^2 u}{\partial t^2} $$ 同时除$\rho\cdot dx$并移项： $$(T/\rho)\cdot\dfrac{(\frac{\partial u}{\partial x})x-(\frac{\partial u}{\partial x}){x+\Delta x}}{dx}-\frac{\partial^2 u}{\partial t^2}=g$$ 仔细观察，可以发现： $$(T/\rho)\frac{\partial^2 u}{\partial x^2}-\frac{\partial^2 u}{\partial t^2}=g$$</description>
+    </item>
+    
+  </channel>
+</rss>

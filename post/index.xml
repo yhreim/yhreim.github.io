@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on 墨子的博客</title>
+    <link>/post/</link>
+    <description>Recent content in Posts on 墨子的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 28 Oct 2023 23:25:30 +0800</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>第二次力学作业</title>
+      <link>/post/%E7%AC%AC%E4%BA%8C%E6%AC%A1%E5%8A%9B%E5%AD%A6%E4%BD%9C%E4%B8%9A/</link>
+      <pubDate>Sat, 28 Oct 2023 23:25:30 +0800</pubDate>
+      
+      <guid>/post/%E7%AC%AC%E4%BA%8C%E6%AC%A1%E5%8A%9B%E5%AD%A6%E4%BD%9C%E4%B8%9A/</guid>
+      <description>Q1-Q3 # 《Freedman University Physics_13th-Mechanics》problems:
+P174
+5.121 5.124 5.125 Q4(textbook P152) # A small ball falls with initial velocity v_0 in a liquid with a drag force satisfying $F=-kv$. Find the change in velocity and displacement of the ball with time Q5 # As shown in the figure, a small ring of mass m is placed on a large smooth circle of radius $R$. The latter rotates in the horizontal plane with a uniform angular velocity $w$ around an axis that passes through $O$ and is perpendicular to the ring surface.</description>
+    </item>
+    
+    <item>
+      <title>Hugo和markdown学习笔记</title>
+      <link>/post/hugo%E5%92%8Cmarkdown%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Mon, 18 Sep 2023 19:37:30 +0800</pubDate>
+      
+      <guid>/post/hugo%E5%92%8Cmarkdown%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
+      <description>如何添加数学公式 # 在markdown页首加入
+math: true 分号 # $\dfrac{1} {1+\cdots}$
+$\dfrac{1} {1+\cdots}$ 括号 # 括号可以直接用(..)输入，但是需要注意的是，有时候括号内的内容高度较大，需要改用\left(..\right)
+大括号 $$ y= \begin{cases} -x,\quad &amp;amp;x\leq 0 \ x,\quad &amp;amp;x&amp;gt;0 \end{cases} $$
+常用 # $ \mp$\mp
+$\ge$\ge $\le$\le
+$\subset$ \subset
++ - $\times {\div} $\times {\div}
+$\sqrt{a}$ $\sin$
+微分 # $\mathrm{d}t$ \mathrm{d}t
+$\nabla\psi$ \nabla\psi
+$$ \dfrac{\partial^2}{\partial x_1\partial x_2}y $$
+\dfrac{\partial^2}{\partial x_1\partial x_2}
+$\dot{x}$ \dot{x}
+$\lim_{x \to 0}$ \lim_{x \to 0}
+$\int$ \int $\int_{a}^{b}$ \int_{a}^{b} $$ \frac{\left{\begin{matrix} x=a + r\text{cos}\theta \</description>
+    </item>
+    
+    <item>
+      <title>听说这是大学四年最好的安排</title>
+      <link>/post/%E5%90%AC%E8%AF%B4%E8%BF%99%E6%98%AF%E5%A4%A7%E5%AD%A6%E5%9B%9B%E5%B9%B4%E6%9C%80%E5%A5%BD%E7%9A%84%E5%AE%89%E6%8E%92/</link>
+      <pubDate>Thu, 07 Sep 2023 22:35:41 +0800</pubDate>
+      
+      <guid>/post/%E5%90%AC%E8%AF%B4%E8%BF%99%E6%98%AF%E5%A4%A7%E5%AD%A6%E5%9B%9B%E5%B9%B4%E6%9C%80%E5%A5%BD%E7%9A%84%E5%AE%89%E6%8E%92/</guid>
+      <description>转载自央视新闻，觉得不错，特此分享
+新学期开启，话题#原来大学没课的时候还可以做那么多事#成为学子们的热议。今晚，《夜读》准备了12条“打开大学生活”的小建议。没有最好的，只有适合自己的，愿每个人都能在所学中尽情努力。
+12条建议之——
+高质量大学生活指南
+01充分学习一个领域。 # 把专业基础打牢，注重学习成绩，保持一个比较好的绩点，做到不挂科。这能体现出一个人的认真态度、勤奋努力状态和专注度。在年富力强的青春岁月，让自己充分体验攀登在知识道路上的坚定有力。 02一个值得追求的学期目标。 # 做事多则劣，少而精。每学期给自己做计划安排的时候，不要多，多则杂，杂了每件事都做不好。将精力集中到一件或二件事情，做到极致。争取每个学期过后，都有实实在在的获得感。
+03培养几项课外兴趣。 # 发展一些能让自己沉浸其中的爱好，除了快乐，还能让人变的更纯粹。通过掌握某种技能，你可以朝着能给你创造惊喜的方向延伸发展，并最终发现你的热爱所在。
+04积攒一些个人作品。 # 只要是你觉得能够输出的都可以：喜欢看书，就写几篇个性化的书评；喜欢拍摄，就制作几期有趣的视频；喜欢设计，就把天马行空的想象力付诸笔端。作品是你未来呈现自我最有力的说明。
+05锚定致力的方向。 # 未来自己想做什么？现在的专业是否适合自己？你要在自身内挖掘一个深的答复。如果喜欢所学，就全力以赴去深耕；如果觉得不合适，及时了解学校的转专业信息，明确要求，及早筹备。
+06多看网上优质课程。 # 互联网时代，信息量极大极为丰富，要拓展自我吸取知识的方式，多关注一些打破信息差的学习网站，在那里找到自己渴望深入了解的、各种专业领域的知识分享，如编程、设计、音乐、文学等。
+07珍惜同学间的情意。 # 和同学的关系，甚至可以成为你一生的财富。珍惜不停鞭策你的同学、帮助你渡过难关的同学、带给你自信的同学，这些人也是你回想自己大学生活时最动心片段中的主角。
+08精打细算，把钱做好规划。 # 大学里消费要量力而行，不攀比，因需而买。务必不能透支消费。
+09漫步校园 # 早晨七点的阳光是校园的最佳滤镜，中午热闹非凡的食堂是校园的动人烟火，夜晚学子抱书归寝的步行道是校园无声的温柔。此外，还有窝在长椅的猫咪，梧桐树下自行车的铃响……这些都是治愈学习疲累良药。
+10在社会实践中提升自我。 # 在不影响学业的情况下，尽可能去参加一些学生组织、社会实践工作、公益志愿服务活动，累积经验、技能和履历亮点。
+11说走就走的周边旅行。 # 有机会的话，带上追风赶月的灵魂和好友一起去旅行。路途中，了解祖国的自然风光，开阔人文视野。看世界，也找自己。
+12锻炼好身体，拥抱健康体魄。 # 学生在学校有两个地方是不能错过的：第一个是图书馆，第二个是操场，身体跟灵魂，必须有一个在路上。督促自己每周保持一定的锻炼频率，逐渐强化自身的体能素质。
+希望正值青春美好年华的你，
+能用心体验大学生活，
+珍惜宝贵的光阴和机会，
+学到安身立命之本领、特长，
+追寻到人生使命、兴趣、理想、追求之所在。
+未来的某一刻，
+当你回忆这段时光时，
+没有给自己留下太多遗憾，
+无愧于心，无负青春。
+$$ \varphi = 1+\frac{1} {1+\frac{1} {1+\frac{1} {1+\cdots} } } $$</description>
+    </item>
+    
+    <item>
+      <title>梯度散度和旋度</title>
+      <link>/post/%E6%95%A3%E5%BA%A6%E5%92%8C%E6%97%8B%E5%BA%A6/</link>
+      <pubDate>Sat, 19 Aug 2023 22:44:04 +0800</pubDate>
+      
+      <guid>/post/%E6%95%A3%E5%BA%A6%E5%92%8C%E6%97%8B%E5%BA%A6/</guid>
+      <description>梯度 # 首先说明，梯度是一个向量，它表示函数在某个点处往哪个方向走，变化最快，即梯度等于方向导数的最大值。 散度 # 散度是单位体积，单位时间下，流过该体积的矢量通量的增加量，所以散度是一种标量，用来衡量“流体”的扩散程度。可以想象一个小立方体分别在xyz方向上通量增加量。 为了方便记忆，可以将散度类比于线性代数中的向量内积，两个向量的内积是一个标量，而散度的结果也是一个标量。
+旋度 # 就绕x轴旋转而言，可以想象为z方向水流随y的增加趋势（斜率）(逆时针)-y方向水流随z的增加趋势（顺时针）
+(←←←←←点击图片观看视频) 标量场梯度的散度 # 标量场梯度的旋度 # 这告诉我们一件事情，保守场是有源无旋的！！！
+梯度的旋度为0！！！
+矢量场旋度的散度 # 综上，第5点和第6点可以总结为“梯无旋，旋无散”
+麦克斯韦方程组 # 旋度和散度都会了，让我们来理解麦克斯韦方程组吧！ 第一个式子是静电场的高斯定理
+第二个式子说明电场是由变化的磁场产生的
+第三个式子表明磁场是有旋无源场 第四个式子说明磁场是由电场激发的</description>
+    </item>
+    
+    <item>
+      <title>山楂树简谱</title>
+      <link>/post/%E5%B1%B1%E6%A5%82%E6%A0%91%E7%AE%80%E8%B0%B1/</link>
+      <pubDate>Sat, 19 Aug 2023 11:52:58 +0800</pubDate>
+      
+      <guid>/post/%E5%B1%B1%E6%A5%82%E6%A0%91%E7%AE%80%E8%B0%B1/</guid>
+      <description>自己用葫芦丝跟着调子谱出来的 </description>
+    </item>
+    
+    <item>
+      <title>平衡</title>
+      <link>/post/%E4%BB%80%E4%B9%88%E6%98%AF%E5%B9%B3%E8%A1%A1/</link>
+      <pubDate>Sat, 19 Aug 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/post/%E4%BB%80%E4%B9%88%E6%98%AF%E5%B9%B3%E8%A1%A1/</guid>
+      <description>我们知道处于平衡状态的物体合外力=0，并且外力交于质心（或平行）
+也就是
+平衡 →→→ 三力汇交 # 物体的运动通常有6个自由度，以此可以列出三个受力平衡，三个力矩平衡的方程
+当受力在同一平面时，问题就更简单了
+只需正交分解两个方程，转动一个方程。
+以下是三个计算技巧 # 1将力的分解方向垂直未知力（平动） # 2将未知力的共点力作为力矩平衡的支点（转动） # 3两个力的合成的作用点在汇交点 # </description>
+    </item>
+    
+    <item>
+      <title>虚功原理</title>
+      <link>/post/%E8%99%9A%E5%8A%9F%E5%8E%9F%E7%90%86/</link>
+      <pubDate>Wed, 09 Aug 2023 08:34:49 +0800</pubDate>
+      
+      <guid>/post/%E8%99%9A%E5%8A%9F%E5%8E%9F%E7%90%86/</guid>
+      <description>所谓的虚功原理，核心就只有一句话，功是能量转换的量度，即用待求力做虚假的一小段功使能量转换，条件是功能守恒或总能量一阶导为零，以此列个能量守恒，没理解的话可以直接看例题。
+例题1 # 传统解法 # 虚功解法 # 条件：弹力绳静止时动能为零，弹性势能与重力势能自合达到最大，我们可以说总势能一阶导等0，满足虚功原理条件
+在此一小段位移中，弹力做的负功等于重力势能减少量 例题2 # 传统法 # 虚功解法 # </description>
+    </item>
+    
+    <item>
+      <title>中国计划在2030年前登月</title>
+      <link>/post/%E4%B8%AD%E5%9B%BD%E8%AE%A1%E5%88%92%E5%9C%A82030%E5%B9%B4%E5%89%8D%E7%99%BB%E6%9C%88/</link>
+      <pubDate>Sun, 06 Aug 2023 13:54:54 +0800</pubDate>
+      
+      <guid>/post/%E4%B8%AD%E5%9B%BD%E8%AE%A1%E5%88%92%E5%9C%A82030%E5%B9%B4%E5%89%8D%E7%99%BB%E6%9C%88/</guid>
+      <description>我国计划在2030年前实现载人登陆月球开展科学探索，其后将探索建造月球科研试验站，开展系统、连续的月球探测和相关技术试验验证。
+运载方式 # 采用两枚运载火箭分别将月面着陆器和载人飞船送至地月转移轨道，飞船和着陆器在环月轨道交会对接，航天员从飞船进入月面着陆器。
+其后，月面着陆器将下降着陆于月面预定区域，航天员登上月球开展科学考察与样品采集。
+在完成既定任务后，航天员将乘坐着陆器上升至环月轨道与飞船交会对接，并携带样品乘坐飞船返回地球。
+为完成这项任务，我国科研人员正在研制长征十号运载火箭、新一代载人飞船、月面着陆器、登月服、载人月球车等装备。 月面着陆器，是中国研制建设载人月球探测工程的航天设备。
+月面着陆器 # 月面着陆器重约26吨，由登月舱和推进舱组成，主要负责把航天员从环月轨道下降着陆月面并返回环月轨道。将由新一代载人运载火箭被命名为长征十号负责将月面着陆器和登月飞船送入地月转移轨道
+据了解，月面着陆器在执行完任务后将停留在月球轨道，等待下一艘飞船对接并加注燃料，是名副其实的月面穿梭机 [图为月面着陆器和新一代载人飞船对接]
+新一代载人飞船 # 新一代载人飞船试验船（英文：Xinyidai Zairen Feichuan - Shiyan Chua，缩写：XZF-SC），是中国面向中国空间站运营及未来深空探测，载人探月工程需求而研发的新一代天地往返运输器。
+新一代载人飞船试验船全长8.8米，发射质量21.6吨，最大载荷7人，具备天地往返载人载货，高安全、高可靠、适应多任务和模块化设计特点，其中大部分精密仪器集中在返回舱，返回舱可重复使用 2020年5月5日，长征五号B运载火箭搭载了新一代载人飞船试验船首次飞行成功。8日13时49分，中国新一代载人飞船试验船返回舱在东风着陆场预定区域成功着陆，主要用于验证气动热防护、再入控制和群伞减速回收，缓冲气囊等关键技术 ▶▶▶↕戳一戳这里有视频介绍！！！！◀◀◀ 长征十号 # 长征十号（代号：CZ-10），是中国研制的新一代载人运载火箭，将于2030年前完成首飞。
+分为 有助推器构型 和 无助推器光杆构型，前者用于载人登月等深空探测，后者则服务于近地轨道空间站，近地版长十 12级火箭均可回收 奔向深蓝 # 蓝，是星空灿灿，
+是晴空炎炎，
+是海浪滚滚，
+是鲸的眼，
+是宇宙本来的颜色，
+所以望向蓝的瞬间，
+才会觉得她那么深不可测。 </description>
+    </item>
+    
+    <item>
+      <title>载人航天</title>
+      <link>/post/test-chinese/</link>
+      <pubDate>Tue, 11 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/post/test-chinese/</guid>
+      <description>人类进入太空，离不开运载火箭，火箭根据载荷质量可分为小型运载火箭,中型运载火箭，重型运载火箭，下面介绍两款重型运载火箭。
+长征5号 # 长征五号为捆绑四个助推器的两级半构型火箭，采用无毒无污染推进剂，火箭全箭总长56.97米，起飞质量约869吨 ，具备近地轨道25吨、地球同步转移轨道14吨的运载能力，可以完成近地轨道卫星、地球同步转移轨道卫星、太阳同步轨道卫星、空间站、月球探测器和火星探测器等各类航天器的发射任务
+长征9号 # 芯级箭体直径9.5米级、近地轨道运载能力50~140吨、奔月转移轨道运载能力15~50吨、奔火转移轨道运载能力12~44吨
+引用 # 思念是最暖的忧伤像一双翅膀
+让我停不了飞不远在过往游荡
+不告而别的你 就算为了我着想
+这么沉痛的呵护 我怎么能翱翔
+最暖的憂傷 - 田馥甄
+图片 # ![Photo by Florian Klauer on Unsplash](florian-klauer-nptLmg6jqDo-unsplash.jpg) ![Photo by Luca Bravo on Unsplash](luca-bravo-alS7ewQ41M8-unsplash.jpg) ![Photo by Helena Hertz on Unsplash](helena-hertz-wWZzXlDpMog-unsplash.jpg) ![Photo by Hudai Gayiran on Unsplash](hudai-gayiran-3Od_VKcDEAA-unsplash.jpg)相册语法来自 Typlog</description>
+    </item>
+    
+    <item>
+      <title>Markdown Syntax Guide</title>
+      <link>/post/markdown-syntax/</link>
+      <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/markdown-syntax/</guid>
+      <description>&lt;p&gt;This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>مثال نص</title>
+      <link>/post/placeholder-text/</link>
+      <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/placeholder-text/</guid>
+      <description>فقرة 1 # هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق. إذا كنت تحتاج إلى عدد أكبر من الفقرات يتيح لك مولد النص العربى زيادة عدد الفقرات كما تريد، النص لن يبدو مقسما ولا يحوي أخطاء لغوية، مولد النص العربى مفيد لمصممي المواقع على وجه الخصوص، حيث يحتاج العميل فى كثير من الأحيان أن يطلع على صورة حقيقية لتصميم الموقع.</description>
+    </item>
+    
+    <item>
+      <title>Math Typesetting</title>
+      <link>/post/math-typesetting/</link>
+      <pubDate>Fri, 08 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/math-typesetting/</guid>
+      <description>&lt;p&gt;Mathematical notation in a Hugo project can be enabled by using third party JavaScript libraries.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Emoji Support</title>
+      <link>/post/emoji-support/</link>
+      <pubDate>Tue, 05 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/emoji-support/</guid>
+      <description>&lt;p&gt;Emoji can be enabled in a Hugo project in a number of ways.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>驻波中波长与弹性绳张力间的关系</title>
+      <link>/post/%E9%A9%BB%E6%B3%A2%E4%B8%AD%E6%B3%A2%E9%95%BF%E4%B8%8E%E5%BC%B9%E6%80%A7%E7%BB%B3%E5%BC%A0%E5%8A%9B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/post/%E9%A9%BB%E6%B3%A2%E4%B8%AD%E6%B3%A2%E9%95%BF%E4%B8%8E%E5%BC%B9%E6%80%A7%E7%BB%B3%E5%BC%A0%E5%8A%9B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB/</guid>
+      <description>实验：驻波中波长与张力 # 在我们实验课的驻波实验中，有一个实验是探究波长与绳拉力间的关系。不知道大家有没有想过两者间有什么关系？
+驻波原理 # 波的叠加原理：
+$$ y_1=sin(wt-\frac{x}{\lambda})$$ $$y_2=sin(wt+\frac{x}{\lambda})$$ $$y=y_1+y_2=sin(wt-\frac{x}{\lambda})+sin(wt+\frac{x}{\lambda})$$ $$=2sin(wt)cos(\frac{x}{\lambda})$$
+从表达式中我们可以发现，只有弦长为半波长的整数倍时，驻波才有可能产生。 $$\lambda=v/f$$ 从上述分析我们可以发现驻波的波长与波速成正比，与波源的频率成反比。
+实验 # (实验过程（思路）)保持波源频率不变，弦长不变，随着绳子张力增大，波长也变长，当半波长的整数倍恰好等于弦长，测量形成驻波的波长。
+（陈列数据） # 拉力 1.75 0.51 0.25 0.15 波长 1.38 68 45.3 34 （绘制散点图） # （曲线拟合）当我们选择多项式拟合，选择次数2，我们发现实验数据完美拟合($R² = 1$)。
+波长与拉力成二次关系，这是为什么呢？
+弦振动问题 # 首先，假设一根绳子沿x轴放置，当它振动时，每一时刻t会在空中形成一个曲线形状($y=sin(-\frac{x}{\lambda}+\phi)$，把这个形状&amp;quot;拍照&amp;quot;
+如果连续拍照，(相当于把时间看作一个维度)我们就会得到一个关于时间t变化的曲线&amp;quot;相册&amp;quot; $y=sin(wt-\frac{x}{\lambda})$ 在微小振动下，弦的张力可视为处处相等
+竖直方向受力平衡： $$Tsin\theta_1-Tsin\theta_2+\rho g\cdot\mathrm{d}x=\rho \cdot\mathrm{d}x\frac{\partial^2 u}{\partial t^2}$$ 又因为：$sin\theta_1=tan\theta_1=(\frac{\partial u}{\partial x})_x$
+$$sin\theta_2=tan\theta_2=(\frac{\partial u}{\partial x})_{x+\Delta x}$$
+化简得： $$ T(\frac{\partial u}{\partial x})x-T(\frac{\partial u}{\partial x}){x+\Delta x}-\rho g\cdot\mathrm{d}x=\rho\cdot\mathrm{d}x\frac{\partial^2 u}{\partial t^2} $$ 同时除$\rho\cdot dx$并移项： $$(T/\rho)\cdot\dfrac{(\frac{\partial u}{\partial x})x-(\frac{\partial u}{\partial x}){x+\Delta x}}{dx}-\frac{\partial^2 u}{\partial t^2}=g$$ 仔细观察，可以发现： $$(T/\rho)\frac{\partial^2 u}{\partial x^2}-\frac{\partial^2 u}{\partial t^2}=g$$</description>
+    </item>
+    
+  </channel>
+</rss>
