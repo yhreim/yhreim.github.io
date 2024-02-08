@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>python on 墨子的博客</title>
+    <link>/categories/python/</link>
+    <description>Recent content in python on 墨子的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 01 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="/categories/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使用GitHubPages建一个商业网站</title>
+      <link>/posts/%E5%A6%82%E4%BD%95%E7%94%BB%E4%B8%80%E9%9D%A2%E4%BA%94%E6%98%9F%E7%BA%A2%E6%97%97/</link>
+      <pubDate>Sun, 01 Oct 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/%E5%A6%82%E4%BD%95%E7%94%BB%E4%B8%80%E9%9D%A2%E4%BA%94%E6%98%9F%E7%BA%A2%E6%97%97/</guid>
+      <description>如何画一面五星红旗 # 想画国旗的缘由 # 最近看到很多视频绘制五星红旗，但用我的话说，像五星红旗这种严格定义的东西，用cad这种执行复杂操作的画图软件就有点大材小用啦，再直白点就是不够简洁，不够优雅，今天我就来用python小乌龟给大家画一个标准国旗。
+turtle的空间坐标体系： # turtle的移动 # turtle.goto(x,y)
+turtle.forward()
+turtle.right()
+turtle.left()
+turtle.penup():表示抬起画笔，海龟在飞行；可以简写成turtle.pu()
+turtle.pendown():表示画笔落下，海龟在爬行；可以简写成turtle.pd()
+如何画一个五角星 # for i in range(5): t.forward(100) t.right(144) 我的想法很简单
+但真正了解了标准制图发现并不简单 甲、为便于确定五星之位置，先将旗面对分为四个相等的长方形，将左上方之长方形上下划为十等分，左右划为十五等分。
+乙、大五角星的中心点，在该长方形上五下五、左五右十之处。其画法为:以此点为圆心，以三等分为半径作一圆。在此圆周上，定出五个等距离的点，其一点须位于圆之正上方。然后将此五点中各相隔的两点相联，使各成一直线。此五直线所构成之外轮廓线，即为所需之大五角星。五角星之一个角尖正向上方。
+丙、四颗小五角星的中心点，第一点在该长方形上二下八、左十右五之处，第二点在上四下六、左十二右三之处，第三点在上七下三、左十二右三之处，第四点在上九下一、左十右五之处。其画法为:以以上四点为圆心，各以一等分为半径，分别作四个圆。在每个圆上各定出五个等距离的点，其中均须各有一点位于大五角星中心点与以上四个圆心的各联结线上。然后用构成大五角星的同样方法，构成小五角星。此四颗小五角星均各有一个角尖正对大五角星的中心点。
+&amp;mdash;&amp;mdash;&amp;mdash;-（1949年9月28日中国人民政治协商会议第一届全体会议主席团公布）
+定义一个五角星函数 # def star5(x,y,r)三个参数：
+坐标 坐标 半径 低级错误 # def star5(x,y,r,a) 角度 大功告成 # 代码展示 # import turtle as tt.setup(990,690)t.bgcolor(&amp;#39;red&amp;#39;)t.color(&amp;#39;yellow&amp;#39;)def star5(x,y,r,a):t.penup()t.goto(x,y)t.pendown()t.begin_fill()t.left(a)for i in range(1,6):t.forward(r)t.left(72)t.forward(r)t.right(144)t.end_fill()t.right(a)t.</description>
+    </item>
+    
+  </channel>
+</rss>
