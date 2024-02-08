@@ -3,13 +3,19 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>/</loc>
-    <lastmod>2023-12-26T00:00:00+00:00</lastmod>
+    <lastmod>2024-02-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/posts/</loc>
-    <lastmod>2023-12-26T00:00:00+00:00</lastmod>
+    <lastmod>2024-02-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/categories/</loc>
-    <lastmod>2023-12-26T00:00:00+00:00</lastmod>
+    <lastmod>2024-02-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/posts/%E4%BD%BF%E7%94%A8githubpages%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%95%86%E4%B8%9A%E7%BD%91%E7%AB%99/%E4%BD%BF%E7%94%A8githubpages%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%95%86%E4%B8%9A%E7%BD%91%E7%AB%99/</loc>
+    <lastmod>2024-02-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/categories/%E5%BB%BA%E7%AB%99/</loc>
+    <lastmod>2024-02-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/posts/%E5%8F%B0%E7%90%83%E6%89%8E%E6%9D%86/</loc>
     <lastmod>2023-12-26T00:00:00+00:00</lastmod>
@@ -113,9 +119,6 @@
     <loc>/tags/</loc>
     <lastmod>2023-02-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/categories/%E5%BB%BA%E7%AB%99/</loc>
-    <lastmod>2023-02-12T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>/posts/%E6%89%A9%E5%B1%95%E8%AF%AD%E6%B3%95%E6%94%AF%E6%8C%81/</loc>
     <lastmod>2023-02-12T00:00:00+00:00</lastmod>
   </url><url>
@@ -216,8 +219,6 @@
     <loc>/search/</loc>
   </url><url>
     <loc>/docs/example/folder_1/text/</loc>
-  </url><url>
-    <loc>/posts/%E4%BD%BF%E7%94%A8githubpages%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%95%86%E4%B8%9A%E7%BD%91%E7%AB%99/%E4%BD%BF%E7%94%A8githubpages%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%95%86%E4%B8%9A%E7%BD%91%E7%AB%99/</loc>
   </url><url>
     <loc>/page/search/</loc>
   </url><url>
