@@ -54,5 +54,18 @@ Hint 允许包含和嵌套任意内容。
 ::: !!! note markdown text ::: !</description>
     </item>
     
+    <item>
+      <title>使用GitHubPages建一个商业网站</title>
+      <link>/posts/%E4%BD%BF%E7%94%A8githubpages%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%95%86%E4%B8%9A%E7%BD%91%E7%AB%99/%E4%BD%BF%E7%94%A8githubpages%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%95%86%E4%B8%9A%E7%BD%91%E7%AB%99/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/%E4%BD%BF%E7%94%A8githubpages%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%95%86%E4%B8%9A%E7%BD%91%E7%AB%99/%E4%BD%BF%E7%94%A8githubpages%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%95%86%E4%B8%9A%E7%BD%91%E7%AB%99/</guid>
+      <description>那么今天的博客就写到这里
+什么？太简单了，那就贴一张近期的美食照吧!
+代码之外，还有香喷喷的美食😍
+别看了，真的结束了
+等等，7.3中有一个命令写错了，不是git remote push origin main，而是git push origin main。</description>
+    </item>
+    
   </channel>
 </rss>
