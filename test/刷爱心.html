@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>随机爱心展示</title>
+    <style>
+        .heart {
+            position: absolute;
+            color: red; /* 初始颜色，将由JavaScript随机选择 */
+            font-size: 48px; /* 初始大小，将由JavaScript随机生成 */
+            user-select: none; /* 防止用户选中文字 */
+        }
+    </style>
+</head>
+<body>
+    <script>
+        function createRandomHearts(count) {
+            for (var i = 0; i < count; i++) {
+                var heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.textContent = '❤';
+
+                var color = Math.random() < 0.5 ? 'red' : 'pink'; // 随机选择红色或粉红色
+                var size = Math.random() * 48 + 24; // 生成一个24到72之间的随机大小
+                var x = Math.random() * (window.innerWidth - size); // 生成一个随机的x坐标
+                var y = Math.random() * (window.innerHeight - size); // 生成一个随机的y坐标
+
+                heart.style.color = color;
+                heart.style.fontSize = size + 'px';
+                heart.style.left = x + 'px';
+                heart.style.top = y + 'px';
+
+                document.body.appendChild(heart);
+            }
+        }
+
+        createRandomHearts(6 + Math.floor(Math.random() * 3)); // 生成6-8个随机爱心
+    </script>
+</body>
+</html>
