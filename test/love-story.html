@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>土味情话展示</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Arial', sans-serif;
+        }
+        #love-quote {
+            font-size: 2em;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="love-quote">加载中...</div>
+    <script>
+        function loadLoveQuote() {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', 'https://api.uomg.com/api/rand.qinghua?format=json', true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    if (response.code == 1) {
+                        document.getElementById('love-quote').innerText = response.content;
+                    } else {
+                        document.getElementById('love-quote').innerText = '加载失败，请刷新页面。';
+                    }
+                }
+            };
+            xhr.send();
+        }
+        loadLoveQuote();
+    </script>
+</body>
+</html>
