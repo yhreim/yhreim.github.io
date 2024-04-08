@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<!-- saved from url=(0111)https://sfile.chatglm.cn/chatglm4/791ac4cd-d8e1-4a73-ae1e-630489901fcd/typing_effect_with_corrected_layout.html -->
+<html lang="zh-CN"><script id="allow-copy_script">(function agent() {
+    let unlock = false
+    document.addEventListener('allow_copy', (event) => {
+      unlock = event.detail.unlock
+    })
+
+    const copyEvents = [
+      'copy',
+      'cut',
+      'contextmenu',
+      'selectstart',
+      'mousedown',
+      'mouseup',
+      'mousemove',
+      'keydown',
+      'keypress',
+      'keyup',
+    ]
+    const rejectOtherHandlers = (e) => {
+      if (unlock) {
+        e.stopPropagation()
+        if (e.stopImmediatePropagation) e.stopImmediatePropagation()
+      }
+    }
+    copyEvents.forEach((evt) => {
+      document.documentElement.addEventListener(evt, rejectOtherHandlers, {
+        capture: true,
+      })
+    })
+  })()</script><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>打字效果与随机爱心背景</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: KaiTi, sans-serif;
+            overflow: hidden;
+        }
+        .quote-output {
+            font-size: 24px;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            max-width: 600px;
+            margin: 20px auto;
+            display: inline-block;
+            z-index: 1;
+            position: relative;
+        }
+        .heart {
+            position: absolute;
+            color: red; /* 初始颜色，将由JavaScript随机选择 */
+            font-size: 48px; /* 初始大小，将由JavaScript随机生成 */
+            user-select: none; /* 防止用户选中文字 */
+        }
+    </style>
+</head>
+<body>
+    <div id="quote-output" class="quote-output">何以解忧，唯有暴… ?嗯? …抱抱你</div>
+
+    <script>
+        function fetchLoveQuote() {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "https://api.uomg.com/api/rand.qinghua?format=json", true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    if (response.code === 1) {
+                        typeWriter(response.content);
+                    }
+                }
+            };
+            xhr.send();
+        }
+
+        function typeWriter(text) {
+            let index = 0;
+
+            function type() {
+                if (index < text.length) {
+                    document.getElementById("quote-output").innerHTML += text.charAt(index);
+                    index++;
+                    setTimeout(type, 50); // Adjust typing speed here
+                }
+            }
+
+            type();
+        }
+
+        function createRandomHearts(count) {
+            for (var i = 0; i < count; i++) {
+                var heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.textContent = '❤';
+
+                var color = Math.random() < 0.5 ? 'red' : 'pink'; // 随机选择红色或粉红色
+                var size = Math.random() * 48 + 24; // 生成一个24到72之间的随机大小
+                var x = Math.random() * (window.innerWidth - size); // 生成一个随机的x坐标
+                var y = Math.random() * (window.innerHeight - size); // 生成一个随机的y坐标
+
+                heart.style.color = color;
+                heart.style.fontSize = size + 'px';
+                heart.style.left = x + 'px';
+                heart.style.top = y + 'px';
+
+                document.body.appendChild(heart);
+            }
+        }
+
+        fetchLoveQuote();
+        createRandomHearts(6 + Math.floor(Math.random() * 3)); // 生成6-8个随机爱心
+    </script><div class="heart" style="color: pink; font-size: 70.3509px; left: 659.161px; top: 278.142px;">❤</div><div class="heart" style="color: red; font-size: 47.0124px; left: 1239.92px; top: 423.542px;">❤</div><div class="heart" style="color: pink; font-size: 69.8815px; left: 1348.03px; top: 503.499px;">❤</div><div class="heart" style="color: pink; font-size: 62.3895px; left: 1.02117px; top: 89.9852px;">❤</div><div class="heart" style="color: red; font-size: 39.4px; left: 388.603px; top: 518.064px;">❤</div><div class="heart" style="color: pink; font-size: 60.0058px; left: 170.959px; top: 249.352px;">❤</div>
+
+
+<div id="fatkun-drop-panel">
+    <div id="fatkun-drop-panel-close-btn"><div id="error"></div></div>
+        <div id="fatkun-drop-panel-inner">
+            <div class="fatkun-content">
+            <svg class="fatkun-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8946" width="48" height="48"><path d="M585.142857 572.562286l185.490286-185.417143a73.142857 73.142857 0 0 1 103.424 103.424L563.712 800.914286a72.923429 72.923429 0 0 1-103.424 0L149.942857 490.569143a73.142857 73.142857 0 0 1 103.424-103.424L438.857143 572.562286V73.142857a73.142857 73.142857 0 1 1 146.285714 0v499.419429zM73.142857 877.714286h877.714286a73.142857 73.142857 0 0 1 0 146.285714H73.142857a73.142857 73.142857 0 0 1 0-146.285714z" fill="#ffffff" p-id="8947"></path></svg>    
+            <div class="fatkun-title">拖拽到此处完成下载</div>
+            <!-- <div class="fatkun-desc">The image will be downloaded</div>  -->
+            </div>
+            <div id="fatkun-supported-by">AIX智能下载器</div>
+        </div>
+    </div><script src="chrome-extension://cdnlggbebabeoneeglhadpagegmflmbc/aiscripts/scriptBus.js"></script><span id="cnki_grabber" data-id="1712565953000" style="visibility: hidden;"></span><deepl-input-controller><template shadowrootmode="open"><link rel="stylesheet" href="chrome-extension://fancfknaplihpclbhbpclnmmjcjanbaf/build/content.css"><div dir="ltr"><div class="dl-input-translation-container svelte-95aucy"><div></div></div></div></template></deepl-input-controller><script></script></body></html>

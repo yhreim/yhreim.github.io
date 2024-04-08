@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>土味情话打字效果</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Arial', sans-serif;
+        }
+        #love-quote {
+            position: relative;
+            z-index: 2;
+            font-size: 2em;
+            text-align: center;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .heart {
+            position: absolute;
+            color: red; /* 初始颜色，将由JavaScript随机选择 */
+            font-size: 48px; /* 初始大小，将由JavaScript随机生成 */
+            user-select: none; /* 防止用户选中文字 */
+        }
+        .typewriter {
+            overflow: hidden;
+            border-right: 0.15em solid #000;
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: 0.15em;
+            animation: typing 3.5s steps(29), blink-caret 0.75s step-end infinite;
+        }
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #000 }
+        }
+    </style>
+</head>
+<body>
+    <div id="love-quote" class="typewriter">加载中...</div>
+
+    <script>
+        function createRandomHearts(count) {
+            for (var i = 0; i < count; i++) {
+                var heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.textContent = '❤';
+
+                var color = Math.random() < 0.5 ? 'red' : 'pink'; // 随机选择红色或粉红色
+                var size = Math.random() * 48 + 24; // 生成一个24到72之间的随机大小
+                var x = Math.random() * (window.innerWidth - size); // 生成一个随机的x坐标
+                var y = Math.random() * (window.innerHeight - size); // 生成一个随机的y坐标
+
+                heart.style.color = color;
+                heart.style.fontSize = size + 'px';
+                heart.style.left = x + 'px';
+                heart.style.top = y + 'px';
+
+                document.body.appendChild(heart);
+            }
+        }
+
+        // 土味情话API调用
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'https://api.uomg.com/api/rand.qinghua?format=json', true);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                var response = JSON.parse(xhr.responseText);
+                if (response.code == 1) {
+                    var loveQuote = document.getElementById('love-quote');
+                    loveQuote.textContent = ''; // 清空当前内容
+                    for (var i = 0; i < response.content.length; i++) {
+                        loveQuote.textContent += ' ';
+                        setTimeout(() => {
+                            loveQuote.textContent = loveQuote.textContent.substring(0, loveQuote.textContent.length - 1);
+                        }, i * 100);
+                    }
+                } else {
+                    loveQuote.textContent = '加载失败，请刷新页面。';
+                }
+            }
+        };
+        xhr.send();
+    </script>
+</body>
+</html>
+
