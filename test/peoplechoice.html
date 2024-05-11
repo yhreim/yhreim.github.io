@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>人员选择</title>
+  <style>
+    .tab {
+      display: inline-block;
+      padding: 10px;
+      cursor: pointer;
+      border: 1px solid #ccc;
+    }
+    .active {
+      background-color: #f0f0f0;
+    }
+    .tree-node {
+      cursor: pointer;
+    }
+    .tree-node input {
+      margin-right: 5px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>按学科和是否班委选择人员</h1>
+
+<!-- 学科选项卡 -->
+<div id="subjectTab" class="tab active" onclick="showSubjectTab()">
+  学科
+</div>
+
+<!-- 是否班委选项卡 -->
+<div id="committeeTab" class="tab" onclick="showCommitteeTab()">
+  是否班委
+</div>
+
+<!-- 树状图容器 -->
+<div id="tree-container"></div>
+
+<script>
+  var members = [
+    { name: 'A', subject: '物理', isCommittee: true },
+    { name: 'B', subject: '物理', isCommittee: false },
+    { name: 'C', subject: '计算机', isCommittee: true },
+    { name: 'D', subject: '计算机', isCommittee: false },
+    { name: 'E', subject: '计算机', isCommittee: true }
+  ];
+
+  function showSubjectTab() {
+    var subjectTab = document.getElementById('subjectTab');
+    var committeeTab = document.getElementById('committeeTab');
+    var container = document.getElementById('tree-container');
+
+    subjectTab.className = 'tab active';
+    committeeTab.className = 'tab';
+    container.innerHTML = '';
+
+    // 添加物理学科树
+    addTree('物理', members.filter(m => m.subject === '物理'));
+    // 添加计算机学科树
+    addTree('计算机', members.filter(m => m.subject === '计算机'));
+  }
+
+  function showCommitteeTab() {
+    var subjectTab = document.getElementById('subjectTab');
+    var committeeTab = document.getElementById('committeeTab');
+    var container = document.getElementById('tree-container');
+
+    subjectTab.className = 'tab';
+    committeeTab.className = 'tab active';
+    container.innerHTML = '';
+
+    // 添加是班委树
+    addTree('是班委', members.filter(m => m.isCommittee));
+    // 添加非班委树
+    addTree('非班委', members.filter(m => !m.isCommittee));
+  }
+
+  function addTree(title, members) {
+    var container = document.getElementById('tree-container');
+    var treeDiv = document.createElement('div');
+    treeDiv.innerHTML = '<b>' + title + '</b>';
+
+    // 添加全选/全不选复选框
+    var allCheckbox = document.createElement('input');
+    allCheckbox.type = 'checkbox';
+    allCheckbox.name = 'all-' + title;
+    allCheckbox.value = title;
+    allCheckbox.checked = members.every(member => isSelected(member.name));
+    allCheckbox.onclick = function() {
+      members.forEach(member => toggleSelect(member.name, this.checked));
+    };
+    treeDiv.appendChild(allCheckbox);
+
+    members.forEach(member => {
+      var nodeDiv = document.createElement('div');
+      nodeDiv.className = 'tree-node';
+      nodeDiv.onclick = function() { toggleSelect(member.name); };
+
+      var checkbox = document.createElement('input');
+      checkbox.type = 'checkbox';
+      checkbox.name = title;
+      checkbox.value = member.name;
+      checkbox.checked = isSelected(member.name);
+      nodeDiv.appendChild(checkbox);
+
+      nodeDiv.appendChild(document.createTextNode(member.name));
+      treeDiv.appendChild(nodeDiv);
+    });
+
+    container.appendChild(treeDiv);
+  }
+
+  function toggleSelect(name, forceCheck) {
+    localStorage.setItem(name, (forceCheck || !isSelected(name)) ? 'true' : 'false');
+    updateDisplay();
+  }
+
+  function isSelected(name) {
+    return localStorage.getItem(name) === 'true';
+  }
+
+  function updateDisplay() {
+    var subjectTab = document.getElementById('subjectTab');
+    var committeeTab = document.getElementById('committeeTab');
+
+    if (subjectTab.className === 'tab active') {
+      showSubjectTab();
+    } else if (committeeTab.className === 'tab active') {
+      showCommitteeTab();
+    }
+  }
+
+  // 初始化
+  showSubjectTab();
+</script>
+
+</body>
+</html>
