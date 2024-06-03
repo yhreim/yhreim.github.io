@@ -6,22 +6,31 @@
     <description>Recent content in Categories on 墨子的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 09 Feb 2024 22:35:41 +0800</lastBuildDate><atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 03 Jun 2024 00:00:00 +0000</lastBuildDate><atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>建站</title>
-      <link>/categories/%E5%BB%BA%E7%AB%99/</link>
-      <pubDate>Fri, 09 Feb 2024 22:35:41 +0800</pubDate>
+      <title>思考</title>
+      <link>/categories/%E6%80%9D%E8%80%83/</link>
+      <pubDate>Mon, 03 Jun 2024 00:00:00 +0000</pubDate>
       
-      <guid>/categories/%E5%BB%BA%E7%AB%99/</guid>
+      <guid>/categories/%E6%80%9D%E8%80%83/</guid>
       <description></description>
     </item>
     
     <item>
       <title>物理</title>
       <link>/categories/%E7%89%A9%E7%90%86/</link>
-      <pubDate>Tue, 26 Dec 2023 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 17 Mar 2024 00:28:38 +0800</pubDate>
       
       <guid>/categories/%E7%89%A9%E7%90%86/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>建站</title>
+      <link>/categories/%E5%BB%BA%E7%AB%99/</link>
+      <pubDate>Fri, 09 Feb 2024 22:35:41 +0800</pubDate>
+      
+      <guid>/categories/%E5%BB%BA%E7%AB%99/</guid>
       <description></description>
     </item>
     

@@ -6,7 +6,30 @@
     <description>Recent content in 物理 on 墨子的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 26 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="/categories/%E7%89%A9%E7%90%86/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 17 Mar 2024 00:28:38 +0800</lastBuildDate><atom:link href="/categories/%E7%89%A9%E7%90%86/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>3电场的基本法则</title>
+      <link>/posts/%E7%94%B5%E5%9C%BA%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%B3%95%E5%88%99/</link>
+      <pubDate>Sun, 17 Mar 2024 00:28:38 +0800</pubDate>
+      
+      <guid>/posts/%E7%94%B5%E5%9C%BA%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%B3%95%E5%88%99/</guid>
+      <description>3.1库伦定律 # $$F=\frac{q_1 q_2}{4\pi \epsilon _0}\cdot \frac{(\vec{x}-\vec{x&amp;rsquo;})}{|x-x&amp;rsquo;|^3} \tag{3.10}$$ 其中$\frac{1}{4\pi \epsilon _0}=10^{-7} c^2 \cdot\frac{NS^2}{C^2}=8.99$
+3.2电场 # $$E(x)=\lim_{q \to 0}\frac{F}{q} $$
+例一： 六边形顶点带正电
+一般法：略
+通用法： $$ $$ 积分式： $$\frac{q}{4\pi\epsilon_0}\int\frac{\vec{x}-\vec{x&amp;rsquo;} }{|\vec{x}-\vec{x&amp;rsquo;}|^3}\rho(\vec{x&amp;rsquo;})\mathrm dx&amp;rsquo;^3 $$
+3.3电场的散度和旋度 # $$\tag{静电场}$$ $$\tag{高斯公式(3.25)}$$ $$\tag{3.26}$$ 由(3.26)得： $$\tag{梯度满足结合律(3.30)}$$ 由(3.30)和(3.25)得： $$$$
+3.4高斯定理的积分形式 # $$$$ 证明：
+点电荷高斯定理成立 电通量守恒且可叠加 故得证任意静电场中高斯定理成立
+下证1. 点电荷高斯定理成立：
+例1
+$$$$
+例2
+$$$$
+3.5格林函数和狄拉克-$\delta$函数 # $$\tag{3.47}$$ 在$\delta$函数中，w-&amp;gt;0,h-&amp;gt;0,积分-&amp;gt;1
+三维$\delta$函数： $$$$ 格林函数： $$\tag{3.54}$$ 性质： $$\tag{3.53}$$ 证： $$$$</description>
+    </item>
+    
     <item>
       <title>台球扎杆分析</title>
       <link>/posts/%E5%8F%B0%E7%90%83%E6%89%8E%E6%9D%86/</link>
