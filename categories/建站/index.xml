@@ -21,6 +21,20 @@
     </item>
     
     <item>
+      <title>如何使用GithubPages建一个商业网站</title>
+      <link>/posts/%E6%B5%8B%E8%AF%95%E5%8D%9A%E5%AE%A2%E5%85%B1%E4%BA%AB%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/</link>
+      <pubDate>Fri, 09 Feb 2024 22:35:41 +0800</pubDate>
+      
+      <guid>/posts/%E6%B5%8B%E8%AF%95%E5%8D%9A%E5%AE%A2%E5%85%B1%E4%BA%AB%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/</guid>
+      <description>那么今天的博客就写到这里
+什么？太简单了，那就贴一张近期的美食照吧!
+代码之外，还有香喷喷的美食😍
+别看了，真的结束了
+等等，7.3中有一个命令写错了，不是git remote push origin main，而是git push origin main。 点击查看详情 这里是详细内容，它将被隐藏，直到用户点击标题。
+支持Markdown格式的内容，例如列表、链接或代码块。</description>
+    </item>
+    
+    <item>
       <title>(Hu)go Template Primer</title>
       <link>/posts/goisforlovers/</link>
       <pubDate>Sun, 12 Feb 2023 00:00:00 +0000</pubDate>
