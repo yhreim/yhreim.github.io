@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>照片展示页</title>
+<style>
+    @font-face {
+    font-family: 'YezidianchangXiaoshitou';
+    src: url('也字工厂小石头.ttf') format('truetype');
+  }
+  .bubble-text {
+    font-family: 'YezidianchangXiaoshitou', sans-serif;
+    font-size: 96px;
+    text-align: center;
+    margin-bottom: 50px;
+    display: inline-block;
+    margin-top: 50px;
+  }
+  .bubble-text span {
+    padding: 10px;
+    border-radius: 50px;
+    display: inline-block;
+    position: relative;
+    color: white;
+    transition: transform 0.5s ease;
+  }
+  body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color:#FFB6C1; /* 桃木色背景 */
+  }
+  .wave-sidebar {
+    position: fixed;
+    left: 50px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 5px;
+  }
+  .wave-sidebar div {
+    width: 5px;
+    height: 50px;
+    background-color: white;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    transform: translateY(25px); /* 波浪效果 */
+    animation: wave 3s ease-in-out infinite;
+  }
+  @keyframes wave {
+    0% { transform: translateY(25px); }
+    50% { transform: translateY(-25px); }
+    100% { transform: translateY(25px); }
+  }
+  .content {
+    width: calc(100% - 150px); /* 留出空间给侧边栏 */
+    margin: 0 auto;
+    padding-top: 50px; /* 留出空间给波浪线条 */
+  }
+  .image-container {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+  }
+  .image-container img {
+    max-width: 500px; /* 设置图片最大宽度 */
+    max-height: 300px; /* 设置图片最大高度 */
+    border-radius: 10px; /* 圆角边框 */
+    border: 5px solid white; /* 白色宽边框 */
+    box-shadow: 0 0 0 2px #6b4226; /* 咖啡色细边框 */
+  }
+  .dot {
+    position: absolute;
+    background-color: red;
+    border-radius: 50%;
+    opacity: 0.7;
+  }
+</style>
+</head>
+<body>
+    <div id="bubble-text1" class="bubble-text">点一下下边的播放按钮↓</div>
+    <audio controls autoplay>
+        <source src="hpbd.mp3" type="audio/mpeg">
+        <source src="hpbd.ogg" type="audio/ogg">
+        Your browser does not support the audio element.
+</audio>
+<div class="wave-sidebar">
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+</div>
+
+<div class="content">
+    <div class="image-container"><img src="image/image1.jpg" alt="图片1"></div>
+    <div class="image-container"><img src="image/image2.jpg" alt="图片2"></div>
+    <div class="image-container"><img src="image/image3.jpg" alt="图片3"></div>
+    <div class="image-container"><img src="image/image4.jpg" alt="图片4"></div>
+    <div class="image-container"><img src="image/image5.jpg" alt="图片5"></div>
+    <div class="image-container"><img src="image/image6.jpg" alt="图片6"></div>
+    <div class="image-container"><img src="image/image7.jpg" alt="图片7"></div>
+    <div class="image-container"><img src="image/image8.jpg" alt="图片8"></div>
+    <div class="image-container"><img src="image/image9.jpg" alt="图片9"></div>
+    <div class="image-container"><img src="image/image10.jpg" alt="图片10"></div>
+</div>
+<div id="bubble-text" class="bubble-text">祝妈妈生日快乐</div>
+<script>
+ const macaronColors = [
+    '#E08283', '#F7C8E0', '#F5B7B1', '#FAD7A0', '#F4D03F',
+    '#EB984E', '#F5CBA7', '#EDBB99', '#E59866', '#E6B0AA',
+    '#D7BDE2', '#A9CCE3', '#A3E4D7', '#A2D9CE', '#76D7C4',
+    '#73C6B6', '#7FB3D5', '#85C1E9', '#5499C7', '#4A235A'
+  ];
+
+  function applyRandomStyles() {
+            const textElements = document.querySelectorAll('.bubble-text');
+            textElements.forEach(textElement => {
+                const textContent = textElement.textContent;
+                let styledText = '';
+                for (let i = 0; i < textContent.length; i++) {
+                    const randomColor = macaronColors[Math.floor(Math.random() * macaronColors.length)];
+                    const randomOffset = Math.floor(Math.random() * 50 - 25);
+                    styledText += `<span style="background-color: ${randomColor}; transform: translateY(${randomOffset}px);">${textContent[i]}</span>`;
+                }
+                textElement.innerHTML = styledText;
+            });
+        }
+
+  function createDot() {
+    const dot = document.createElement('div');
+    dot.classList.add('dot');
+    dot.style.width = Math.random() * 10 + 'px';
+    dot.style.height = dot.style.width;
+    dot.style.left = Math.random() * (window.innerWidth - 150) + 'px'; // 减去侧边栏宽度
+    dot.style.top = Math.random() * window.innerHeight + 'px';
+    document.body.appendChild(dot);
+    
+    // 落下动画
+    dot.animate([
+      { transform: 'translateY(0px)' },
+      { transform: 'translateY(' + window.innerHeight + 'px)' }
+    ], {
+      duration: (Math.random() * 3000) + 2000, // 动画持续时间
+      easing: 'linear',
+      fill: 'forwards' // 动画完成后保持状态
+    }).finished.then(() => dot.remove()); // 动画完成后删除元素
+  }
+
+  applyRandomStyles();
+  // 每隔一段时间创建一个红点
+  setInterval(createDot, 300);
+</script>
+
+</body>
+</html>
