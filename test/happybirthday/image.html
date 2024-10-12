@@ -62,23 +62,19 @@
     justify-content: center;
   }
   .image-container img {
-    width: 1000px; /* 设置图片最大宽度 */
+    width: 75vw; /* 设置图片最大宽度 */
     /*max-height: 300px;  设置图片最大高度 */
     border-radius: 10px; /* 圆角边框 */
     border: 5px solid white; /* 白色宽边框 */
-    box-shadow: 0 0 0 2px #6b4226; /* 咖啡色细边框 */
+    box-shadow: 0 0 0 6px #6b4226; /* 咖啡色细边框 */
   }
 
-  /* 当屏幕宽度小于或等于768px时，应用手机样式 */
-  @media (max-width: 1000px) {
-    .image-container img {
-      width: 200px; /* 手机上图片宽度为500px */
-    }
-  }
+
+  
   .dot {
     position: absolute;
     background-color: red;
-    border-radius: 50%;
+    border-radius: 100%;
     opacity: 0.7;
   }
 </style>
@@ -164,7 +160,7 @@
 
   applyRandomStyles();
   // 每隔一段时间创建一个红点
-  setInterval(createDot, 300);
+  setInterval(createDot, 100);
 </script>
 
 </body>
