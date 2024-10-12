@@ -68,6 +68,13 @@
     border: 5px solid white; /* 白色宽边框 */
     box-shadow: 0 0 0 2px #6b4226; /* 咖啡色细边框 */
   }
+  
+  /* 当屏幕宽度小于或等于768px时，应用手机样式 */
+  @media (max-width: 768px) {
+    .image-container img {
+      width: 500px; /* 手机上图片宽度为500px */
+    }
+  }
   .dot {
     position: absolute;
     background-color: red;
