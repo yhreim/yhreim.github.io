@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en"><head><title>自制纸飞镖 - 墨子的博客</title><meta charset="utf-8">
+    <meta name="author" content="墨子">
+    <meta name="Robots" content="All">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="windows-Target" content="_top">
+
+    <link rel="shortcut icon" type="image/x-icon" href="../../logo.png" />
+    <link rel="alt" type="application/rss+xml" href=../../index.xml title="墨子的博客" />
+    <link rel="stylesheet" href=../../_index.css>
+</head><body><div class="LBody" id="start">
+        <aside class="LSide"><header class="header">
+    <div class="logo-wrap">
+        <a class="avatar" href="../../">
+            <div class="mask"></div>
+            <div class="bg" style="background-image:url(/img/rainbow64@3x.webp)"></div>
+            <img class="avatar" src="../../avatar.jpg" onerror="this.classList.add('error');this.src='../../img/unknow.svg';">
+        </a>
+        <a class="title" href="../../">
+            <div class="main" ff="title">墨子</div>
+            <div class="sub normal cap">雾里挑灯看剑</div>
+            <div class="sub hover cap">一个物理、数学计算机爱好者</div>
+        </a>
+    </div>
+    <nav class="menu dis-select"><a class="nav-item active" href="../../">Home</a><a class="nav-item " href="../../page/about/">About</a><a class="nav-item " href="../../page/archives/">档案文件</a><a class="nav-item " href="../../page/links/">Links</a><a class="nav-item active" href="../../">博客</a><a class="nav-item " href="../../docs/">文档</a><a class="nav-item " href="../../search/">搜索</a><a class="nav-item " href="../../about/">关于</a></nav>
+</header><div class="widgets"><div class="widget search"><widget class="widget-wrapper search">
+    <div class="widget-body">
+        <div class="search-wrapper" id="search">
+            <div class="search-form">
+                <input type="text" class="search-input" id="search-input" placeholder="Search" AUTOCOMPLETE="off" >
+                <svg t="1670596976048" class="icon search-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2676" width="200" height="200"><path d="M938.2 832.6L723.8 618.1c-2.5-2.5-5.3-4.4-7.9-6.4 36.2-55.6 57.3-121.8 57.3-193.1C773.3 222.8 614.6 64 418.7 64S64 222.8 64 418.6c0 195.9 158.8 354.6 354.6 354.6 71.3 0 137.5-21.2 193.2-57.4 2 2.7 3.9 5.4 6.3 7.8L832.5 938c14.6 14.6 33.7 21.9 52.8 21.9 19.1 0 38.2-7.3 52.8-21.8 29.2-29.1 29.2-76.4 0.1-105.5M418.7 661.3C284.9 661.3 176 552.4 176 418.6 176 284.9 284.9 176 418.7 176c133.8 0 242.6 108.9 242.6 242.7 0 133.7-108.9 242.6-242.6 242.6" p-id="2677"></path></svg>
+            </div>
+        </div>
+    </div>
+    <script>
+        var searchInput = document.getElementById("search-input");
+        searchInput.addEventListener('keydown', (event) => {
+            var inputValue = encodeURIComponent(searchInput.value.trim());
+            if (inputValue && event.keyCode == 13) {
+                window.open(`${window.location.protocol}//${window.location.host}/search?key=${inputValue}`);
+            }
+        });
+    </script>
+</widget></div><div class="widget toc"><widgets class="widget-wrapper toc">
+    <div class="widget-header cap dis-select">
+        <a class="name" href="#">自制纸飞镖</a>
+    </div>
+    <div class="widget-body fs14">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#题目分析">题目分析</a></li>
+    <li><a href="#预实验">预实验</a></li>
+    <li><a href="#理论分析">理论分析</a>
+      <ul>
+        <li><a href="#运动行为的描述">运动行为的描述</a></li>
+        <li><a href="#力学分析">力学分析</a></li>
+        <li><a href="#影响参数翻滚角">影响参数：翻滚角</a></li>
+        <li><a href="#出射角速度和速度关系探索">出射角速度和速度关系探索：</a></li>
+        <li><a href="#影响参数俯仰角">影响参数：俯仰角</a></li>
+        <li><a href="#影响参数翼面形状">影响参数：翼面形状</a></li>
+      </ul>
+    </li>
+    <li><a href="#实验验证">实验验证</a>
+      <ul>
+        <li><a href="#翻滚角">翻滚角</a></li>
+        <li><a href="#俯仰角">俯仰角</a></li>
+        <li><a href="#不同形状飞镖">不同形状飞镖</a></li>
+      </ul>
+    </li>
+    <li><a href="#仿真模拟">仿真模拟</a>
+      <ul>
+        <li><a href="#模型建立与求解">模型建立与求解</a></li>
+        <li><a href="#仿真结果">仿真结果</a></li>
+      </ul>
+    </li>
+    <li><a href="#误差分析">误差分析</a></li>
+    <li><a href="#总结结论">总结结论</a></li>
+  </ul>
+</nav>
+    </div>
+</widgets></div></div>
+<footer class="footer dis-select">
+    <div class="social-wrap"><a class="social" href="https://gohugo.io/" target="_blank">
+            <img src="../../social/hugo.png">
+        </a><a class="social" href="https://github.com/yhreim" target="_blank">
+            <img src="../../social/github.svg">
+        </a><a class="social" href="https://space.bilibili.com/" target="_blank">
+            <img src="../../social/bilibili.ico">
+        </a></div>
+</footer></aside>
+        <main class="LMain"><header class="header mobile-only">
+  <div class="logo-wrap">
+      <a class="avatar" href="../../">
+          <div class="mask"></div>
+          <div class="bg" style="background-image:url(/img/rainbow64@3x.webp)"></div>
+          <img class="avatar" src="../../avatar.jpg" onerror="this.classList.add('error');this.src='../../img/unknow.svg';">
+      </a>
+      <a class="title" href="../../">
+          <div class="main" ff="title">墨子</div>
+          <div class="sub normal cap">雾里挑灯看剑</div>
+          <div class="sub hover cap">一个物理、数学计算机爱好者</div>
+      </a>
+  </div>
+</header><div class="bread-nav fs14">
+  <div class="breadcrumb"><a class="cap item" href="../../categories/%e7%89%a9%e7%90%86">物理</a>
+      <span class="sep"> </span></div>
+  <span class="post-meta">发布于 2024-10-27</span>
+</div>
+
+<article class="md-text content post">
+  <h1 class="article-title">自制纸飞镖</h1><p><img class="md_img" data-fancybox="gallery" src="feibiao.png" alt="w:160"></p>
+<h1 id="#自制纸飞镖">
+    自制纸飞镖
+    <a class="anchor" name="自制纸飞镖" href="#%e8%87%aa%e5%88%b6%e7%ba%b8%e9%a3%9e%e9%95%96">#</a>
+</h1><p>报告人：23 学堂 莫竣翔</p>
+<hr>
+<h2 id="#题目分析">
+    题目分析
+    <a class="anchor" name="题目分析" href="#%e9%a2%98%e7%9b%ae%e5%88%86%e6%9e%90">#</a>
+</h2><p>题目原文：Make a <strong>returning</strong> boomerang from <strong>a sheet of paper</strong> by <strong>folding and/or cutting</strong>. Investigate how its motion depends on relevant parameters.
+用<strong>一张</strong>纸通过<strong>折叠</strong>和/或<strong>裁剪</strong>制作一个能<strong>返回</strong>的飞镖。研究其运动如何取决于相关参数。</p>
+<hr>
+<p><strong>解读：</strong></p>
+<ul>
+<li>可返回：射出后能返回原位(比如落点控制在原点50cm内)，而不是只出现速度反向或返回距离原点较远。这是一个重要的约束条件</li>
+<li>折叠或裁剪：可允许破坏纸张，对纸张的大小、纸质和形状不做具体要求。</li>
+<li>研究参数可能包括：出射速度，俯仰角，翻滚角，出射高度，初始旋转角速度，翼面形状，质心，气动中心，飞行时间，运动过程所受到的各种作用力。</li>
+</ul>
+<hr>
+<h2 id="#预实验">
+    预实验
+    <a class="anchor" name="预实验" href="#%e9%a2%84%e5%ae%9e%e9%aa%8c">#</a>
+</h2><ol>
+<li>准备材料：一张纸，小刀，胶水</li>
+<li>制作成如图四角飞镖</li>
+<li>在空旷的场地试射</li>
+<li>飞镖在空中打了一个圆圈，回到发射者的位置
+<img class="md_img" data-fancybox="gallery" src="image-5.png" alt="bg right"></li>
+</ol>
+<hr>
+<hr>
+<h2 id="#理论分析">
+    理论分析
+    <a class="anchor" name="理论分析" href="#%e7%90%86%e8%ae%ba%e5%88%86%e6%9e%90">#</a>
+</h2><h3 id="#运动行为的描述">
+    运动行为的描述
+    <a class="anchor" name="运动行为的描述" href="#%e8%bf%90%e5%8a%a8%e8%a1%8c%e4%b8%ba%e7%9a%84%e6%8f%8f%e8%bf%b0">#</a>
+</h3><p>回旋镖以一定初速度和出射角度发射，并带有的飞行轨迹大致为圆形，与地面成一个夹角
+<img class="md_img" data-fancybox="gallery" src="image-3.png" alt="alt text"></p>
+<hr>
+<h3 id="#力学分析">
+    力学分析
+    <a class="anchor" name="力学分析" href="#%e5%8a%9b%e5%ad%a6%e5%88%86%e6%9e%90">#</a>
+</h3><p>设回旋镖逆时针旋转，则左侧叶面的速度为质心速度加叶面旋转的线速度，右侧叶面的速度为质心速度减叶面旋转的线速度。左右两叶面速度的速度差导致飞镖受到的升力不均匀产生升力力矩。力矩的方向与旋转轴垂直，根据陀螺的进动原理，飞镖会在空中做弧线运动直至回到人手中。
+<img class="md_img" data-fancybox="gallery" src="image-4.png" alt="width:20cm  drop-shadow "></p>
+<hr>
+<p>飞镖的运动可以拆成两部分：飞镖自身的进动和飞镖质心的圆周运动。<br>
+从飞镖质心的受力来看，飞镖所受到的垂直纸面的升力与重力的合力提供向心力，从而产生了近圆弧形的轨道。</p>
+<hr>
+<p>以v型回旋镖为例，假设回旋镖夹角为90度，对叶片所受力矩分析：</p>
+<p>$$M_1=\int_0^{l_1}f_{升1}\cdot ldl$$
+$$M_2=\int_0^{l_1}f_{升2}\cdot ldl$$</p>
+<p>式中$l_1,l_2$为叶片长度，$f_{升1}$和$f_{升2}$分别为单位长度叶片所受到的升力。</p>
+<hr>
+<p>由翼型升力公式：
+$$F_{升1}=\frac{1}{2}C_1A_1\rho v_1^2$$
+$$F_{升2}=\frac{1}{2}C_2A_2\rho v_2^2$$
+式中，$C_1,C_2$为叶片截面系数，$A_1,A_2$为叶片面积，$\rho$为空气密度，$v_1,v_2$为叶片速度。
+$$v_1=\omega_{自转}r_1+v_{质心}sin(\omega_{自转}t)$$
+$$v_2=\omega_{自转}r_2-v_{质心}sin(\frac{\pi}{2}-\omega_{自转}t)$$</p>
+<hr>
+<p>式中$r_1,r_2$为叶片1,2截面上的点到O点的距离，$\omega_{自转}$为叶面自转角速度，$v_{质心}$为质心速度。<br>
+带入进动相关公式，则进动角速度为：
+$$\omega_{进动}=(M_1-M_2)/H$$
+H为飞镖整体的角动量：
+$$H=\int_0^{l_1} m_1(r)v_1r_1dl+\int_0^{l_2} m_2(r)v_2r_2dl=I\omega$$
+(可以认为平动不影响角动量)<br>
+飞镖旋转的半径为：
+$$R=\frac{F_1+F_2}{(m_1+m_2)\omega_{进动}^2}$$</p>
+<hr>
+<h3 id="#影响参数翻滚角">
+    影响参数：翻滚角
+    <a class="anchor" name="影响参数翻滚角" href="#%e5%bd%b1%e5%93%8d%e5%8f%82%e6%95%b0%e7%bf%bb%e6%bb%9a%e8%a7%92">#</a>
+</h3><ol>
+<li>对于翻滚角接近90度的情况，正如前面所分析的，飞镖与地面相垂直，其轨迹近似一个圆。</li>
+<li>对于翻滚角接近0度的情况，飞镖与地面平行，飞镖会斜向上飞出，当竖直速度为0后飞镖将原路返回。此时是一个比较特殊的情况，因为飞镖并不会产生向左或向右的偏移，只在竖直方向和前进方向存在位移。此时进动改变的是飞镖的俯仰角，升力和重力的合力提供飞镖飞回的回复力。</li>
+</ol>
+<p>升力大小：
+$$F_{升}=F_{升1}+F_{升2}=\frac{1}{2}C_1A_1\rho v_1^2+\frac{1}{2}C_2A_2\rho v_2^2$$
+升力力矩：
+$$M=M_1-M_2=\int_0^{l_1}f_{升1}\cdot ldl-\int_0^{l_1}f_{升2}\cdot ldl=(F_1-F_2)\cdot r$$
+进动角速度：
+$$\omega_{进动}=\frac{M_1-M_2}{Iw_{自转}}$$
+对于x方向和y方向都进行受力分析：
+$$m\ddot{x}=-F{升}sin\theta $$
+$$m\ddot{y}=F{升}cos\theta -mg$$
+$$\theta=w_{进动}t=\frac{\dot{y}}{\dot{x}}$$
+带入初速度$\dot{x}=v_0, \dot{y}=0$，同时将升力F视为一个常数，则可以解这个微分方程得：
+$$x=\frac{F{升}}{m\cdot w^2}sin(wt)$$
+$$y=\frac{F_{升}}{m\cdot w^2}(1-cos(wt))-\frac{1}{2}gt^2$$</p>
+<p>通过绘制这个关于t的参数方程即可得到飞镖的轨迹（以下是用ggb绘制的参数方程）：</p>
+<p><img class="md_img" data-fancybox="gallery" src="image-8.png" alt="alt text"></p>
+<ol start="3">
+<li>对于翻滚角为任意0~90度的情况，飞镖的轨迹都是空间中的复杂曲线。
+<img class="md_img" data-fancybox="gallery" src="image-7.png" alt="bg left w:90%"></li>
+</ol>
+<hr>
+<p>下面对任意翻滚角的飞镖进行力学分析：
+飞镖具有初始的速度$v_0$和$\omega_0$，设水平出射，翻滚角为$\phi$
+$$\dot{\vec{v}}=\frac{F_1+F_2}{m}\cdot\hat{\omega}-kv$$
+$$\dot{\omega}=\frac{M_{升力}}{I}\cdot\hat{q}$$
+其中k是风阻系数，$\hat{q}$为与地面平行，且垂直于角速度的单位向量。<br>
+上述其实相当于一个复杂的微分方程，我们可以通过python编程的方式对飞镖的飞行路径进行求解。对于计算机来说，可以取每个运动无限小来近似求得整个数值解，或者调用matlab中的ode45函数解微分方程。
+由于时间关系，对于轨迹的模拟，我暂时没空做。</p>
+<h3 id="#出射角速度和速度关系探索">
+    出射角速度和速度关系探索：
+    <a class="anchor" name="出射角速度和速度关系探索" href="#%e5%87%ba%e5%b0%84%e8%a7%92%e9%80%9f%e5%ba%a6%e5%92%8c%e9%80%9f%e5%ba%a6%e5%85%b3%e7%b3%bb%e6%8e%a2%e7%b4%a2">#</a>
+</h3><p><strong>前提假设：</strong> 在理想情况下，假设飞镖与地面垂直，且此时不考虑飞镖在重力的影响下下降（事实上也不影响接下来的分析），飞镖按照一定的速度和角速度出射，我们希望它进动的角速度和转动都相等，这样飞镖的轨迹将会是标准的圆形。为了达到这一目的，我们有如下分析：
+$$
+\begin{cases}
+\omega_{进动}=\frac{M_{升力}}{Iw}\
+\omega_{转动}=\frac{F_{升力}}{mv}\
+\omega_{进动}=\omega_{转动}
+\end{cases}</p>
+<p>$$
+$$\to \frac{v}{w}=\frac{F_{升力}I}{mM}$$
+对于升力$F_{升力}$和升力的力矩$M_{升力}$，我们可以使用公式$F_{升}=\frac{1}{2}C_1A_1\rho v_1^2$。<br>
+但是由于技术水平和实验仪器的受限，我对升力系数的测量无能为力。不过我也找到了一种替代方案，通过实验我发现当滚翻角为45度时，飞镖的升力的分力和重力基本平衡，于是：
+$$F_{升}=\sqrt{2}mg$$
+通过对实验视频慢放的初略估计，我们得出初速度$v_0=6.5m/s$，角速度$w_0=10\pi rad/s$，故：
+$$v_1=v_0sin(\omega_{自转}t)+w_0\cdot r=v_0t+w_0\cdot r=8.16m/s$$
+$$v_2=v_0cos(\omega_{自转}t)+w_0\cdot r=v_0t+w_0\cdot r=4.83m/s$$
+$$\to v_1^2:v_2^2=2.85$$
+$$\to F_1:F_2=2.85=k_F$$
+其中r为叶片1,2的质心到O点的距离，$\omega_{自转}$为叶面自转角速度。<br>
+同时对升力的力矩M，我们带入得:
+$$M=M_1-M_2=\int_0^{l_1}f_{升1}\cdot ldl-\int_0^{l_1}f_{升2}\cdot ldl=(F_1-F_2)\cdot r=(\frac{k_F}{1+k_F}-\frac{1}{1+k_F})Fr$$
+带入
+$$\to \frac{v}{w}=\frac{F_{升力}I}{mM}=0.183m$$</p>
+<p>对于人正常抛出飞镖时，如果握持点半径为r，我们可以认为人每次抛出$\frac{v}{w}$相同，什么时候能和上述比值相同呢，此时对飞镖的参数进行进一步的研究，设转动惯量$I=kmr^2$，r为叶片边缘到质心的距离
+$$
+\begin{cases}
+v=\frac{p}{m}\
+w=\frac{p\times r}{I}=\frac{p\times r}{kmr^2}\
+\frac{v}{m}=\frac{F_{升力}I}{mM}
+\end{cases}
+$$</p>
+<p>$$\to k=\frac{\frac{F_{升力}I}{mM}}{r}=\frac{\frac{F_{升力}kr^2}{mM}}{r}$$
+$$\to r=\frac{Mm}{F}=0.17m$$
+所以飞镖的半径制成0.17m更加合适。</p>
+<h3 id="#影响参数俯仰角">
+    影响参数：俯仰角
+    <a class="anchor" name="影响参数俯仰角" href="#%e5%bd%b1%e5%93%8d%e5%8f%82%e6%95%b0%e4%bf%af%e4%bb%b0%e8%a7%92">#</a>
+</h3><p>当出射俯仰角越小，飞镖飞得越远，同时由于飞行时间的增长，飞镖的速度和自转的角速度衰减比较快，飞镖所提供的升力也会减小，当升力不足以作为回复力的时候，飞镖将无法返回。<br>
+当出射俯仰角合适大的时候，飞镖能提供有效升力的时间刚好就是飞镖一个来回的时间，升力就能支持飞镖走完一个来回。
+具体的分析无非是在刚才翻滚角为0度的情况下对几个方向的微分方程进行修改:</p>
+<p>$$m\ddot{x}=-F{升}sin\theta $$
+$$m\ddot{y}=F{升}cos\theta -mg$$
+$$\theta=w_{进动}t=\frac{\dot{y}}{\dot{x}}$$
+只不过此时初始速度有所改变,$\dot{x}=v_0cos\theta_0, \dot{y}=v_0sin\theta_0,$，同时将升力F视为一个常数，则可以解这个微分方程得：
+$$x=\frac{F{升}}{m\cdot w^2}sin(wt+\theta_0)=\frac{v_0}{w}sin(wt+\theta_0)-sin(\theta_0)$$
+$$y=\frac{F_{升}}{m\cdot w^2}(cos(\theta_0)-cos(wt+\theta_0))+v_0sin\theta_0-\frac{1}{2}gt^2\
+=\frac{v_0}{w}(cos(\theta_0)-cos(wt+\theta_0))-\frac{1}{2}gt^2$$
+同样我们通过绘制参数方程，并修改出射俯仰角，使得飞镖刚好能回到原点</p>
+<h3 id="#影响参数翼面形状">
+    影响参数：翼面形状
+    <a class="anchor" name="影响参数翼面形状" href="#%e5%bd%b1%e5%93%8d%e5%8f%82%e6%95%b0%e7%bf%bc%e9%9d%a2%e5%bd%a2%e7%8a%b6">#</a>
+</h3><p>通过研究发现翼面下表面凹面相比于下表面为平面能一定程度上提升升力。<br>
+可以认为叶片下表面的凹陷滞留了一部分空气，使得下表面的流体流速减小，根据伯努利原理：
+$$P+\frac{1}{2}V^2-\rho gH=0$$
+凹面下表面的压强较大，能提高翼面受到的升力。可以认为下表面为凹面更具优越性。</p>
+<hr>
+<p>发射角太高：阻力和重力形成的力矩过大，飞镖易翻面，
+发射角太低：无法形成恢复力，轨迹成抛物线
+寻找最合适发射角：5次实验
+出射角速度：适中，太高会导致飞镖翻面，太低无法形成恢复力（由于缺乏高速、高清摄像机和稳定的发射器，无法形成定量结论）
+出射速度：适中，太高飞镖来不及减速就会落地。（2）</p>
+<p>发射角：45度
+飞镖形状：最稳定的形状是几边形（3）
+气动中心的调整（飞镖截面调整）：厚的更稳定，（2）</p>
+<hr>
+<h2 id="#实验验证">
+    实验验证
+    <a class="anchor" name="实验验证" href="#%e5%ae%9e%e9%aa%8c%e9%aa%8c%e8%af%81">#</a>
+</h2><h3 id="#翻滚角">
+    翻滚角
+    <a class="anchor" name="翻滚角" href="#%e7%bf%bb%e6%bb%9a%e8%a7%92">#</a>
+</h3><h3 id="#俯仰角">
+    俯仰角
+    <a class="anchor" name="俯仰角" href="#%e4%bf%af%e4%bb%b0%e8%a7%92">#</a>
+</h3><h3 id="#不同形状飞镖">
+    不同形状飞镖
+    <a class="anchor" name="不同形状飞镖" href="#%e4%b8%8d%e5%90%8c%e5%bd%a2%e7%8a%b6%e9%a3%9e%e9%95%96">#</a>
+</h3><hr>
+<h2 id="#仿真模拟">
+    仿真模拟
+    <a class="anchor" name="仿真模拟" href="#%e4%bb%bf%e7%9c%9f%e6%a8%a1%e6%8b%9f">#</a>
+</h2><p>对翼面的截面进行仿真模拟，分析哪种翼面受力最大（下表面平、凹程度不同）</p>
+<h3 id="#模型建立与求解">
+    模型建立与求解
+    <a class="anchor" name="模型建立与求解" href="#%e6%a8%a1%e5%9e%8b%e5%bb%ba%e7%ab%8b%e4%b8%8e%e6%b1%82%e8%a7%a3">#</a>
+</h3><p>在Linux环境下使用comsol6.0软件，对飞镖的翼面进行建模仿真。<br>
+<img class="md_img" data-fancybox="gallery" src="liuti%e7%bf%bc%e9%9d%a2/%e6%88%aa%e5%9b%be%202024-10-24%2002-08-19.png" alt=" "></p>
+<ol>
+<li>
+<p><strong>选择物理场</strong><br>
+<strong>湍流k-ω模型：</strong> k-ω模型特别适用于近壁面的湍流流动，即低雷诺数湍流。它通过考虑湍流频率ω，更好地捕捉了近壁面的流动特性。</p>
+</li>
+<li>
+<p><strong>建立二维模型</strong>
+通过多个几何图形的布尔操作近似做出飞镖的翼面模型。
+<img class="md_img" data-fancybox="gallery" src="liuti%e7%bf%bc%e9%9d%a2/%e6%88%aa%e5%9b%be%202024-10-24%2001-38-02.png" alt="alt text"></p>
+</li>
+<li>
+<p><strong>设置材料属性</strong>
+<img class="md_img" data-fancybox="gallery" src="liuti%e7%bf%bc%e9%9d%a2/%e6%88%aa%e5%9b%be%202024-10-24%2001-36-57.png" alt="">
+设置密度为1kg/m3，动力黏度为0.001Pa-s，这一步对于后面配置物理场至关重要</p>
+</li>
+<li>
+<p><strong>设置入口、壁、出口及流体流速</strong>
+<img class="md_img" data-fancybox="gallery" src="liuti%e7%bf%bc%e9%9d%a2/%e6%88%aa%e5%9b%be%202024-10-24%2020-58-48.png" alt="alt text"></p>
+</li>
+<li>
+<p><strong>划分网格</strong>
+由于是求稳态解，可以将网格设为较细化，并按物理场进行划分<br>
+<img class="md_img" data-fancybox="gallery" src="liuti%e7%bf%bc%e9%9d%a2/%e6%88%aa%e5%9b%be%202024-10-24%2001-46-24.png" alt=""></p>
+</li>
+<li>
+<p><strong>稳态解求解</strong>
+求解类型设为稳态
+<img class="md_img" data-fancybox="gallery" src="liuti%e7%bf%bc%e9%9d%a2/%e6%88%aa%e5%9b%be%202024-10-24%2020-59-41.png" alt="alt text"></p>
+</li>
+</ol>
+<h3 id="#仿真结果">
+    仿真结果
+    <a class="anchor" name="仿真结果" href="#%e4%bb%bf%e7%9c%9f%e7%bb%93%e6%9e%9c">#</a>
+</h3><ol>
+<li>
+<p>下表面平与下表面凹面对比
+<img class="md_img" data-fancybox="gallery" src="liuti%e7%bf%bc%e9%9d%a2/%e9%80%9f%e5%ba%a6%e5%88%86%e5%b8%83-1.png" alt="alt text">
+<img class="md_img" data-fancybox="gallery" src="%e9%80%9f%e5%ba%a6%e5%88%86%e5%b8%83-12.png" alt="alt text">
+<img class="md_img" data-fancybox="gallery" src="%e5%8e%8b%e5%bc%ba%e5%88%86%e5%b8%83-2.png" alt="alt text">
+<img class="md_img" data-fancybox="gallery" src="%e5%8e%8b%e5%8a%9b%e5%88%86%e5%b8%83-1.png" alt="alt text">
+通过对比两种仿真结果，可以发现，下表面凹面能显著降低下表面的流体流速，根据伯努利原理：
+$$P+\frac{1}{2}V^2-\rho gH=0$$
+凹面下表面的压强较大，能提高翼面受到的升力。可以认为下表面为凹面更具优越性。</p>
+</li>
+<li>
+<p>不同攻角对比<br>
+我们通过修改入口速度为速度场可以控制流体的方向，从而计算出不同攻角下的受力与流速分布情况。如下图所示：</p>
+</li>
+</ol>
+<p><img class="md_img" data-fancybox="gallery" src="liuti%e7%bf%bc%e9%9d%a2/%e6%88%aa%e5%9b%be%202024-10-24%2020-58-48.png" alt="alt text"><br>
+以下分别是攻角为2度，9度，18度的情况，流体运动方向斜向右上角</p>
+<p><strong>速度分布：</strong>
+<img class="md_img" data-fancybox="gallery" src="%e6%88%aa%e5%9b%be%202024-10-24%2003-19-10.png" alt="alt text">
+<img class="md_img" data-fancybox="gallery" src="%e6%88%aa%e5%9b%be%202024-10-24%2003-45-58.png" alt="alt text">
+<img class="md_img" data-fancybox="gallery" src="%e6%88%aa%e5%9b%be%202024-10-24%2003-56-29.png" alt="alt text">
+<strong>压强</strong></p>
+<p><img class="md_img" data-fancybox="gallery" src="%e6%88%aa%e5%9b%be%202024-10-24%2003-19-15-1.png" alt="alt text">
+<img class="md_img" data-fancybox="gallery" src="%e6%88%aa%e5%9b%be%202024-10-24%2003-46-02-1.png" alt="alt text">
+<img class="md_img" data-fancybox="gallery" src="%e6%88%aa%e5%9b%be%202024-10-24%2003-57-18-1.png" alt="alt text">
+观察这三张压强分布图可以初略的得出随着攻角$\alpha$增大，所受到的向上的升力增大。体现在飞镖的运动上，则是当飞镖的发射的仰角增大时，所受到的升力更大，飞镖更容易飞回。不过过大的升力也会导致飞镖的翻面，所以需要找到一个合适的攻角，即仰角出射。</p>
+<hr>
+<h2 id="#误差分析">
+    误差分析
+    <a class="anchor" name="误差分析" href="#%e8%af%af%e5%b7%ae%e5%88%86%e6%9e%90">#</a>
+</h2><p>室外风速对实验的影响
+测量仪器的误差（相机视频进行估算速度，轨迹，存在误差）</p>
+<hr>
+<h2 id="#总结结论">
+    总结结论
+    <a class="anchor" name="总结结论" href="#%e6%80%bb%e7%bb%93%e7%bb%93%e8%ae%ba">#</a>
+</h2></article><div class="float-panel mobile-only blur" style="display:none">
+  <button type="button" class="sidebar-toggle" onclick="float_panel_click()">
+    <svg class="icon" style="width:1em;height:1em;vertical-align:middle;fill:currentColor;overflow:hidden" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301">
+      <path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path>
+      <path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path>
+    </svg>
+  </button>
+  <script>
+    float_panel_click = () => {
+      document.getElementById("start").classList.toggle("mobile");
+      document.getElementsByClassName("sidebar-toggle")[0].classList.toggle("mobile");
+    }
+  </script>
+</div></main>
+    </div>
+</body><script src="../../scripts/table-of-contents.js"></script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js" defer></script>
+<script src="../../scripts/mathjax.js"></script>
+</html>

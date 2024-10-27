@@ -6,7 +6,26 @@
     <description>Recent content in 物理 on 墨子的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 17 Mar 2024 00:28:38 +0800</lastBuildDate><atom:link href="/categories/%E7%89%A9%E7%90%86/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 27 Oct 2024 00:00:00 +0000</lastBuildDate><atom:link href="/categories/%E7%89%A9%E7%90%86/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>自制纸飞镖</title>
+      <link>/posts/%E8%87%AA%E5%88%B6%E7%BA%B8%E9%A3%9E%E9%95%96/</link>
+      <pubDate>Sun, 27 Oct 2024 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/%E8%87%AA%E5%88%B6%E7%BA%B8%E9%A3%9E%E9%95%96/</guid>
+      <description>自制纸飞镖 # 报告人：23 学堂 莫竣翔
+题目分析 # 题目原文：Make a returning boomerang from a sheet of paper by folding and/or cutting. Investigate how its motion depends on relevant parameters. 用一张纸通过折叠和/或裁剪制作一个能返回的飞镖。研究其运动如何取决于相关参数。
+解读：
+可返回：射出后能返回原位(比如落点控制在原点50cm内)，而不是只出现速度反向或返回距离原点较远。这是一个重要的约束条件 折叠或裁剪：可允许破坏纸张，对纸张的大小、纸质和形状不做具体要求。 研究参数可能包括：出射速度，俯仰角，翻滚角，出射高度，初始旋转角速度，翼面形状，质心，气动中心，飞行时间，运动过程所受到的各种作用力。 预实验 # 准备材料：一张纸，小刀，胶水 制作成如图四角飞镖 在空旷的场地试射 飞镖在空中打了一个圆圈，回到发射者的位置 理论分析 # 运动行为的描述 # 回旋镖以一定初速度和出射角度发射，并带有的飞行轨迹大致为圆形，与地面成一个夹角 力学分析 # 设回旋镖逆时针旋转，则左侧叶面的速度为质心速度加叶面旋转的线速度，右侧叶面的速度为质心速度减叶面旋转的线速度。左右两叶面速度的速度差导致飞镖受到的升力不均匀产生升力力矩。力矩的方向与旋转轴垂直，根据陀螺的进动原理，飞镖会在空中做弧线运动直至回到人手中。 飞镖的运动可以拆成两部分：飞镖自身的进动和飞镖质心的圆周运动。
+从飞镖质心的受力来看，飞镖所受到的垂直纸面的升力与重力的合力提供向心力，从而产生了近圆弧形的轨道。
+以v型回旋镖为例，假设回旋镖夹角为90度，对叶片所受力矩分析：
+$$M_1=\int_0^{l_1}f_{升1}\cdot ldl$$ $$M_2=\int_0^{l_1}f_{升2}\cdot ldl$$
+式中$l_1,l_2$为叶片长度，$f_{升1}$和$f_{升2}$分别为单位长度叶片所受到的升力。
+由翼型升力公式： $$F_{升1}=\frac{1}{2}C_1A_1\rho v_1^2$$ $$F_{升2}=\frac{1}{2}C_2A_2\rho v_2^2$$ 式中，$C_1,C_2$为叶片截面系数，$A_1,A_2$为叶片面积，$\rho$为空气密度，$v_1,v_2$为叶片速度。 $$v_1=\omega_{自转}r_1+v_{质心}sin(\omega_{自转}t)$$ $$v_2=\omega_{自转}r_2-v_{质心}sin(\frac{\pi}{2}-\omega_{自转}t)$$
+式中$r_1,r_2$为叶片1,2截面上的点到O点的距离，$\omega_{自转}$为叶面自转角速度，$v_{质心}$为质心速度。
+带入进动相关公式，则进动角速度为： $$\omega_{进动}=(M_1-M_2)/H$$ H为飞镖整体的角动量： $$H=\int_0^{l_1} m_1(r)v_1r_1dl+\int_0^{l_2} m_2(r)v_2r_2dl=I\omega$$ (可以认为平动不影响角动量)</description>
+    </item>
+    
     <item>
       <title>3电场的基本法则</title>
       <link>/posts/%E7%94%B5%E5%9C%BA%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%B3%95%E5%88%99/</link>
