@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>光学 on 墨子的博客</title>
+    <link>/categories/%E5%85%89%E5%AD%A6/</link>
+    <description>Recent content in 光学 on 墨子的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 19 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="/categories/%E5%85%89%E5%AD%A6/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2波动光学</title>
+      <link>/posts/2%E6%B3%A2%E5%8A%A8%E5%85%89%E5%AD%A6/</link>
+      <pubDate>Tue, 19 Nov 2024 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2%E6%B3%A2%E5%8A%A8%E5%85%89%E5%AD%A6/</guid>
+      <description>2.1波动微分方程推导 # 由麦克斯韦方程组推导&amp;raquo;波动微分方程&amp;raquo;可衍生出波动方程一般形式的通解。
+电磁学基础 $$ \begin{cases} \nabla\cdot E=0\ \nabla\cdot H=0\ \nabla\times E=-\epsilon \frac{\partial H}{\partial t}\ \nabla\times H=\mu \frac{\partial E}{\partial t} \end{cases} $$ $$\nabla\times(\nabla\times E)=-\epsilon\mu\frac{\partial^2H}{\partial t^2}$$ $$\to \nabla(\nabla\cdot E)-\nabla^2E=-\epsilon\mu\frac{\partial^2H}{\partial t^2}$$ 解的一般形式： $$E(z,t)=C_1g(kz-vt)+C_2g(kz+vt)$$ 其中g为任意函数，$v=\frac{1}{\sqrt{\epsilon\mu}}$ 深夜听到此歌，颇有感触，随笔所绘</description>
+    </item>
+    
+  </channel>
+</rss>

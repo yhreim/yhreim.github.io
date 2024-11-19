@@ -6,7 +6,39 @@
     <description>Recent content on 墨子的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 27 Oct 2024 00:00:00 +0000</lastBuildDate><atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 19 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2波动光学</title>
+      <link>/posts/2%E6%B3%A2%E5%8A%A8%E5%85%89%E5%AD%A6/</link>
+      <pubDate>Tue, 19 Nov 2024 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2%E6%B3%A2%E5%8A%A8%E5%85%89%E5%AD%A6/</guid>
+      <description>2.1波动微分方程推导 # 由麦克斯韦方程组推导&amp;raquo;波动微分方程&amp;raquo;可衍生出波动方程一般形式的通解。
+电磁学基础 $$ \begin{cases} \nabla\cdot E=0\ \nabla\cdot H=0\ \nabla\times E=-\epsilon \frac{\partial H}{\partial t}\ \nabla\times H=\mu \frac{\partial E}{\partial t} \end{cases} $$ $$\nabla\times(\nabla\times E)=-\epsilon\mu\frac{\partial^2H}{\partial t^2}$$ $$\to \nabla(\nabla\cdot E)-\nabla^2E=-\epsilon\mu\frac{\partial^2H}{\partial t^2}$$ 解的一般形式： $$E(z,t)=C_1g(kz-vt)+C_2g(kz+vt)$$ 其中g为任意函数，$v=\frac{1}{\sqrt{\epsilon\mu}}$ 深夜听到此歌，颇有感触，随笔所绘</description>
+    </item>
+    
+    <item>
+      <title>王成录《面对面》访谈</title>
+      <link>/posts/%E7%8E%8B%E6%88%90%E5%BD%95%E9%9D%A2%E5%AF%B9%E9%9D%A2%E8%AE%BF%E8%B0%88/</link>
+      <pubDate>Tue, 19 Nov 2024 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/%E7%8E%8B%E6%88%90%E5%BD%95%E9%9D%A2%E5%AF%B9%E9%9D%A2%E8%AE%BF%E8%B0%88/</guid>
+      <description>王教授是操作系统领域的专家，一手缔造了鸿蒙操作系统，被誉为鸿蒙之父，来看看这位大佬有什么异乎常人的见解： 让操作系统更好的兼容性：讲同一种语言
+这表明该操作系统将有强大的跨平台，软件兼容强
+先行主流系统除windowsNT内核外，都是基于Linux内核发展出来，百花齐放。
+设备的根源：芯片+系统
+硬件层&amp;raquo;全栈&amp;raquo;应用层
+（从底层到应用层都要有所突破）
+配套不是方向
+19美商务部, 禁用所有google应用和服务，限制性供应芯片
+设备量20%
+设备少就没有足够的用户吸引开发者，开发的软件少就没有用户选择使用。设备量达到20%是一个切入点
+2030年前是最好的机遇期 大环境支持 国家数字化发展，新基建建设 产业转化周期，如嵌入式，小型化操作系统，物联网广泛需求 深开鸿公司
+编写教材《HarmonyOS操作系统》
+寄语 # 凡是人类能想象的事情，必将有人将他实现。 ————梵尔纳
+新闻插播：珠海航展宣传图片、飞机介绍、航展视频</description>
+    </item>
+    
     <item>
       <title>自制纸飞镖</title>
       <link>/posts/%E8%87%AA%E5%88%B6%E7%BA%B8%E9%A3%9E%E9%95%96/</link>

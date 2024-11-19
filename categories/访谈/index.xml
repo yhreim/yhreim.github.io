@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>访谈 on 墨子的博客</title>
+    <link>/categories/%E8%AE%BF%E8%B0%88/</link>
+    <description>Recent content in 访谈 on 墨子的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 19 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="/categories/%E8%AE%BF%E8%B0%88/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>王成录《面对面》访谈</title>
+      <link>/posts/%E7%8E%8B%E6%88%90%E5%BD%95%E9%9D%A2%E5%AF%B9%E9%9D%A2%E8%AE%BF%E8%B0%88/</link>
+      <pubDate>Tue, 19 Nov 2024 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/%E7%8E%8B%E6%88%90%E5%BD%95%E9%9D%A2%E5%AF%B9%E9%9D%A2%E8%AE%BF%E8%B0%88/</guid>
+      <description>王教授是操作系统领域的专家，一手缔造了鸿蒙操作系统，被誉为鸿蒙之父，来看看这位大佬有什么异乎常人的见解： 让操作系统更好的兼容性：讲同一种语言
+这表明该操作系统将有强大的跨平台，软件兼容强
+先行主流系统除windowsNT内核外，都是基于Linux内核发展出来，百花齐放。
+设备的根源：芯片+系统
+硬件层&amp;raquo;全栈&amp;raquo;应用层
+（从底层到应用层都要有所突破）
+配套不是方向
+19美商务部, 禁用所有google应用和服务，限制性供应芯片
+设备量20%
+设备少就没有足够的用户吸引开发者，开发的软件少就没有用户选择使用。设备量达到20%是一个切入点
+2030年前是最好的机遇期 大环境支持 国家数字化发展，新基建建设 产业转化周期，如嵌入式，小型化操作系统，物联网广泛需求 深开鸿公司
+编写教材《HarmonyOS操作系统》
+寄语 # 凡是人类能想象的事情，必将有人将他实现。 ————梵尔纳
+新闻插播：珠海航展宣传图片、飞机介绍、航展视频</description>
+    </item>
+    
+  </channel>
+</rss>
