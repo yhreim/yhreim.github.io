@@ -1,0 +1,1821 @@
+﻿(function () {
+    $(function () {
+        //add and modify 共同使用
+        cAppDeclarePageAdd.init();
+    });
+})(this);
+
+(function ($) {
+    window.cAppDeclarePageAdd = function () {
+        var Options = {
+            toolbar: $('#kt_subheader .kt-subheader__toolbar>.kt-subheader__wrapper'),
+            container: $('#Declare_Container'),
+            wizard: {
+                navContainer: $('#Declare_Container #c-wizard-nav--container'),
+                contentContainer: $('#Declare_Container #c-wizard-content--container'),
+                wizard: null,
+            },
+            pageData: null,
+            actions: {
+                container: $('#Declare_Container #c-form-actions'),
+                prev: $('#Declare_Container #c-form-actions>[type="button"][data-ktwizard-type="action-prev"]'),
+                cache: $('#Declare_Container #c-form-actions>[type="button"][data-ktwizard-type="action-cache"]'),
+                submit: $('#Declare_Container #c-form-actions>[type="button"][data-ktwizard-type="action-submit"]'),
+                next: $('#Declare_Container #c-form-actions>[type="button"][data-ktwizard-type="action-next"]'),
+                currentAction: '',
+                getCurrentActions: function () {
+                    var _actionValue = changeUtil.trim(Options.actions.currentAction).toLowerCase();
+                    Options.actions.currentAction = '';
+                    return _actionValue;
+                }
+            },
+            form: {
+                form: null,
+                submit: null,
+                formData: null,
+                cvalidate: null,
+                isSubmit: false,
+            }
+        };
+
+        var Webapi = {
+            removeFile: function (options) {
+                var apiOptions = {
+                    reconfirm: {
+                        enable: true,
+                        message: '您是否要确认要删除该附件，如若删除则无法恢复该文件？'
+                    }
+                };
+                options = $.extend(true, {},
+                    apiOptions, options);
+                options.url = '/Item/Declare/RemoveFile';
+                WebApiHelper.post(options);
+            },
+        };
+
+        var Plugin = {
+            init: function () {
+                Options.pageData = changeUtil.getHtmlValue({
+                    el: Options.container.find(">.hidden.form-data"),
+                    key: "data-name",
+                    query: 'this-form-data',
+                    valueKey: 'data-value',
+                    destroy: true,
+                    convertValue: {
+                        bool: ['HasData', 'IsAddPage'],
+                    },
+                });
+
+                Plugin.initWizard();
+            },
+            initWizard: function () {
+                Options.actions.container.find('>[type="button"]').click(function () {
+                    var _el = $(this);
+                    var _value = changeUtil.trim(_el.attr('data-ktwizard-type')).toLowerCase();
+                    Options.actions.currentAction = _value;
+                    _el.attr('data-ktwizard-type', _value);
+                });
+
+                var countIndex = 0;
+                Options.wizard.navContainer.find('>.c--nav').each(function () {
+                    var _el = $(this);
+                    countIndex++;
+                    _el.attr('data-wizard-step', countIndex);
+                });
+                countIndex = 0;
+                Options.wizard.contentContainer.find('>.c--content').each(function () {
+                    var _el = $(this);
+                    countIndex++;
+                    _el.attr('data-wizard-step', countIndex);
+
+                    var wizardData = changeUtil.getHtmlValue({
+                        el: _el.find(">c-wizard-loader.hidden"),
+                        key: "data-name",
+                        query: 'wizard-value',
+                        valueKey: 'data-value',
+                        destroy: true,
+                    });
+                    _el.data('wizardData', wizardData);
+                });
+                var isAddFrist = Options.pageData.IsAddPage && !Options.pageData.HasData;
+                Options.wizard.wizard = new KTWizard('c_wizard_declare', {
+                    startStep: Options.pageData.IsAddPage && Options.pageData.HasData ? 2 : 1,
+                    clickableSteps: !isAddFrist
+                });
+
+                Options.actions.prev.click();
+                Options.wizard.navContainer.find('>.c--nav').eq(0).click();
+
+                if (isAddFrist) {
+                    Options.wizard.navContainer.find('>.c--nav[data-ktwizard-state="pending"]').addClass('disabled');
+                }
+
+                Options.wizard.wizard.on('beforeNext', function (wizardObj) {
+                    var _actionValue = Options.actions.getCurrentActions();
+                    if (_actionValue !== 'action-next' && _actionValue !== 'action-submit') {
+                        return;
+                    }
+                    wizardObj.stop();
+
+                    Options.form.cvalidate = Options.form.form.cvalidate({
+                        key: "name",
+                        scrollToFirstErrorOffset: -180
+                    });
+
+                    Options.form.isSubmit = true;
+                    var result = Options.form.cvalidate.submit();
+                    if (result !== true) {
+                        return;
+                    }
+                    var model = Options.form.cvalidate.formvalue();
+                    Plugin.submit(Options.actions.container.find('>[type="button"][data-ktwizard-type="' + _actionValue + '"]').eq(0), model);
+                });
+
+                ///暂存事件
+                Options.actions.cache.click(function () {
+                    Options.actions.currentAction = '';
+                    var _el = $(this);
+                    Options.form.isSubmit = true;
+
+                    Options.form.cvalidate = Options.form.form.cvalidate({
+                        key: "name",
+                        scrollToFirstErrorOffset: -180
+                    });
+
+                    var result = Options.form.cvalidate.submit();
+                    if (result !== true) {
+                        return;
+                    }
+                    var model = Options.form.cvalidate.formvalue();
+                    model.IsCache = true;
+                    Plugin.submit(_el, model);
+                });
+
+                ///提交事件
+                Options.actions.submit.click(function () {
+                    Options.actions.currentAction = '';
+                    var _el = $(this);
+                    Options.form.isSubmit = true;
+
+                    Options.form.cvalidate = Options.form.form.cvalidate({
+                        key: "name",
+                        scrollToFirstErrorOffset: -180
+                    });
+
+                    var result = Options.form.cvalidate.submit();
+                    if (result !== true) {
+                        return;
+                    }
+                    var model = Options.form.cvalidate.formvalue();
+                    model.IsCache = false;
+                    changeUtil.swalHelper({
+                        title: '项目提交提示',
+                        text: '您是否确认提交项目？提交之后将无法修改！',
+                        type: 'question',
+                        showCancelButton: true,
+                    }).then(function (result) {
+                        if (result.value === true) {
+                            Plugin.submit(_el, model);
+                        }
+                    });
+                });
+
+                // Options.wizard.wizard.on('beforePrev', function (wizardObj) {
+                // });
+
+                Options.wizard.wizard.on('change', function (wizard) {
+                    changeUtil.scrollTo($('#c-wizard-content--container'), -200);
+                    Plugin.loadStepContainer_Once();
+                });
+
+                Plugin.loadStepContainer_Once();
+
+                changeUtil.sticky({
+                    el: $('#c_page_tools'),
+                    stickyContainer: $('#Declare___Container'),
+                    isClone: false,
+                    marginTop: 85,
+                    stickyClass: 'c-sticky c--sticky',
+                    offset: function (opt) {
+                        return -200;
+                    }
+                });
+
+                changeUtil.sticky({
+                    el: $('#c_wizard_declare>.kt-grid__item>.kt-wizard-v3__nav'),
+                    stickyContainer: $('#c_wizard_declare'),
+                    isClone: false,
+                    marginTop: function () {
+                        return 50;
+                    },
+                    stickyClass: 'c-sticky c--sticky',
+                    minWindowWidth: 769,
+                    offset: function (opt) {
+                        return -102;
+                    },
+                    callback: function (el, opt1, opt2) {
+                        if (opt2.status === 1) {
+
+                        }
+                    }
+                });
+            },
+            submit: function (el, model) {
+                if (el.hasClass("c--lock")) {
+                    return;
+                }
+                el.addClass("c--lock").attr("disabled", true);
+                el.addClass(
+                    "kt-spinner kt-spinner--right kt-spinner--md kt-spinner--light"
+                );
+                changeUtil.block($('body'), { fixed: true, message: '请稍候，正在提交数据……' });
+                Options.form.form.find(">.c--form>.form-msg").find('.c--alert.alert').fadeOut();
+
+                var step = Options.wizard.wizard.getStep();
+                var content = Options.wizard.contentContainer.find('>.c--content[data-wizard-step="' + step + '"]').eq(0);
+                var wizardData = content.data('wizardData');
+                var isAddFrist = Options.pageData.IsAddPage && !Options.pageData.HasData && step === 1;
+                if (step === 1) {
+                    var tempArray = ['QYDSOne', 'QYDSTwo'];
+                    for (var index = 0; index < tempArray.length; index++) {
+                        var _tempKey = tempArray[index];
+                        if (model[_tempKey] === undefined) {
+                            model[_tempKey] = 'text';
+                        }
+                        var _tempValue = changeUtil.trim(model[_tempKey]);
+                        if (_tempValue === '') {
+                            model[_tempKey] = 'text';
+                        }
+                    }
+                }
+                changeAjax.postAntiForgery({
+                    url: wizardData.url,
+                    data: model,
+                    success: function (data) {
+                        _execute(data);
+                    },
+                    error: function (data) {
+                        _execute({
+                            Success: false,
+                            Message: "数据保存失败！",
+                            ErrorList: []
+                        });
+                    }
+                });
+
+                var _execute = function (data) {
+                    changeUtil.unblock($('body'));
+                    el.removeClass("c--lock").attr("disabled", false);
+                    el.removeClass(
+                        "kt-spinner kt-spinner--right kt-spinner--md kt-spinner--light"
+                    );
+                    if (data.Success) {
+                        changeUtil.swalHelper({
+                            html: data.Message,
+                            type: 'success',
+                        }).then(function () {
+                            if (isAddFrist) {
+                                var redirectUrl = '/Item/Declare/Add?id=' + data.Data;
+                                if (Options.pageData.deSearchReqestString !== undefined) {
+                                    Options.pageData.deSearchReqestString = changeUtil.trim(Options.pageData.deSearchReqestString);
+                                    if (Options.pageData.deSearchReqestString !== '') {
+                                        redirectUrl += '&' + Options.pageData.deSearchReqestString;
+                                    }
+                                }
+                                changeUtil.locationHref(redirectUrl);
+                            } else if (step === 5) {
+                                var redirectUrl = '';
+                                if (Options.pageData.PageMode === 'item_modify') {
+                                    var redirectUrl = '/Item/ItemModify/Index?id=' + data.Data;
+                                } else {
+                                    var redirectUrl = '/Item/Declare/Index?id=' + data.Data;
+                                }
+                                if (Options.pageData.deSearchReqestString !== undefined) {
+                                    Options.pageData.deSearchReqestString = changeUtil.trim(Options.pageData.deSearchReqestString);
+                                    if (Options.pageData.deSearchReqestString !== '') {
+                                        redirectUrl += '&' + Options.pageData.deSearchReqestString;
+                                    }
+                                }
+                                changeUtil.locationHref(redirectUrl);
+                            } else {
+                                Options.form.isSubmit = false;
+                                Options.wizard.navContainer.find('>.c--nav[data-wizard-step="' + step + '"]').addClass('c-done');
+                                Options.wizard.wizard.goNext();
+                                Options.actions.prev.click();
+                                changeUtil.scrollTop();
+                                if (step === 2 && data.Data.FristUserName != undefined) {
+                                    $('.c--global--username').html(data.Data.FristUserName);
+                                }
+                                Plugin.loadStepContainer_Once();
+                            }
+                        });
+                    } else {
+                        changeUtil.unobtrusive.error(Options.form.form, {
+                            errorMsg: data.Message,
+                            errors: data.ErrorList,
+                            alert: {
+                                container: Options.form.form.find(">.c--form>.form-msg"),
+                                theme: "solid_background_alerts",
+                                type: "danger",
+                                icon: 'flaticon-warning',
+                            },
+                        });
+                    }
+                };
+            },
+            loadStepContainer_Once: function () {
+                var step = Options.wizard.wizard.getStep();
+                var content = Options.wizard.contentContainer.find('>.c--content[data-wizard-step="' + step + '"]').eq(0);
+                Options.form.form = content.find('>.c-step-container');
+                Options.actions.container.find('>[type="button"]').attr('disabled', 'disabled');
+                if (content.find('>.c-step-container>.c-unloaded').length === 0) {
+                    $('.c-search-fristuseraccount.c--search #FristUserAccount').click();
+                    Options.actions.container.find('>[type="button"]').removeAttr('disabled');
+                    return;
+                }
+                var wizardData = content.data('wizardData');
+                var paramsString = "?id=" + Options.pageData.ID;
+                if (wizardData["params"] !== undefined) {
+                    var params = wizardData["params"];
+                    if ($.isArray(params)) {
+                        for (var index = 0; index < params.length; index++) {
+                            var param = changeUtil.trim(params[index]);
+                            if (param === '') {
+                                continue;
+                            }
+                            paramsString += "&" + param + "=" + Options.pageData[param];
+                        }
+                    } else {
+                        var param = changeUtil.trim(params);
+                        paramsString += "&" + param + "=" + Options.pageData[param];
+                    }
+                }
+                changeUtil.loadHtmlByUrl({
+                    el: Options.form.form,
+                    url: wizardData.url + paramsString,
+                    success: function (data) {
+
+                        Plugin.loadStepForm({
+                            step: step,
+                            content: Options.form.form
+                        });
+                    },
+                    error: function (data) {
+                        Options.form.form.html('数据加载失败！')
+                    },
+                });
+            },
+            loadStepForm: function (options) {
+                Options.form.isSubmit = false;
+                changeApp.initSelectpicker(options.content.find('.c-selectpicker'));
+                changeUtil.autosize(options.content.find('textarea.c--autosize'));
+                changeUtil.maxlength(options.content.find('.c--maxlength'));
+                changeUtil.TableHelper.scroll(options.content.find('.kt-scroll.c-table-scroll'));
+
+                switch (options.step) {
+                    case 1:
+                        Plugin.loadStepForm_1(options);
+                        break;
+                    case 2:
+                        Plugin.loadStepForm_2(options);
+                        break;
+                    case 3:
+                        Plugin.loadStepForm_3(options);
+                        break;
+                    case 4:
+                        Plugin.loadStepForm_4(options);
+                        break;
+                    case 5:
+                        Plugin.loadStepForm_5(options);
+                        break;
+                }
+
+                if (options.content.find('>.c--form').length === 0) {
+                    Options.actions.container.find('>[type="button"]').attr('disabled', 'disabled');
+                } else {
+                    Options.actions.container.find('>[type="button"]').removeAttr('disabled');
+                }
+
+                Options.form.cvalidate = Options.form.form.cvalidate({
+                    key: "name",
+                    scrollToFirstErrorOffset: -180
+                });
+
+            },
+            /**
+             * 基本情况
+             * @param {object} options 配置参数
+             */
+            loadStepForm_1: function (options) {
+                options.summernote = {
+                    field: {
+                        empty: ['XSOne', 'ZDJSOne', 'ZDJSTwo'],
+                        '创新训练项目': ['XSOne', 'ZDJSOne', 'ZDJSTwo'],
+                        '创业训练项目': ['XSOne', 'ZDJSOne', 'ZDJSTwo', 'QYDSOne', 'QYDSTwo'],
+                        '创业实践项目': ['XSOne', 'ZDJSOne', 'ZDJSTwo', 'QYDSOne', 'QYDSTwo'],
+                        '创新训练项目(江苏)': ['XSOne', 'ZDJSOne', 'ZDJSTwo'],
+                        '创业训练项目(江苏)': ['XSOne', 'ZDJSOne', 'ZDJSTwo', 'QYDSOne', 'QYDSTwo'],
+                        '创业实践项目(江苏)': ['XSOne', 'ZDJSOne', 'ZDJSTwo', 'QYDSOne', 'QYDSTwo']
+                    },
+                };
+
+                changeUtil.summernote(options.content.find('.c--summernote'), {
+                    custom: {
+                        isLimitUserFileSize: true
+                    },
+                    callbacks: {
+                        onChange: function (_self) {
+                            if (Options.form.isSubmit) {
+                                Options.form.cvalidate.validate();
+                            }
+                        }
+                    }
+                });
+                options.content.find('.c--summernote').each(function () {
+                    var _el = $(this);
+                    _el.attr('data-val--required', _el.attr('data-val-required'));
+                });
+                var _ItemType_change = function () {
+                    options.content.find('.c--summernote--form-group').addClass('hidden');
+                    options.content.find('.c--summernote--form-group .c--summernote').removeAttr('data-val-required');
+                    var _value = changeUtil.trim(options.content.find('#ItemType').val());
+                    var __fileds = [];
+                    if (_value !== '') {
+                        __fileds = options.summernote.field[_value];
+                    } else {
+                        __fileds = options.summernote.field.empty;
+                    }
+                    if (__fileds !== undefined) {
+                        for (var index = 0; index < __fileds.length; index++) {
+                            var __filed = __fileds[index];
+                            var _summernote = options.content.find('.c--summernote--form-group[data-summernote-name="' + __filed + '"]');
+                            _summernote.find('.c--summernote').attr('data-val-required', _summernote.find('.c--summernote').attr('data-val--required'));
+                            _summernote.removeClass('hidden');
+                        }
+                    }
+
+                    if (Options.form.isSubmit) {
+                        Options.form.cvalidate.validate();
+                    }
+                }
+                options.content.find('#ItemType').change(function () {
+                    _ItemType_change();
+                });
+                _ItemType_change();
+
+                var _SubjectOne_change = function () {
+                    var _SubjectOne = changeUtil.trim(options.content.find('#SubjectOne').val());
+
+                    changeAjax.postAntiForgery({
+                        url: "/Item/Declare/GetSubjectTwo",
+                        data: {
+                            parentCode: _SubjectOne
+                        },
+                        success: function (data) {
+                            _SubjectOne_change_callback(data);
+                        },
+                        error: function (data) {
+                            _SubjectOne_change_callback({
+                                Success: false,
+                                Message: '数据获取失败',
+                            });
+                        }
+                    });
+
+                    var _SubjectOne_change_callback = function (data) {
+                        if (data.Success !== true) {
+                            data.Data = [{ Value: '', Text: '请选择二级学科' }];
+                        }
+                        changeApp.renderSelectpicker(options.content.find('#SubjectTwo'), data.Data);
+                    }
+                }
+
+                options.content.find('#SubjectOne').change(function () {
+                    _SubjectOne_change();
+                });
+
+                var _ItemTerm_change = function () {
+                    var _el = options.content.find('#ItemTerm');
+                    var _value = changeUtil.trim(_el.val());
+
+                    changeAjax.postAntiForgery({
+                        url: "Console/ItemTermSet/GetItemTerm",
+                        data: {
+                            itemTerm: _value,
+                            xueXiaoCode: Options.pageData.XueXiaoCode,
+                            batchID: Options.pageData.BatchID,
+                        },
+                        success: function (data) {
+                            _ItemTerm_change_callback(data);
+                        },
+                        error: function (data) {
+                            _ItemTerm_change_callback({
+                                Success: false,
+                                Message: '项目期限获取失败！'
+                            });
+                        }
+                    });
+
+                    var _ItemTerm_change_callback = function (data) {
+                        if (data.Success === true) {
+                            _el.parents('.form-group.nv-validate').eq(0).find('.help-block>.c-itemterm')
+                                .html('<b>' + data.Data.StartDate_Text + '</b> 至 <b>' + data.Data.EndDate_Text + '</b>');
+                        } else {
+                            _el.parents('.form-group.nv-validate').eq(0).find('.help-block>.c-itemterm').html('');
+                        }
+                    }
+                }
+                options.content.find('#ItemTerm').change(function () {
+                    _ItemTerm_change();
+                });
+                _ItemTerm_change();
+
+                options.content.find('.c-search-fristuseraccount.c--search>.c-search-action>.c--btn').click(function () {
+                    var el = $(this);
+                    if (el.hasClass('c--lock')) {
+                        return;
+                    }
+                    el.addClass('c--lock');
+                    var parent = el.parents('.c-search-fristuseraccount.c--search').eq(0);
+                    if (parent.hasClass('c-search')) {
+                        var width = parent.find('>.c-search-display').outerWidth();
+                        parent.removeClass('c-search').addClass('c-close');
+                        parent.find('>.c-search-input').css('width', 0).addClass('c-flex');
+                        parent.find('>.c-search-input').animate({ width: ((width / 2) + 12) }, 0.3 * 1000, function () {
+                            parent.find('>.c-search-input').removeAttr('style').removeClass('c-flex');
+                        });
+                    } else {
+                        parent.find('>.c-search-input').animate({ width: 0 }, 0.3 * 1000, function () {
+                            parent.removeClass('c-close').addClass('c-search');
+                        });
+                    }
+                    el.removeClass('c--lock');
+                });
+
+                var _FristUserAccount_change = function (el) {
+                    if (el.length === 0) {
+                        return;
+                    }
+                    var parent = el.parents('.c-search-fristuseraccount.c--search').eq(0);
+                    if (parent.hasClass('c-close')) {
+                        return;
+                    }
+                    var fristusername = el.parents('.form-group.nv-validate').eq(0).find('.help-block>.c-fristusername');
+                    fristusername.removeClass('c-error').html('');
+                    var value = changeUtil.trim(el.val());
+                    if (value === '') {
+                        return;
+                    }
+                    changeAjax.postAntiForgery({
+                        url: "/Item/Declare/CheckStudentUserAccount",
+                        data: {
+                            userAccount: value,
+                            xueXiaoCode: Options.pageData.XueXiaoCode
+                        },
+                        success: function (data) {
+                            _FristUserAccount_change_callback(data);
+                        },
+                        error: function (data) {
+                            _FristUserAccount_change_callback({
+                                Success: false,
+                                Message: '账号校验失败！',
+                                Data: {
+                                    Code: 0
+                                }
+                            });
+                        }
+                    });
+
+                    var _FristUserAccount_change_callback = function (data) {
+                        if (data.Success !== true) {
+                            fristusername.addClass('c-error');
+                            switch (data.Data.Code) {
+                                case 0:
+                                    data.Message = '账号校验失败！请修改账号信息！';
+                                    break;
+                                case 1:
+                                    data.Message = '账号校验失败！请修改账号信息！';
+                                    break;
+                                case 2:
+                                    fristusername.removeClass('c-error');
+                                    data.Message = '账号校验失败！参数无效！';
+                                    break;
+                                case 3:
+                                    fristusername.removeClass('c-error');
+                                    data.Message = '系统目前暂无该学生账号：<b>' + value + '</b> ，在保存数据时会自动新增该账号信息！ ';
+                                    break;
+                                case 4:
+                                    data.Message = '账号格式验证失败！(允许3~15位的数字、字母或者@和#组合)，请修改账号信息！';
+                                    break;
+                                case 5:
+                                    data.Message = '用户存在，但无<b>“学生”</b>角色！请修改账号信息！';
+                                    break;
+                                default:
+                                    data.Message = '账号校验失败！请修改账号信息！';
+                                    break;
+                            }
+
+                        } else {
+                            fristusername.removeClass('c-error');
+                            data.Message = data.Data.User.UserName;
+                        }
+                        fristusername.html(data.Message);
+                    }
+                }
+
+                options.content.find('.c-search-fristuseraccount.c--search #FristUserAccount').bind("change keyup click", function () {
+                    var el = $(this);
+                    _FristUserAccount_change(el);
+                });
+                _FristUserAccount_change(options.content.find('.c-search-fristuseraccount.c--search #FristUserAccount'));
+
+                changeUtil.inputSearchControl(options.content.find('.c-search-fristuseraccount.c--search>.c-search-input>input[type="text"]'), {
+                    callbacks: {
+                        renderItem: function (data, index) {
+                            var html = '<div class="c-search--user-li">\
+    <img class="c-search--user-li-avatar" src="' + changeUtil.getOSUrl(data.AvatarPath) + '" alt="' + data.UserName + '" />\
+    <div class="c-search--user-li-userinfo">\
+        <h4>' + data.UserName + '</h4>\
+        <small>' + data.UserAccount + '</small>\
+    </div>\
+</div>';
+                            return html;
+                        },
+                        getAjaxData: function (options, value) {
+                            var jsonData = {};
+                            jsonData['xueXiaoCode'] = Options.pageData.XueXiaoCode;
+                            jsonData['roleCode'] = 'student';
+                            jsonData['userNameOrUserAccount'] = value;
+                            return jsonData;
+                        },
+                        choose: function (options, target, data) { },
+                        matchValue: function (_options) {
+                            var searchValue = _options.el.data('data-search-value');
+                            if (searchValue) {
+                                _options.el.val(searchValue.UserAccount);
+                                _options.el.parents('.form-group.nv-validate').eq(0).find('#FristUserID').val(searchValue.UserID);
+                                _options.el.parents('.form-group.nv-validate').eq(0).find('#FristUserAccount').val(searchValue.UserAccount);
+                                _options.el.parents('.form-group.nv-validate').eq(0).find('.help-block>.c-fristusername').html(searchValue.UserName)
+                                    .removeClass('c-error');
+                                _options.el.data('_page_searchValue', searchValue.UserAccount);
+                            }
+                        },
+                        blur: function (_options) {
+                            _options.el.val('');
+                            _options.el.parents('.c-search-fristuseraccount.c--search').eq(0).find('>.c-search-action>.c--btn').click();
+                            // var searchValue = _options.el.data('data-search-value');
+                            // var value = changeUtil.trim(_options.el.data('_page_searchValue'));
+                            // if (value === '') {
+                            //     _options.el.val('');
+                            // }
+                        }
+                    },
+                    searchEmpty: true,
+                    focusSearch: true
+                });
+
+            },
+            /**
+             * 项目成员&指导教师
+             * @param {object} options 配置参数
+             */
+            loadStepForm_2: function (options) {
+                options.itemMembers = {
+                    ListStudent: {
+                        content: options.content.find('.kt-form__section[data-item-group="ListStudent"] .c-form-repeater-container [name="ListStudent"]'),
+                        add: options.content.find('.kt-form__section[data-item-group="ListStudent"] .c-form-repeater-container>.c-form-repeater-actions [type="button"][data-command="add"]'),
+                    },
+                    ListTeacher: {
+                        content: options.content.find('.kt-form__section[data-item-group="ListTeacher"] .c-form-repeater-container [name="ListTeacher"]'),
+                        add: options.content.find('.kt-form__section[data-item-group="ListTeacher"] .c-form-repeater-container>.c-form-repeater-actions [type="button"][data-command="add"]'),
+                    },
+                    ListQYTeacher: {
+                        content: options.content.find('.kt-form__section[data-item-group="ListQYTeacher"] .c-form-repeater-container [name="ListQYTeacher"]'),
+                        add: options.content.find('.kt-form__section[data-item-group="ListQYTeacher"] .c-form-repeater-container>.c-form-repeater-actions [type="button"][data-command="add"]'),
+                    }
+                };
+                var _Plugin = {
+                    init: function () {
+                        options.itemMembers.ListStudent.content.find('>.c-form-repeater-item').each(function () {
+                            var el = $(this);
+                            _Plugin.ListStudent.initRow(el);
+                        });
+                        options.itemMembers.ListStudent.add.click(function () {
+                            _Plugin.ListStudent.addRow();
+                        });
+
+                        options.itemMembers.ListTeacher.content.find('>.c-form-repeater-item').each(function () {
+                            var el = $(this);
+                            _Plugin.ListTeacher.initRow(el);
+                        });
+                        options.itemMembers.ListTeacher.add.click(function () {
+                            _Plugin.ListTeacher.addRow();
+                        });
+
+                        options.itemMembers.ListQYTeacher.content.find('>.c-form-repeater-item').each(function () {
+                            var el = $(this);
+                            _Plugin.ListQYTeacher.initRow(el);
+                        });
+                        options.itemMembers.ListQYTeacher.add.click(function () {
+                            _Plugin.ListQYTeacher.addRow();
+                        });
+                    },
+                    ListStudent: {
+                        addRow: function () {
+                            var id = changeUtil.getUniqueID('');
+
+                            var html = '<div class="form-group row align-items-center c-form-repeater-item" style="display: none;" id="ListStudent_' + id + '">\
+	<div class="col-md-3 nv-validate">\
+		<div class="kt-form__group--inline">\
+			<div class="kt-form__label">\
+				<label>姓名:</label>\
+			</div>\
+			<div class="kt-form__control" style="position: relative;">\
+				<input class="form-control c-input--square c--maxlength" data-val="true" data-val-length="姓名 字符串长度应在50个字符以内" data-val-length-max="50" maxlength="50" data-val-required="姓名 字段是必需的。" id="' + id + '_XingMing" data-item-name="XingMing" placeholder="姓名" type="text" autocomplete="off">\
+				<span class="help-block">\
+					<span class="field-validation-valid" data-valmsg-for="' + id + '_XingMing" data-valmsg-replace="true"></span>\
+				</span>\
+			</div>\
+		</div>\
+	</div>\
+	<div class="col-md-3 nv-validate">\
+		<div class="kt-form__group--inline">\
+			<div class="kt-form__label">\
+				<label class="kt-label m-label--single">学号:</label>\
+			</div>\
+			<div class="kt-form__control">\
+				<input class="form-control c-input--square c--maxlength" data-val="true" data-val-length="学号 字符串长度应在30个字符以内" data-val-length-max="30" maxlength="30" data-val-required="学号 字段是必需的。" id="' + id + '_XueHao" data-item-name="XueHao" placeholder="学号" type="text" autocomplete="off">\
+				<span class="help-block">\
+					<span class="field-validation-valid" data-valmsg-for="' + id + '_XueHao" data-valmsg-replace="true"></span>\
+				</span>\
+			</div>\
+		</div>\
+	</div>\
+	<div class="col-md-3 nv-validate">\
+		<div class="kt-form__group--inline">\
+			<div class="kt-form__label">\
+				<label class="kt-label m-label--single">专业班级:</label>\
+			</div>\
+			<div class="kt-form__control">\
+				<input class="form-control c-input--square c--maxlength" data-val="false" data-val-length="专业班级 字符串长度应在100个字符以内" data-val-length-max="100" maxlength="100" data-val-required="专业班级 字段是必需的。" id="' + id + '_ZhuanYe" data-item-name="ZhuanYe" placeholder="专业班级" type="text" autocomplete="off">\
+				<span class="help-block">\
+					<span class="field-validation-valid" data-valmsg-for="' + id + '_ZhuanYe" data-valmsg-replace="true"></span>\
+				</span>\
+			</div>\
+		</div>\
+	</div>\
+	<div class="col-md-3 nv-validate">\
+		<div class="kt-form__group--inline">\
+			<div class="kt-form__label">\
+				<label class="kt-label m-label--single">所在学院:</label>\
+			</div>\
+			<div class="kt-form__control">\
+				<input class="form-control c-input--square c--maxlength" data-val="false" data-val-length="所在学院 字符串长度应在100个字符以内" data-val-length-max="100" maxlength="100" data-val-required="所在学院 字段是必需的。" id="' + id + '_XueYuan" data-item-name="XueYuan" placeholder="所在学院" type="text" autocomplete="off">\
+				<span class="help-block">\
+					<span class="field-validation-valid" data-valmsg-for="' + id + '_XueYuan" data-valmsg-replace="true"></span>\
+				</span>\
+			</div>\
+		</div>\
+	</div>\
+	<div class="col-md-3 nv-validate">\
+		<div class="kt-form__group--inline">\
+			<div class="kt-form__label">\
+				<label class="kt-label m-label--single">项目中的分工:</label>\
+			</div>\
+			<div class="kt-form__control">\
+				<input class="form-control c-input--square c--maxlength" data-val="false" data-val-length="项目中的分工 字符串长度应在100个字符以内" data-val-length-max="100" maxlength="100" data-val-required="项目中的分工 字段是必需的。" id="' + id + '_FenGong" data-item-name="FenGong" placeholder="项目中的分工" type="text" autocomplete="off">\
+				<span class="help-block">\
+					<span class="field-validation-valid" data-valmsg-for="' + id + '_FenGong" data-valmsg-replace="true"></span>\
+				</span>\
+			</div>\
+		</div>\
+	</div>\
+    <div class="col-md-3 nv-validate">\
+		<div class="kt-form__group--inline">\
+			<div class="kt-form__label">\
+				<label>手机:</label>\
+			</div>\
+            <div class="kt-form__control">\
+				<input class="form-control c-input--square c--maxlength" data-val="true" data-val-length="手机 字符串长度应在11个字符以内" data-val-length-max="11" maxlength="11" data-val-required="手机 字段是必需的。" data-val-regex-pattern="^1[3456789]\\d{9}$" data-val-regex="手机 格式不正确。" id="' + id + '_MobilePhone" data-item-name="MobilePhone" placeholder="手机" type="text" autocomplete="off">\
+				<span class="help-block">\
+					<span class="field-validation-valid" data-valmsg-for="' + id + '_MobilePhone" data-valmsg-replace="true"></span>\
+				</span>\
+			</div>\
+		</div>\
+    </div>\
+    <div class="col-md-3 nv-validate">\
+		<div class="kt-form__group--inline">\
+			<div class="kt-form__label">\
+				<label>电子邮箱:</label>\
+			</div>\
+			<div class="kt-form__control">\
+				<input class="form-control c-input--square c--maxlength" data-val="true" data-val-required="电子邮箱 字段是必需的。" data-val-length="电子邮箱 字符串长度应在60个字符以内" data-val-length-max="60" maxlength="60" data-val-regex-pattern="^([\\w-_]+(?:\\.[\\w-_]+)*)*@((?:[a-z0-9]+(?:-[a-zA-Z0-9]+)*)+[\\.][a-z]{2,3})+([\\.][a-z]{2,6})?$" data-val-regex="电子邮箱 格式不正确。" id="' + id + '_Email" data-item-name="Email" placeholder="电子邮箱" type="text" value="" autocomplete="off">\
+				<span class="help-block">\
+					<span class="field-validation-valid" data-valmsg-for="' + id + '_Email" data-valmsg-replace="true">\</span>\
+				</span>\
+			</div>\
+		</div>\
+	</div>\
+	<div class="col-md-3 nv-validate">\
+		<div class="kt-form__group--inline">\
+			<div class="kt-form__label">\
+				<label class="kt-label m-label--single">成员类型:</label>\
+			</div>\
+			<div class="kt-form__control c--group">\
+				<div class="dropdown dropup btn-group" style="width: 100%;">\
+					<input class="form-control c-input--square c--text" placeholder="成员类型" type="text" value="成员" autocomplete="off" readonly="readonly" data-toggle="dropdown" aria-expanded="false">\
+					<span class="help-block">\
+						<span class="field-validation-valid" data-valmsg-for="' + id + '_UserType" data-valmsg-replace="true"></span>\
+					</span>\
+					<div class="dropdown-menu">\
+						<button type="button" class="dropdown-item" data-command="choose-usertype" data-usertype="1">\
+							<i class="la la-check"></i>\
+							<span>第一主持人</span>\
+						</button>\
+						<button type="button" class="dropdown-item" data-command="choose-usertype" data-usertype="2">\
+							<i class="la la-check"></i>\
+							<span>第二主持人</span>\
+						</button>\
+						<button type="button" class="dropdown-item" data-command="choose-usertype" data-usertype="3">\
+							<i class="la la-check"></i>\
+							<span>成员</span>\
+						</button>\
+					</div>\
+				</div>\
+				<input data-val="true" data-val-length="成员类型 字符串长度应在2个字符以内" data-val-required="成员类型 字段是必需的。" id="' + id + '_UserType" data-item-name="UserType" type="hidden" value="3">\
+				<span class="help-block">\
+					<span class="field-validation-valid" data-valmsg-for="' + id + '_UserType" data-valmsg-replace="true"></span>\
+				</span>\
+			</div>\
+		</div>\
+	</div>\
+	<div class="col-md-4 c-form-group-actions">\
+		<button type="button" class="btn-sm btn btn-label-danger btn-bold" data-command="remove">\
+			<span>\
+				<i class="la la-trash-o"></i>\
+				<span>删除</span>\
+			</span>\
+		</button>\
+	</div>\
+</div>';
+
+                            options.itemMembers.ListStudent.content.append(html);
+                            var tr = options.itemMembers.ListStudent.content.find('>#ListStudent_' + id);
+                            tr.removeAttr('id');
+                            tr.slideDown();
+                            _Plugin.ListStudent.initRow(tr);
+                            return tr;
+                        },
+                        initRow: function (tr) {
+                            tr.find('.c-form-group-actions [type="button"][data-command="remove"]').click(function () {
+                                _Plugin.ListStudent.removeRow(tr);
+                            });
+                            tr.find('.c--group [type="button"][data-command="choose-usertype"]').click(function () {
+                                var _el = $(this);
+                                _Plugin.ListStudent.chooseUserType(_el);
+                            });
+                        },
+                        removeRow: function (tr) {
+                            tr.slideUp(function () {
+                                tr.remove();
+                            });
+                        },
+                        chooseUserType: function (_el) {
+                            var _group = _el.parents('.c--group').eq(0);
+                            _group.find('>.dropdown>.c--text').val(changeUtil.trim(_el.find('>span').html()));
+                            _group.find('>[type="hidden"][data-item-name="UserType"]').val(changeUtil.trim(_el.attr('data-usertype')));
+                        },
+                    },
+                    ListTeacher: {
+                        addRow: function () {
+                            var id = changeUtil.getUniqueID('');
+
+                            var IsHiddenListTeacherMainCG = changeUtil.trim(options.itemMembers.ListTeacher.content.attr('data-is-hidden-list-teacher-maincg'));
+                            IsHiddenListTeacherMainCG = IsHiddenListTeacherMainCG.toLowerCase() === 'true';
+                            var html = '\
+                            <div class="form-group row align-items-center c-form-repeater-item" style="display: none;" id="ListTeacher_' + id + '">\
+                                <div class="col-md-3 nv-validate">\
+                                    <div class="kt-form__group--inline">\
+                                        <div class="kt-form__label">\
+                                            <label>账号:</label>\
+                                        </div>\
+                                        <div class="kt-form__control c--input">\
+                                            <input id="' + id + '_UserID" data-item-name="UserID" type="hidden">\
+                                            <input class="form-control c-input--square c--maxlength c--tooltip" data-val="true" data-val-length="账号 字符串长度应在30个字符以内" data-val-length-max="30" maxlength="30" data-val-required="账号 字段是必需的。" id="' + id + '_UserAccount" data-item-name="UserAccount" placeholder="输入账号或姓名检索" type="text" autocomplete="off" data-search-url="/Item/Declare/SearchUserByUserNameOrUserID" readonly="readonly" title="请点击下方“搜索选择”按钮进行检索查询" >\
+                                            <span class="help-block">\
+                                                <span class="field-validation-valid" data-valmsg-for="' + id + '_UserAccount" data-valmsg-replace="true"></span>\
+                                            </span>\
+                                        </div>\
+                                    </div>\
+                                </div>\
+                                <div class="col-md-3 nv-validate">\
+                                    <div class="kt-form__group--inline">\
+                                        <div class="kt-form__label">\
+                                            <label>姓名:</label>\
+                                        </div>\
+                                        <div class="kt-form__control" style="position: relative;">\
+                                            <input class="form-control c-input--square c--maxlength c--tooltip" data-val="true" data-val-length="姓名 字符串长度应在30个字符以内" data-val-length-max="30" maxlength="30" data-val-required="姓名 字段是必需的。" id="' + id + '_XingMing" data-item-name="XingMing" placeholder="姓名" type="text" autocomplete="off" readonly="readonly" title="请点击下方“搜索选择”按钮进行检索查询" >\
+                                            <span class="help-block">\
+                                                <span class="field-validation-valid" data-valmsg-for="' + id + '_XingMing" data-valmsg-replace="true"></span>\
+                                            </span>\
+                                        </div>\
+                                    </div>\
+                                </div>\
+                                <div class="col-md-3 nv-validate">\
+                                    <div class="kt-form__group--inline">\
+                                        <div class="kt-form__label">\
+                                            <label>职称:</label>\
+                                        </div>\
+                                        <div class="kt-form__control">\
+                                        <select id="' + id + '_Title" class="form-control c-input--square c-selectpicker c-selectpicker--search" data-val="true" data-val-required="职称 字段是必需的。" data-item-name="Title"></select>\
+                                            <span class="help-block">\
+                                                <span class="field-validation-valid" data-valmsg-for="' + id + '_Title" data-valmsg-replace="true"></span>\
+                                            </span>\
+                                        </div>\
+                                    </div>\
+                                </div>\
+                                <div class="col-md-3 nv-validate">\
+                                    <div class="kt-form__group--inline">\
+                                        <div class="kt-form__label">\
+                                            <label>学院:</label>\
+                                        </div>\
+                                        <div class="kt-form__control">\
+                                            <input class="form-control c-input--square c--maxlength" data-val="true" data-val-length="学院 字符串长度应在100个字符以内" data-val-length-max="100" maxlength="100" id="' + id + '_XueYuan" data-item-name="XueYuan" placeholder="学院" type="text" autocomplete="off">\
+                                            <span class="help-block">\
+                                                <span class="field-validation-valid" data-valmsg-for="' + id + '_XueYuan" data-valmsg-replace="true">\</span>\
+                                            </span>\
+                                        </div>\
+                                    </div>\
+                                </div>\
+                                <div class="col-md-3 nv-validate">\
+                                    <div class="kt-form__group--inline">\
+                                        <div class="kt-form__label">\
+                                            <label>办公电话:</label>\
+                                        </div>\
+                                        <div class="kt-form__control">\
+                                            <input class="form-control c-input--square c--maxlength" data-val="true" data-val-length="办公电话 字符串长度应在16个字符以内" data-val-length-max="16" maxlength="16" id="' + id + '_Telephone" data-item-name="Telephone" placeholder="办公电话" type="text" autocomplete="off">\
+                                            <span class="help-block">\
+                                                <span class="field-validation-valid" data-valmsg-for="' + id + '_Telephone" data-valmsg-replace="true">\</span>\
+                                            </span>\
+                                        </div>\
+                                    </div>\
+                                </div>\
+                                <div class="col-md-3 nv-validate">\
+                                    <div class="kt-form__group--inline">\
+                                        <div class="kt-form__label">\
+                                            <label>手机:</label>\
+                                        </div>\
+                                        <div class="kt-form__control">\
+                                            <input class="form-control c-input--square c--maxlength" data-val="true" data-val-length="手机 字符串长度应在11个字符以内" data-val-length-max="11" maxlength="11" data-val-required="手机 字段是必需的。" data-val-regex-pattern="^1[3456789]\\d{9}$" data-val-regex="手机 格式不正确。" id="' + id + '_MobilePhone" data-item-name="MobilePhone" placeholder="手机" type="text" autocomplete="off">\
+                                            <span class="help-block">\
+                                                <span class="field-validation-valid" data-valmsg-for="' + id + '_MobilePhone" data-valmsg-replace="true"></span>\
+                                            </span>\
+                                        </div>\
+                                    </div>\
+                                </div>\
+                                <div class="col-md-3 nv-validate">\
+                                    <div class="kt-form__group--inline">\
+                                        <div class="kt-form__label">\
+                                            <label>电子邮箱:</label>\
+                                        </div>\
+                                        <div class="kt-form__control">\
+                                            <input class="form-control c-input--square c--maxlength" data-val="true" data-val-required="电子邮箱 字段是必需的。" data-val-length="电子邮箱 字符串长度应在60个字符以内" data-val-length-max="60" maxlength="60" data-val-regex-pattern="^([\\w-_]+(?:\\.[\\w-_]+)*)*@((?:[a-z0-9]+(?:-[a-zA-Z0-9]+)*)+[\\.][a-z]{2,3})+([\\.][a-z]{2,6})?$" data-val-regex="电子邮箱 格式不正确。" id="' + id + '_Email" data-item-name="Email" placeholder="电子邮箱" type="text" value="" autocomplete="off">\
+                                            <span class="help-block">\
+                                                <span class="field-validation-valid" data-valmsg-for="' + id + '_Email" data-valmsg-replace="true">\</span>\
+                                            </span>\
+                                        </div>\
+                                    </div>\
+                                </div>\
+                                <div class="col-md-3 nv-validate">\
+                                    <div class="kt-form__group--inline">\
+                                        <div class="kt-form__label">\
+                                            <label class="kt-label m-label--single">指导教师类型:</label>\
+                                        </div>\
+                                        <div class="kt-form__control c--group">\
+                                            <div class="dropdown dropup btn-group" style="width: 100%;">\
+                                                <input class="form-control c-input--square c--text" placeholder="指导教师类型" type="text" value="指导教师" autocomplete="off" readonly="readonly" data-toggle="dropdown" aria-expanded="false">\
+                                                <span class="help-block">\
+                                                    <span class="field-validation-valid" data-valmsg-for="' + id + '_UserType" data-valmsg-replace="true"></span>\
+                                                </span>\
+                                                <div class="dropdown-menu">\
+                                                    <button type="button" class="dropdown-item" data-command="choose-usertype" data-usertype="1">\
+                                                        <i class="la la-check"></i>\
+                                                        <span>第一指导教师</span>\
+                                                    </button>\
+                                                    <button type="button" class="dropdown-item" data-command="choose-usertype" data-usertype="2">\
+                                                        <i class="la la-check"></i>\
+                                                        <span>第二指导教师</span>\
+                                                    </button>\
+                                                    <button type="button" class="dropdown-item" data-command="choose-usertype" data-usertype="3">\
+                                                        <i class="la la-check"></i>\
+                                                        <span>指导教师</span>\
+                                                    </button>\
+                                                </div>\
+                                            </div>\
+                                            <input data-val="true" data-val-length="指导教师 字符串长度应在2个字符以内" data-val-required="指导教师 字段是必需的。" id="' + id + '_UserType" data-item-name="UserType" type="hidden" value="3">\
+                                            <span class="help-block">\
+                                                <span class="field-validation-valid" data-valmsg-for="' + id + '_UserType" data-valmsg-replace="true"></span>\
+                                            </span>\
+                                        </div>\
+                                    </div>\
+                                </div>\
+                                <div class="col-md-12 nv-validate ' + (IsHiddenListTeacherMainCG ? 'hidden' : '') + '" data-field-id="MainCG">\
+                                    <div class="kt-form__group--inline">\
+                                        <div class="kt-form__label">\
+                                            <label>主要成果:</label>\
+                                        </div>\
+                                        <div class="kt-form__control">\
+                                            <textarea class="form-control c-input--square c--maxlength c--autosize" data-val="true" id="' + id + '_MainCG" data-item-name="MainCG" placeholder="主要成果" rows="6" maxlength="500" autocomplete="off"></textarea>\
+                                            <span class="help-block">\
+                                                <span class="field-validation-valid" data-valmsg-for="' + id + '_MainCG" data-valmsg-replace="true"></span>\
+                                            </span>\
+                                        </div>\
+                                    </div>\
+                                </div>\
+                                <div class="col-md-4 c-form-group-actions" style="margin-bottom:12px;">\
+                                    <button type="button" class="btn-sm btn btn-label-brand btn-bold" data-command="search-user">\
+                                        <span>\
+                                            <i class="la la-search"></i>\
+                                            <span>搜索选择</span>\
+                                        </span>\
+                                    </button>\
+                                    <button type="button" class="btn-sm btn btn-label-danger btn-bold" data-command="remove">\
+                                        <span>\
+                                            <i class="la la-trash-o"></i>\
+                                            <span>删除</span>\
+                                        </span>\
+                                    </button>\
+                                </div>\
+                            </div>';
+
+                            options.itemMembers.ListTeacher.content.append(html);
+                            var tr = options.itemMembers.ListTeacher.content.find('>#ListTeacher_' + id);
+                            tr.removeAttr('id');
+                            tr.find('#' + id + '_Title').html($('select#Teacher_ListTitle').html());
+                            tr.slideDown();
+                            _Plugin.ListTeacher.initRow(tr);
+                            return tr;
+                        },
+                        initRow: function (tr) {
+                            tr.find('.c-form-group-actions [type="button"][data-command="remove"]').click(function () {
+                                _Plugin.ListTeacher.removeRow(tr);
+                            });
+                            tr.find('.c--group [type="button"][data-command="choose-usertype"]').click(function () {
+                                var _el = $(this);
+                                _Plugin.ListTeacher.chooseUserType(_el);
+                            });
+
+                            tr.find('.c--input>[type="text"][data-item-name="UserAccount"]').each(function () {
+                                var _el = $(this);
+                                _el.focus(function () {
+                                    var __el = $(this);
+                                    __el.addClass('c--focus-UserAccount');
+                                })
+                                _el.blur(function () {
+                                    var __el = $(this);
+                                    __el.removeClass('c--focus-UserAccount');
+                                })
+                            });
+
+                            var isImportItem = $('#isImportItem').val() == '1';
+                            if (isImportItem) {
+                                tr.find('select[data-item-name="Title"]').attr('disabled', 'disabled');
+                                tr.find('select[data-item-name="Title"]').selectpicker('refresh');
+                            }
+
+                            changeUtil.inputSearchControl(tr.find('.c--input>[type="text"][data-item-name="UserAccount--"]'), {
+                                callbacks: {
+                                    renderItem: function (data, index) {
+                                        var count = 0;
+                                        options.itemMembers.ListTeacher.content.find('>.c-form-repeater-item .c--input>[type="hidden"][data-item-name="UserID"]')
+                                            .each(function () {
+                                                var _el = $(this);
+                                                if (_el.parents('.c-form-repeater-item').eq(0)
+                                                    .find('.c--input>[type="text"][data-item-name="UserAccount"]')
+                                                    .hasClass('c--focus-UserAccount')) {
+                                                    return;
+                                                }
+                                                var value = changeUtil.trim(_el.val());
+                                                if (value.toLowerCase() === data.UserID.toLowerCase()) {
+                                                    count++;
+                                                }
+                                            });
+                                        if (count > 0) {
+                                            return '';
+                                        }
+                                        var html = '\
+                                        <div class="c-search--user-li">\
+                                            <img class="c-search--user-li-avatar" src="' + changeUtil.getOSUrl(data.AvatarPath) + '" alt="' + data.UserName + '" />\
+                                            <div class="c-search--user-li-userinfo">\
+                                                <h4>' + data.UserName + '</h4>\
+                                                <small>' + data.UserAccount + '</small>\
+                                            </div>\
+                                        </div>';
+                                        return html;
+                                    },
+                                    getAjaxData: function (options, value) {
+                                        var jsonData = {};
+                                        jsonData['xueXiaoCode'] = Options.pageData.XueXiaoCode;
+                                        jsonData['roleCode'] = 'teacher';
+                                        jsonData['userNameOrUserAccount'] = value;
+                                        return jsonData;
+                                    },
+                                    choose: function (options, target, data) { },
+                                    matchValue: function (_options) {
+                                        var searchValue = _options.el.data('data-search-value');
+                                        if (searchValue) {
+                                            _options.el.val(searchValue.UserAccount);
+                                            console.log(searchValue)
+                                            var repeater = _options.el.parents('.c-form-repeater-item').eq(0);
+                                            repeater.find('[type="hidden"][data-item-name="UserID"]').val(searchValue.UserID);
+                                            repeater.find('[type="text"][data-item-name="XingMing"]').val(searchValue.UserName);
+                                            // repeater.find('select[data-item-name="Title"]').val(searchValue.Title);
+                                            repeater.find('select[data-item-name="Title"]').selectpicker("val", searchValue.Title);
+                                            repeater.find('[type="text"][data-item-name="XueYuan"]').val(searchValue.XueYuan);
+                                            repeater.find('[type="text"][data-item-name="Telephone"]').val(searchValue.Telephone);
+                                            repeater.find('[type="text"][data-item-name="MobilePhone"]').val(searchValue.MobilePhone);
+                                            repeater.find('[type="text"][data-item-name="Email"]').val(searchValue.Email);
+                                            _options.el.data('_page_searchValue', searchValue.UserAccount);
+
+                                            if (Options.form.isSubmit === true) {
+                                                repeater.find('[data-val="true"]').each(function () {
+                                                    Options.form.cvalidate.element($(this));
+                                                });
+
+                                            }
+                                        }
+                                    },
+                                    blur: function (_options) {
+                                        var searchValue = _options.el.data('data-search-value');
+                                        var value = changeUtil.trim(_options.el.data('_page_searchValue'));
+                                        if (value === '') {
+                                            _options.el.val('');
+                                        }
+
+                                    }
+                                },
+                                searchEmpty: true,
+                                focusSearch: true
+                            });
+
+                            changeApp.initSelectpicker(tr.find('.c-selectpicker'));
+                            changeUtil.maxlength(tr.find('.c--maxlength'));
+
+                            changeUtil.autosize(tr.find("textarea.c--autosize"));
+
+                            changeUtil.initTooltip(tr.find('.c--tooltip'));
+
+                            tr.find('.c-form-group-actions [type="button"][data-command="search-user"]').click(function () {
+                                _Plugin.ListTeacher.searchUser(tr);
+                            });
+
+                        },
+                        removeRow: function (tr) {
+                            tr.slideUp(function () {
+                                tr.remove();
+                            });
+                        },
+                        searchUser: function (repeaterItem) {
+                            var inputModel = changeUtil.getHtmlValue({
+                                el: repeaterItem,
+                                key: "data-item-name",
+                                query: '[data-val="true"]',
+                                destroy: false
+                            });
+
+                            var userlist = repeaterItem.parents('.c-form-repeater[name="ListTeacher"]').eq(0);
+                            var _searchData = {
+                                roleCodes: changeUtil.trim(userlist.attr('data-search-role')),
+                                url: changeUtil.trim(userlist.attr('data-search-url')),
+                            };
+
+                            var _searchUser_Plugin = {
+                                render: function () {
+                                    var html = '\
+                                    <div class="c-search-user--container">\
+                                        <div class="c-search-user--search c--form">\
+                                            <div class="form-group row">\
+                                                <div class="col-md-6">\
+                                                    <label class="control-label">\
+                                                        姓名：\
+                                                    </label>\
+                                                    <div>\
+                                                        <input type="text" class="form-control c-input--square c--maxlength c-input-border"\
+                                                            maxlength="20"\
+                                                            name="UserName" placeholder="请输入姓名"\
+                                                            autocomplete="off"\
+                                                            value="'+ inputModel.XingMing + '" />\
+                                                    </div>\
+                                                </div>\
+                                                <div class="col-md-6">\
+                                                    <label class="control-label">\
+                                                        账号：\
+                                                    </label>\
+                                                    <div>\
+                                                        <input type="text" class="form-control c-input--square c--maxlength c-input-border"\
+                                                            maxlength="20"\
+                                                            name="UserAccount" placeholder="请输入账号"\
+                                                            autocomplete="off"\
+                                                            value="'+ inputModel.UserAccount + '" />\
+                                                    </div>\
+                                                </div>\
+                                            </div>\
+                                            <div class="search-form-actions">\
+                                                <button type="button" class="btn btn-search" data-command="search">\
+                                                    <span>\
+                                                        <i class="flaticon-search"></i>\
+                                                        <span>\
+                                                            查询\
+                                                        </span>\
+                                                    </span>\
+                                                </button>\
+                                                <button type="button" class="btn btn-reset" data-command="clear-form-data">\
+                                                    <span>\
+                                                        <i class="flaticon-refresh"></i>\
+                                                        <span>\
+                                                            重置\
+                                                        </span>\
+                                                    </span>\
+                                                </button>\
+                                            </div>\
+                                        </div>\
+                                        <div class="c-search-user--body">\
+                                            <div class="c-swal2-modal-loadbefore- c-load-before"></div>\
+                                            <div class="c--empty"></div>\
+                                            <ul class="c-user-list"></ul>\
+                                        </div>\
+                                    </div>\
+                                    ';
+
+                                    Options.swalOptions.container.html(html);
+                                },
+                                search: function () {
+                                    changeUtil.block(Options.swalOptions.popup.find('>.swal2-content'), { message: '请稍候，正在查询教师数据……' });
+                                    changeUtil.progress.bar({
+                                        el: Options.swalOptions.progress,
+                                        mode: true
+                                    });
+                                    var searchModel = changeUtil.getHtmlValue({
+                                        el: Options.swalOptions.container.find('.c-search-user--search.c--form'),
+                                        key: "name",
+                                        query: 'input[type="text"][name]',
+                                        destroy: false
+                                    });
+                                    // searchModel.xueYuanCode = changeUtil.trim($('#XueYuanCode').val());
+                                    searchModel.roleCodes = _searchData.roleCodes;
+                                    searchModel.xueXiaoCode = Options.pageData.XueXiaoCode;
+                                    changeAjax.postAntiForgery({
+                                        url: _searchData.url,
+                                        data: searchModel,
+                                        success: function (data) {
+                                            _execute(data);
+                                        },
+                                        error: function (data) {
+                                            _execute({
+                                                Success: false,
+                                                Message: "数据加载失败！",
+                                                ErrorList: []
+                                            });
+                                        }
+                                    });
+
+                                    var _execute = function (data) {
+                                        changeUtil.unblock(Options.swalOptions.popup.find('>.swal2-content'));
+                                        Options.swalOptions.container.find('.c-search-user--body>div.c-load-before').remove();
+                                        Options.swalOptions.container.find('.c-search-user--body>div.c--empty').html('');
+                                        Options.swalOptions.container.find('.c-search-user--body>ul.c-user-list').html('');
+                                        changeUtil.progress.bar({
+                                            el: Options.swalOptions.progress,
+                                            mode: false
+                                        });
+                                        if (data.Success) {
+                                            if (data.Data.length <= 0) {
+                                                changeUtil.loadErrorHtml({
+                                                    el: Options.swalOptions.container.find('.c-search-user--body>div.c--empty'),
+                                                    text: '未能根据条件搜索到相关数据！',
+                                                    minHeight: 120
+                                                });
+                                                Options.swalOptions.resize();
+                                                return;
+                                            }
+
+                                            var alterMsg = data.Data.length >= 20 ?
+                                                '根据检索条件查询匹配前 <b>20</b> 条数据。' :
+                                                '根据检索条件查询匹配到 <b>' + data.Data.length + '</b> 条数据。';
+
+                                            var alertHTHL = '\
+                                            <div class="alert alert-solid-success alert-bold">\
+                                                <div class="alert-icon"><i class="flaticon2-information"></i></div>\
+                                                <div class="alert-text">'+ alterMsg + '</div>\
+                                                <div class="alert-close">\
+                                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">\
+                                                        <span aria-hidden="true"><i class="la la-close"></i></span>\
+                                                    </button>\
+                                                </div>\
+                                            </div>\
+                                            ';
+
+                                            Options.swalOptions.container.find('.c-search-user--body>ul.c-user-list').append(alertHTHL);
+
+                                            for (var index = 0; index < data.Data.length; index++) {
+                                                var model = data.Data[index];
+                                                var otherInfo = '';
+                                                model.UserAccount = changeUtil.trim(model.UserAccount);
+                                                if (model.UserAccount !== '') {
+                                                    otherInfo += '<span>' + model.UserAccount + '</span>';
+                                                }
+                                                // model.Gender = changeUtil.trim(model.Gender);
+                                                // if (model.Gender !== '') {
+                                                //     otherInfo += '<span>' + model.Gender + '</span>';
+                                                // }
+                                                model.XueYuanName = changeUtil.trim(model.XueYuanName);
+                                                if (model.XueYuanName !== '') {
+                                                    otherInfo += '<span>' + model.XueYuanName + '</span>';
+                                                }
+                                                // model.ZhuanYeName = changeUtil.trim(model.ZhuanYeName);
+                                                // if (model.ZhuanYeName !== '') {
+                                                //     otherInfo += '<span>' + model.ZhuanYeName + '</span>';
+                                                // }
+                                                var html = '\
+                                                <li class="c--li">\
+                                                    <input type="hidden" data-name-child="OptionValue" value="'+ model.UserID + '" />\
+                                                    <input type="hidden" data-name-child="UserID" value="'+ model.UserID + '" />\
+                                                    <input type="hidden" data-name-child="UserAccount" value="'+ model.UserAccount + '" />\
+                                                    <input type="hidden" data-name-child="UserName" value="'+ model.UserName + '" />\
+                                                    <input type="hidden" data-name-child="XueYuanName" value="'+ model.XueYuanName + '" />\
+                                                    <input type="hidden" data-name-child="XueYuan" value="'+ model.XueYuan + '" />\
+                                                    <input type="hidden" data-name-child="Telephone" value="'+ model.Telephone + '" />\
+                                                    <input type="hidden" data-name-child="MobilePhone" value="'+ model.MobilePhone + '" />\
+                                                    <input type="hidden" data-name-child="Email" value="'+ model.Email + '" />\
+                                                    <input type="hidden" data-name-child="Title" value="'+ model.Title + '" />\
+                                                    <span class="c-index">'+ (index + 1) + '.</span>\
+                                                    <img src="'+ changeUtil.getOSUrl(model.AvatarPath) + '" alt="' + model.UserName + '">\
+                                                    <div class="c-user-info">\
+                                                        <div class="c-user-info--name">\
+                                                            '+ model.UserName + '\
+                                                        </div>\
+                                                        <div class="c-user-info--other">\
+                                                            '+ otherInfo + '\
+                                                        </div>\
+                                                    </div>\
+                                                    <div class="c-actions">\
+                                                        <button type="button" class="btn" data-command="choose">\
+                                                            <span class="c-flex">\
+                                                                <i class="la la-check"></i>\
+                                                                <span>选择</span>\
+                                                            </span>\
+                                                        </button>\
+                                                    </div>\
+                                                </li>\
+                                                ';
+                                                Options.swalOptions.container.find('.c-search-user--body>ul.c-user-list').append(html);
+                                            }
+
+                                            Options.swalOptions.container.find('.c-search-user--body>ul.c-user-list>li.c--li').each(function () {
+                                                var li = $(this);
+                                                li.find('>.c-actions>button[type="button"][data-command="choose"]').click(function () {
+                                                    _searchUser_Plugin.choose($(this));
+                                                });
+                                            });
+                                        } else {
+                                            changeUtil.loadErrorHtml({
+                                                el: Options.swalOptions.container.find('.c-search-user--body>div.c--empty'),
+                                                text: data.Message,
+                                                minHeight: 120
+                                            });
+                                        }
+
+                                        Options.swalOptions.resize();
+                                    };
+
+                                },
+                                choose: function (el) {
+                                    var li = el.parents('li.c--li').eq(0);
+                                    var model = changeUtil.getHtmlValue({
+                                        el: li,
+                                        key: "data-name-child",
+                                        query: 'input[type="hidden"][data-name-child]',
+                                        destroy: false
+                                    });
+
+                                    if (typeof model["UserName"] !== "undefined") {
+                                        model["XingMing"] = model["UserName"];
+                                    }
+
+                                    var names = ['OptionValue', 'UserID', 'UserAccount', 'UserName', 'XueYuanName', 'XingMing', 'XueYuan', 'Telephone', 'MobilePhone', 'Email', 'Title'];
+                                    for (var index = 0; index < names.length; index++) {
+                                        try {
+                                            var name = names[index];
+                                            if (typeof model[name] === "undefined" || model[name] === "undefined" || model[name] === null || model[name] === 'null') {
+                                                // continue;
+                                                model[name] = '';
+                                            }
+                                            if (name === 'Title') {
+                                                repeaterItem.find('select[data-item-name="' + name + '"]').selectpicker("val", model[name]);
+                                            } else {
+                                                repeaterItem.find('[data-item-name="' + name + '"]').val(model[name]);
+                                            }
+                                        } catch (error) {
+
+                                        }
+                                    }
+                                    if (Options.form.isSubmit === true) {
+                                        repeaterItem.find('[data-val="true"]').each(function () {
+                                            Options.form.cvalidate.element($(this));
+                                        });
+
+                                    }
+                                    // if (Options.form.isSubmit === true) {
+                                    //     Options.form.cvalidate.validate();
+                                    // }
+                                    Options.swalOptions.close.click();
+                                }
+                            };
+
+                            changeUtil.swalCustom({
+                                title: '<b>搜索教师信息</b>',
+                                customClass: {
+                                    popup: 'c-swal2-popup c-bg--brand c-swal2-popup--search-user',
+                                    header: 'c-swal2-header ct-background-color-1',
+                                    icon: 'la la-user',
+                                },
+                                init: function (options) {
+                                    Options.swalOptions = options;
+                                    // changeUtil.progress.bar({
+                                    //     el: Options.swalOptions.progress,
+                                    //     mode: false
+                                    // });
+
+                                    _searchUser_Plugin.render();
+
+                                    Options.swalOptions.container.find('.c-search-user--body>div.c-load-before').cLoadBefore({
+                                        minHeight: 100,
+                                        color: '#ddd',
+                                        backgroundColor: 'transparent',
+                                        type: 'list',
+                                        listCount: 5,
+                                        listbackgroundColor: 'rgba(213, 209, 226, 0.45)'
+                                    });
+                                    _searchUser_Plugin.search();
+                                    changeUtil.enter(Options.swalOptions.container.find('.c-search-user--search.c--form input[type="text"]'),
+                                        function (el) {
+                                            _searchUser_Plugin.search();
+                                        });
+                                    Options.swalOptions.container.find('.c-search-user--search.c--form button[type="button"][data-command="search"]').click(function () {
+                                        _searchUser_Plugin.search();
+                                    });
+                                    Options.swalOptions.container.find('.c-search-user--search.c--form button[type="button"][data-command="clear-form-data"]').click(function () {
+                                        Options.swalOptions.container.find('.c-search-user--search.c--form input[type="text"]').val('');
+                                    });
+                                },
+                                close: function (options) {
+
+                                }
+                            });
+
+                        },
+                        chooseUserType: function (_el) {
+                            var _group = _el.parents('.c--group').eq(0);
+                            _group.find('>.dropdown>.c--text').val(changeUtil.trim(_el.find('>span').html()));
+                            _group.find('>[type="hidden"][data-item-name="UserType"]').val(changeUtil.trim(_el.attr('data-usertype')));
+                        },
+                    },
+                    ListQYTeacher: {
+                        addRow: function () {
+                            var id = changeUtil.getUniqueID('');
+
+                            var html = '<div class="form-group row align-items-center c-form-repeater-item" style="display: none;" id="ListQYTeacher_' + id + '">\
+	<div class="col-md-3 nv-validate">\
+		<div class="kt-form__group--inline">\
+			<div class="kt-form__label">\
+				<label>姓名:</label>\
+			</div>\
+			<div class="kt-form__control" style="position: relative;">\
+				<input class="form-control c-input--square c--maxlength" data-val="true" data-val-length="姓名 字符串长度应在30个字符以内" data-val-length-max="30" maxlength="30" data-val-required="姓名 字段是必需的。" id="' + id + '_XingMing" data-item-name="XingMing" placeholder="姓名" type="text" autocomplete="off">\
+				<span class="help-block">\
+					<span class="field-validation-valid" data-valmsg-for="' + id + '_XingMing" data-valmsg-replace="true"></span>\
+				</span>\
+			</div>\
+		</div>\
+	</div>\
+	<div class="col-md-3 nv-validate">\
+		<div class="kt-form__group--inline">\
+			<div class="kt-form__label">\
+				<label>职称:</label>\
+			</div>\
+			<div class="kt-form__control">\
+			<select id="' + id + '_Title" class="form-control c-input--square c-selectpicker c-selectpicker--search" data-val="true" data-val-required="职称 字段是必需的。" data-item-name="Title"></select>\
+				<span class="help-block">\
+					<span class="field-validation-valid" data-valmsg-for="' + id + '_Title" data-valmsg-replace="true"></span>\
+				</span>\
+			</div>\
+		</div>\
+	</div>\
+	<div class="col-md-2 nv-validate">\
+		<div class="kt-form__group--inline">\
+			<div class="kt-form__label">\
+				<label>办公电话:</label>\
+			</div>\
+			<div class="kt-form__control">\
+				<input class="form-control c-input--square c--maxlength" data-val="true" data-val-length="办公电话 字符串长度应在16个字符以内" data-val-length-max="16" maxlength="16" data-val-required="办公电话 字段是必需的。" id="' + id + '_Telephone" data-item-name="Telephone" placeholder="办公电话" type="text" autocomplete="off">\
+				<span class="help-block">\
+					<span class="field-validation-valid" data-valmsg-for="' + id + '_Telephone" data-valmsg-replace="true"></span>\
+				</span>\
+			</div>\
+		</div>\
+	</div>\
+	<div class="col-md-2 nv-validate">\
+		<div class="kt-form__group--inline">\
+			<div class="kt-form__label">\
+				<label>手机:</label>\
+			</div>\
+			<div class="kt-form__control">\
+				<input class="form-control c-input--square c--maxlength" data-val="true" data-val-length="手机 字符串长度应在11个字符以内" data-val-length-max="11" maxlength="11" data-val-required="手机 字段是必需的。" data-val-regex-pattern="^1[3456789]\\d{9}$" data-val-regex="手机 格式不正确。" id="' + id + '_MobilePhone" data-item-name="MobilePhone" placeholder="手机" type="text" autocomplete="off">\
+				<span class="help-block">\
+					<span class="field-validation-valid" data-valmsg-for="' + id + '_MobilePhone" data-valmsg-replace="true"></span>\
+				</span>\
+			</div>\
+		</div>\
+	</div>\
+	<div class="col-md-2 c-form-group-actions">\
+		<button type="button" class="btn-sm btn btn-label-danger btn-bold" data-command="remove">\
+			<span>\
+				<i class="la la-trash-o"></i>\
+				<span>删除</span>\
+			</span>\
+		</button>\
+	</div>\
+</div>';
+
+                            options.itemMembers.ListQYTeacher.content.append(html);
+                            var tr = options.itemMembers.ListQYTeacher.content.find('>#ListQYTeacher_' + id);
+                            tr.removeAttr('id');
+                            tr.find('#' + id + '_Title').html($('select#Teacher_ListTitle').html());
+                            tr.slideDown();
+                            _Plugin.ListQYTeacher.initRow(tr);
+                            return tr;
+                        },
+                        initRow: function (tr) {
+                            changeApp.initSelectpicker(tr.find('.c-selectpicker'));
+                            changeUtil.maxlength(tr.find('.c--maxlength'));
+
+                            tr.find('.c-form-group-actions [type="button"][data-command="remove"]').click(function () {
+                                _Plugin.ListStudent.removeRow(tr);
+                            });
+                        },
+                        removeRow: function (tr) {
+                            tr.slideUp(function () {
+                                tr.remove();
+                            });
+                        },
+                    }
+                };
+
+                _Plugin.init();
+            },
+            /**
+             *  立项依据
+             * @param {object} options 配置参数
+             */
+            loadStepForm_3: function (options) {
+
+                changeUtil.summernote(options.content.find('.c--summernote'), {
+                    custom: {
+                        isLimitUserFileSize: true
+                    },
+                    callbacks: {
+                        onChange: function (_self) {
+                            if (Options.form.isSubmit) {
+                                Options.form.cvalidate.validate();
+                            }
+                        }
+                    }
+                });
+
+
+            },
+            /**
+             * 经费
+             * @param {object} options 配置参数
+             */
+            loadStepForm_4: function (options) {
+
+                $('#c_Item_JingFei .c-form-repeater-container[data-item-group="ListJingFei"]>[name="ListJingFei"]').find('>.c-form-repeater-item').each(function () {
+                    var el = $(this);
+                    Plugin.ListJingFei.initRow(el);
+                });
+
+                $('#c_Item_JingFei .c-form-repeater-container[data-item-group="ListJingFei"]>.c-form-repeater-actions [type="button"][data-command="add"]').click(function () {
+                    Plugin.ListJingFei.addRow();
+                });
+
+
+
+            },
+            /**
+             * 上传附件
+             * @param {object} options 配置参数
+             */
+            loadStepForm_5: function (options) {
+                $('#listattachment_container>li.c-file').each(function () {
+                    var li = $(this);
+                    var liData = changeUtil.getHtmlValue({
+                        el: li.find(".hidden.file-data"),
+                        key: "data-name",
+                        query: "this-file-data",
+                        valueKey: "data-value",
+                        destroy: true
+                    });
+                    li.data('liData', liData);
+                    li.find('.c-actions>.c-action[data-command="preview"]').data('c_preview_data', liData);
+                });
+                $('#listattachment_container>li.c-file .c-actions>.c-action[data-command="preview"]').cpreview();
+
+                $('#listattachment_container>li.c-file').find('button[data-command="remove-file"]').click(function () {
+
+                    var el = $(this);
+                    if (el.hasClass('c-command-lock')) {
+                        return;
+                    }
+                    el.addClass('c-command-lock');
+
+                    var model = changeUtil.getHtmlValue({
+                        el: el,
+                        key: 'data-name',
+                        query: 'span.hidden',
+                        valueKey: 'value'
+                    });
+                    changeAjax.postAntiForgery({
+                        url: '/Item/Declare/RemoveFile',
+                        data: model,
+                        success: function (data) {
+                            _execute(data);
+                        },
+                        error: function (data) {
+                            _execute({
+                                Success: false,
+                                Message: "数据保存失败！",
+                                ErrorList: []
+                            });
+                        }
+                    });
+
+                    var _execute = function (data) {
+                        changeUtil.unblock($('body'));
+                        el.removeClass("c--lock").attr("disabled", false);
+                        el.removeClass(
+                            "kt-spinner kt-spinner--right kt-spinner--md kt-spinner--light"
+                        );
+                        if (data.Success) {
+                            changeUtil.swalHelper({
+                                type: 'success',
+                                text: "附件删除操作成功！"
+                            }).then(function () {
+                                el.parents('li').remove();
+                            });
+                        } else {
+                            el.removeClass('c-command-lock');
+                            var msg = StringHelper.trim(data.Message);
+                            if (msg === '') {
+                                msg = "附件删除操作失败！";
+                            }
+                            changeUtil.toastrHelper.warning(data.Message);
+                        }
+                    };
+
+                    // Webapi.removeFile({
+                    //     data: changeUtil.getHtmlValue({
+                    //         el: el,
+                    //         key: 'data-name',
+                    //         query: 'span.hidden',
+                    //         valueKey: 'value'
+                    //     }),
+                    //     callbacks: {
+                    //         success: function (data) {
+                    //             changeUtil.swalHelper({
+                    //                 type: 'success',
+                    //                 text: "附件删除操作成功！"
+                    //             }).then(function () {
+                    //                 el.parents('li').remove();
+                    //             });
+                    //         },
+                    //         fail: function (data) {
+                    //             el.removeClass('c-command-lock');
+                    //             var msg = StringHelper.trim(data.Message);
+                    //             if (msg === '') {
+                    //                 msg = "附件删除操作失败！";
+                    //             }
+                    //             changeUtil.toastrHelper.warning(data.Message);
+                    //         },
+                    //         error: function (data) {
+                    //             el.removeClass('c-command-lock');
+                    //             changeUtil.toastrHelper.error("附件删除操作失败！");
+                    //         },
+                    //         cancel: function () {
+                    //             el.removeClass('c-command-lock');
+                    //         }
+                    //     }
+                    // });
+                });
+            },
+            ListJingFei: {
+                addRow: function () {
+                    var id = changeUtil.getUniqueID('');
+
+                    var html = '<div class="form-group row align-items-center c-form-repeater-item" style="display: none;" id="ListJingFei_' + id + '">\
+	<div class="col-md-2 nv-validate">\
+		<div class="kt-form__group--inline">\
+			<div class="kt-form__label">\
+				<label>开支科目:</label>\
+			</div>\
+			<div class="kt-form__control">\
+				<input class="form-control c-input--square" data-val="true" data-val-required="开支科目 字段是必需的。" id="' + id + '_FundsName" data-item-name="FundsName" placeholder="开支科目" type="text" autocomplete="off">\
+				<span class="help-block">\
+					<span class="field-validation-valid" data-valmsg-for="' + id + '_FundsName" data-valmsg-replace="true"></span>\
+				</span>\
+			</div>\
+		</div>\
+	</div>\
+	<div class="col-md-4 nv-validate">\
+		<div class="kt-form__group--inline">\
+			<div class="kt-form__label">\
+				<label>预算经费（元）:</label>\
+			</div>\
+			<div class="kt-form__control">\
+				<input class="form-control c-input--square" data-val="true" data-val-required="预算经费（元） 字段是必需的。" data-val-regex-pattern="^((\\s)+|\\d)+((((.\\d{1,2})?)|(\\s)+))$" data-val-regex="预算经费（元） 格式不正确。" id="' + id + '_Funds" data-item-name="Funds" placeholder="预算经费（元）" type="text" autocomplete="off">\
+				<span class="help-block">\
+					<span class="field-validation-valid" data-valmsg-for="' + id + '_Funds" data-valmsg-replace="true"></span>\
+				</span>\
+			</div>\
+		</div>\
+	</div>\
+	<div class="col-md-4 nv-validate">\
+		<div class="kt-form__group--inline">\
+			<div class="kt-form__label">\
+				<label>主要用途:</label>\
+			</div>\
+			<div class="kt-form__control">\
+				<input class="form-control c-input--square c--maxlength" maxlength="256" data-val="true" data-val-required="主要用途 字段是必需的。" id="' + id + '_MainUses" data-item-name="MainUses" placeholder="主要用途" type="text" autocomplete="off">\
+				<span class="help-block">\
+					<span class="field-validation-valid" data-valmsg-for="' + id + '_MainUses" data-valmsg-replace="true"></span>\
+				</span>\
+			</div>\
+		</div>\
+	</div>\
+	<div class="col-md-2 c-form-group-actions">\
+		<button type="button" class="btn btn-label-danger btn-bold" data-command="remove">\
+			<span class="c-flex">\
+				<i class="la la-trash-o"></i>\
+				<span>删除</span>\
+			</span>\
+		</button>\
+	</div>\
+</div>';
+
+                    $('#c_Item_JingFei .c-form-repeater-container[data-item-group="ListJingFei"]>[name="ListJingFei"]').append(html);
+                    var tr = $('#c_Item_JingFei .c-form-repeater-container[data-item-group="ListJingFei"]>[name="ListJingFei"]').find('>#ListJingFei_' + id);
+                    tr.removeAttr('id');
+                    tr.slideDown();
+                    Plugin.ListJingFei.initRow(tr);
+                    return tr;
+                },
+                initRow: function (tr) {
+                    tr.find('.c-form-group-actions [type="button"][data-command="remove"]').click(function () {
+                        Plugin.ListJingFei.removeRow(tr);
+                    });
+
+
+                    tr.find('input[data-item-name="Funds"]').keyup(function () {
+                        calculateTotal();
+                    });
+
+                    function calculateTotal() {
+                        var sum = 0;
+
+                        $('#c_Item_JingFei').find('input[data-item-name="Funds"]').each(function () {
+                            var value = $(this).val();
+                            if (isNaN(value) || value == undefined || value == '') {
+                                value = 0;
+                            }
+
+                            sum += parseFloat(value);
+                        });
+
+                        $('#YSFunds_Zong').val(sum.toFixed(2));
+                    }
+                },
+                removeRow: function (tr) {
+                    tr.slideUp(function () {
+                        tr.remove();
+                    });
+                },
+            },
+        };
+
+
+        return {
+            init: Plugin.init
+        };
+    }();
+
+}(jQuery));
