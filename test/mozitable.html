@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的个性化课程表</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            padding: 20px 0;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .main-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .schedule-container {
+            flex: 2;
+            min-width: 300px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            padding: 20px;
+            overflow: hidden;
+        }
+        
+        .sidebar {
+            flex: 1;
+            min-width: 250px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .info-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .time-display {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin: 10px 0;
+        }
+        
+        .date-display {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .holiday-display {
+            font-size: 1.1rem;
+            color: #e74c3c;
+            font-weight: 500;
+            min-height: 24px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: center;
+            border: 1px solid #e0e0e0;
+        }
+        
+        th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .today {
+            background-color: rgba(41, 128, 185, 0.1) !important;
+            font-weight: bold;
+        }
+        
+        .course-card {
+            margin: 8px 0;
+            padding: 12px;
+            border-left: 4px solid var(--primary-color);
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .course-name {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .course-location {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+        
+        .current-time {
+            display: inline-block;
+            padding: 5px 10px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        
+        button {
+            padding: 8px 16px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        
+        button:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+        
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+            justify-content: center;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+        
+        .legend-color {
+            width: 15px;
+            height: 15px;
+            border-radius: 3px;
+            margin-right: 5px;
+        }
+        
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .time-display {
+                font-size: 2rem;
+            }
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #7f8c8d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>我的个性化课程表</h1>
+            <p class="subtitle">实时更新 · 每日主题 · 节日提醒</p>
+        </header>
+        
+        <div class="main-content">
+            <div class="schedule-container">
+                <h2><i class="fas fa-calendar-alt"></i> 本周课程安排</h2>
+                <div class="controls">
+                    <div class="legend">
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: #3498db;"></div>
+                            <span>今日课程</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: #e74c3c;"></div>
+                            <span>节假日</span>
+                        </div>
+                    </div>
+                    <button id="edit-button"><i class="fas fa-edit"></i> 编辑课程表</button>
+                </div>
+                <div id="schedule">
+                    <!-- 课程表将由JavaScript渲染 -->
+                    <div class="loading">
+                        <i class="fas fa-spinner fa-spin"></i> 加载课程表中...
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sidebar">
+                <div class="info-card">
+                    <h3><i class="far fa-clock"></i> 当前时间</h3>
+                    <div class="time-display" id="current-time">00:00:00</div>
+                    <div class="date-display" id="current-date">Loading...</div>
+                    <div class="current-time" id="current-period">第0节课</div>
+                </div>
+                
+                <div class="info-card">
+                    <h3><i class="fas fa-calendar-day"></i> 节日信息</h3>
+                    <div class="holiday-display" id="holiday-info">
+                        <i class="fas fa-spinner fa-spin"></i> 查询中...
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <h3><i class="fas fa-palette"></i> 今日主题</h3>
+                    <p>每日自动生成的主题颜色</p>
+                    <div style="display: flex; justify-content: center; margin-top: 15px;">
+                        <div style="width: 40px; height: 40px; border-radius: 8px; background: var(--primary-color); margin: 0 5px;"></div>
+                        <div style="width: 40px; height: 40px; border-radius: 8px; background: var(--secondary-color); margin: 0 5px;"></div>
+                    </div>
+                    <p id="color-code" style="font-family: monospace; margin-top: 10px;">#XXXXXX → #XXXXXX</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 定义课程表数据（Markdown格式）
+        const scheduleMarkdown = `
+|星期|节次1|节次2|节次3|节次4|节次5|
+| ---- | ---- | ---- | ---- | ---- | ---- |
+|一|无|量子力学(1)@中心加新楼B座124d|计算物理实验@中心加新楼C座C1214|无|信息检索与利用(信息)@中心超算楼307c|
+|二|电动力学@中心董服楼211d|微机控制技术@中心董服楼B栋112d|微机控制技术实验@中心加新楼C座C507|无|音乐基础理论与应用(艺术)@中心超算楼307d|
+|三|计算物理@中心超算楼209d|量子力学(1)@中心加新楼B座124d|综合实验(1)@中心加新楼C座C307|无|无|
+|四|无|无|无|无|无|
+|五|电动力学@中心董服楼211d|计算物理@中心超算楼209d<br>微机控制技术@中心董服楼B栋112d|无|有酶多变形的材料世界(化工)@中心超算楼311d|无|
+|六|无|无|无|无|无|
+|日|无|无|无|无|无|
+        `.trim();
+
+        // 解析Markdown表格
+        function parseMarkdownTable(markdown) {
+            const lines = markdown.trim().split('\n');
+            const headers = lines[0].split('|').filter(cell => cell.trim() !== '').map(cell => cell.trim());
+            const rows = [];
+            
+            for (let i = 2; i < lines.length; i++) {
+                const cells = lines[i].split('|').filter(cell => cell.trim() !== '').map(cell => cell.trim());
+                if (cells.length === headers.length) {
+                    const row = {};
+                    headers.forEach((header, index) => {
+                        row[header] = cells[index];
+                    });
+                    rows.push(row);
+                }
+            }
+            
+            return { headers, rows };
+        }
+
+        // 生成基于日期的主题颜色
+        function generateDailyColors() {
+            const today = new Date();
+            const seed = today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate();
+            
+            // 使用种子生成可预测的随机颜色
+            const random = (max) => {
+                const x = Math.sin(seed) * 10000;
+                return Math.floor((x - Math.floor(x)) * max);
+            };
+            
+            const hue = random(360);
+            const compHue = (hue + 180) % 360;
+            
+            const primaryColor = `hsl(${hue}, 70%, 50%)`;
+            const secondaryColor = `hsl(${compHue}, 70%, 50%)`;
+            
+            return { primaryColor, secondaryColor };
+        }
+
+        // 应用主题颜色
+        function applyThemeColors() {
+            const colors = generateDailyColors();
+            document.documentElement.style.setProperty('--primary-color', colors.primaryColor);
+            document.documentElement.style.setProperty('--secondary-color', colors.secondaryColor);
+            
+            document.getElementById('color-code').textContent = 
+                `${colors.primaryColor} → ${colors.secondaryColor}`;
+        }
+
+        // 渲染课程表
+        function renderSchedule() {
+            const { headers, rows } = parseMarkdownTable(scheduleMarkdown);
+            const scheduleElement = document.getElementById('schedule');
+            const today = new Date().getDay();
+            const dayMap = { '一': 1, '二': 2, '三': 3, '四': 4, '五': 5, '六': 6, '日': 7 };
+            
+            let html = `
+            <table>
+                <thead>
+                    <tr>
+                        ${headers.map(header => `<th>${header}</th>`).join('')}
+                    </tr>
+                </thead>
+                <tbody>
+            `;
+            
+            rows.forEach(row => {
+                const isToday = dayMap[row['星期']] === today;
+                html += `<tr ${isToday ? 'class="today"' : ''}>`;
+                
+                headers.forEach(header => {
+                    let content = row[header];
+                    if (content !== '无') {
+                        // 处理包含多个课程的情况
+                        const courses = content.split('<br>');
+                        content = courses.map(course => {
+                            const parts = course.split('@');
+                            if (parts.length === 2) {
+                                return `
+                                <div class="course-card">
+                                    <div class="course-name">${parts[0]}</div>
+                                    <div class="course-location">${parts[1]}</div>
+                                </div>
+                                `;
+                            }
+                            return `
+                            <div class="course-card">
+                                <div class="course-name">${course}</div>
+                            </div>
+                            `;
+                        }).join('');
+                    }
+                    
+                    html += `<td>${content}</td>`;
+                });
+                
+                html += '</tr>';
+            });
+            
+            html += `
+                </tbody>
+            </table>
+            `;
+            
+            scheduleElement.innerHTML = html;
+        }
+
+        // 更新时间和日期显示
+        function updateTime() {
+            const now = new Date();
+            const timeElement = document.getElementById('current-time');
+            const dateElement = document.getElementById('current-date');
+            const periodElement = document.getElementById('current-period');
+            
+            // 更新时间
+            timeElement.textContent = now.toLocaleTimeString('zh-CN');
+            
+            // 更新日期
+            const options = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' };
+            dateElement.textContent = now.toLocaleDateString('zh-CN', options);
+            
+            // 更新当前节次
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            let period = '无课';
+            
+            if (hours === 8 && minutes >= 0) period = '第1节课';
+            if (hours === 8 && minutes >= 45) period = '第1节课休息';
+            if (hours === 9 && minutes >= 0) period = '第2节课';
+            if (hours === 9 && minutes >= 45) period = '第2节课休息';
+            if (hours === 10 && minutes >= 0) period = '第3节课';
+            if (hours === 10 && minutes >= 45) period = '第3节课休息';
+            if (hours === 11 && minutes >= 0) period = '第4节课';
+            if (hours === 11 && minutes >= 45) period = '第4节课休息';
+            if (hours === 14 && minutes >= 0) period = '第5节课';
+            if (hours === 14 && minutes >= 45) period = '第5节课休息';
+            if (hours === 15 && minutes >= 0) period = '第6节课';
+            if (hours === 15 && minutes >= 45) period = '第6节课休息';
+            if (hours === 16 && minutes >= 30) period = '第7节课';
+            if (hours === 17 && minutes >= 15) period = '第7节课休息';
+            if (hours === 18 && minutes >= 30) period = '第8节课';
+            if (hours === 19 && minutes >= 15) period = '第8节课休息';
+            if (hours >= 20) period = '晚间时间';
+            
+            periodElement.textContent = period;
+        }
+
+        // 获取节日信息（模拟API调用）
+        async function fetchHolidayInfo() {
+            const holidayElement = document.getElementById('holiday-info');
+            
+            try {
+                // 这里是模拟数据，实际应用中可以使用节假日API:cite[3]:cite[6]:cite[9]
+                const today = new Date();
+                const holidays = {
+                    '01-01': '元旦',
+                    '02-14': '情人节',
+                    '05-01': '劳动节',
+                    '06-01': '儿童节',
+                    '09-10': '教师节',
+                    '10-01': '国庆节',
+                    '12-25': '圣诞节'
+                };
+                
+                const monthDay = `${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+                const holiday = holidays[monthDay];
+                
+                if (holiday) {
+                    holidayElement.innerHTML = `<i class="fas fa-gift"></i> 今天是${holiday}！`;
+                } else {
+                    // 随机显示一些励志语句
+                    const messages = [
+                        "今天也是充满希望的一天！",
+                        "学无止境，继续努力！",
+                        "保持专注，效率倍增！",
+                        "知识就是力量！",
+                        "今天的学习是为了更好的明天！"
+                    ];
+                    const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+                    holidayElement.innerHTML = `<i class="fas fa-calendar"></i> ${randomMessage}`;
+                }
+            } catch (error) {
+                holidayElement.innerHTML = '<i class="fas fa-exclamation-triangle"></i> 节日信息加载失败';
+                console.error('获取节日信息失败:', error);
+            }
+        }
+
+        // 初始化页面
+        function initPage() {
+            applyThemeColors();
+            renderSchedule();
+            updateTime();
+            fetchHolidayInfo();
+            
+            // 每秒更新时间
+            setInterval(updateTime, 1000);
+            
+            // 编辑按钮事件
+            document.getElementById('edit-button').addEventListener('click', function() {
+                alert('在实际应用中，这里会打开课程表编辑器。\n您可以直接修改源码中的Markdown表格来更新课程表。');
+            });
+        }
+
+        // 页面加载完成后初始化
+        document.addEventListener('DOMContentLoaded', initPage);
+    </script>
+</body>
+</html>
